@@ -934,11 +934,62 @@ export default function Projects() {
     setTimeout(() => setSelectedProject(null), 300);
   };
   return (
-    <section id="projects" className="relative mx-auto max-w-7xl px-4 py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_20%,rgba(99,102,241,0.03),transparent_50%)]"></div>
-      
-      <div className="relative z-10">
+    <section id="projects" className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden">
+      {/* Interactive Background Elements */}
+      <div className="absolute inset-0 z-0">
+        {/* Animated project elements */}
+        <motion.div
+          className="absolute top-20 left-1/4 w-36 h-36 opacity-5 dark:opacity-10"
+          animate={{
+            scale: [1, 1.4, 1],
+            rotate: [0, 45, 0],
+          }}
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg blur-3xl" />
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-20 right-1/4 w-28 h-28 opacity-5 dark:opacity-10"
+          animate={{
+            scale: [1.4, 1, 1.4],
+            rotate: [0, -45, 0],
+          }}
+          transition={{
+            duration: 11,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg blur-3xl" />
+        </motion.div>
+        
+        {/* Floating code elements */}
+        <motion.div
+          className="absolute top-1/2 right-1/3 w-20 h-20 opacity-5 dark:opacity-10"
+          animate={{
+            y: [0, -20, 0],
+            x: [0, 10, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-green-500 to-blue-500 rounded-full blur-2xl" />
+        </motion.div>
+        
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_20%,rgba(99,102,241,0.03),transparent_50%)]"></div>
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Header */}
         <motion.div 
           className="mx-auto mb-16 max-w-3xl text-center"

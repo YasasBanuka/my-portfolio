@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 type ContactFormData = {
   name: string;
   email: string;
+  phone: string;
   message: string;
 };
 
@@ -77,6 +78,7 @@ function ContactForm() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
+    phone: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -99,7 +101,7 @@ function ContactForm() {
       // In a real application, you would send this data to your backend
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitStatus('success');
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -138,16 +140,16 @@ function ContactForm() {
       animate={controls}
       variants={formVariants}
       onSubmit={handleSubmit}
-      className="w-full lg:w-3/4 space-y-8"
+      className="w-full space-y-6"
     >
       {/* Name Field */}
       <motion.div
         custom={0}
         variants={fieldVariants}
-        className="relative group"
+        className="space-y-2"
       >
-        <label htmlFor="name" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">
-          Name
+        <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+          Your name
         </label>
         <motion.input
           type="text"
@@ -156,10 +158,9 @@ function ContactForm() {
           value={formData.name}
           onChange={handleInputChange}
           required
-          className="w-full px-6 py-4 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all duration-300 group-hover:border-slate-400 dark:group-hover:border-slate-500"
-          placeholder="Your full name"
+          className="w-full px-4 py-3 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          placeholder="Enter your full name"
           whileFocus={{ scale: 1.01 }}
-          whileHover={{ scale: 1.005 }}
         />
       </motion.div>
 
@@ -167,10 +168,10 @@ function ContactForm() {
       <motion.div
         custom={1}
         variants={fieldVariants}
-        className="relative group"
+        className="space-y-2"
       >
-        <label htmlFor="email" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">
-          Email
+        <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+          Email address
         </label>
         <motion.input
           type="email"
@@ -179,20 +180,40 @@ function ContactForm() {
           value={formData.email}
           onChange={handleInputChange}
           required
-          className="w-full px-6 py-4 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all duration-300 group-hover:border-slate-400 dark:group-hover:border-slate-500"
+          className="w-full px-4 py-3 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
           placeholder="your.email@example.com"
           whileFocus={{ scale: 1.01 }}
-          whileHover={{ scale: 1.005 }}
+        />
+      </motion.div>
+
+      {/* Phone Field */}
+      <motion.div
+        custom={2}
+        variants={fieldVariants}
+        className="space-y-2"
+      >
+        <label htmlFor="phone" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+          Phone number
+        </label>
+        <motion.input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          placeholder="+1 (555) 123-4567"
+          whileFocus={{ scale: 1.01 }}
         />
       </motion.div>
 
       {/* Message Field */}
       <motion.div
-        custom={2}
+        custom={3}
         variants={fieldVariants}
-        className="relative group"
+        className="space-y-2"
       >
-        <label htmlFor="message" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">
+        <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
           Message
         </label>
         <motion.textarea
@@ -201,60 +222,48 @@ function ContactForm() {
           value={formData.message}
           onChange={handleInputChange}
           required
-          rows={5}
-          className="w-full px-6 py-4 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all duration-300 resize-none group-hover:border-slate-400 dark:group-hover:border-slate-500"
-          placeholder="Tell me about your project or just say hello!"
+          rows={6}
+          className="w-full px-4 py-3 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+          placeholder="Share your thoughts, ideas, or just say hello!"
           whileFocus={{ scale: 1.01 }}
-          whileHover={{ scale: 1.005 }}
         />
       </motion.div>
 
       {/* Submit Button */}
       <motion.div
-        custom={3}
+        custom={4}
         variants={fieldVariants}
         className="pt-4"
       >
         <motion.button
           type="submit"
           disabled={isSubmitting}
-          className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group"
-          whileHover={{ 
-            scale: 1.02,
-            y: -1
-          }}
+          className="w-full px-6 py-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-medium rounded-md hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          {/* Button background effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          
-          <span className="relative z-10 flex items-center justify-center gap-2">
-            {isSubmitting ? (
-              <>
-                <motion.div
-                  className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                />
-                Sending...
-              </>
-            ) : submitStatus === 'success' ? (
-              <>
-                <span>✅</span>
-                Message Sent!
-              </>
-            ) : submitStatus === 'error' ? (
-              <>
-                <span>❌</span>
-                Try Again
-              </>
-            ) : (
-              <>
-                <span>🚀</span>
-                Send Message
-              </>
-            )}
-          </span>
+          {isSubmitting ? (
+            <span className="flex items-center justify-center gap-2">
+              <motion.div
+                className="w-4 h-4 border-2 border-current border-t-transparent rounded-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              />
+              Sending...
+            </span>
+          ) : submitStatus === 'success' ? (
+            <span className="flex items-center justify-center gap-2">
+              <span>✓</span>
+              Message sent successfully!
+            </span>
+          ) : submitStatus === 'error' ? (
+            <span className="flex items-center justify-center gap-2">
+              <span>✕</span>
+              Failed to send. Try again.
+            </span>
+          ) : (
+            "Send message"
+          )}
         </motion.button>
       </motion.div>
     </motion.form>
@@ -316,23 +325,10 @@ function ContactLinks() {
       initial="hidden"
       animate={controls}
       variants={containerVariants}
-      className="w-full lg:w-1/4 flex flex-col items-center lg:items-start"
+      className="w-full"
     >
-      {/* Header */}
-      <motion.div 
-        className="text-center lg:text-left mb-8"
-        variants={linkVariants}
-      >
-        <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-2">
-          Connect
-        </h3>
-        <p className="text-sm text-slate-600 dark:text-slate-400">
-          Let&apos;s stay connected
-        </p>
-      </motion.div>
-
-      {/* Social Media Icons - Clean Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 w-full lg:w-auto">
+      {/* Social Media Links - Clean List */}
+      <div className="space-y-4">
         {contactLinks.map((link) => (
           <motion.a
             key={link.id}
@@ -340,21 +336,18 @@ function ContactLinks() {
             target="_blank"
             rel="noopener noreferrer"
             variants={linkVariants}
-            className="group flex items-center justify-center lg:justify-start gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-300"
-            whileHover={{ 
-              scale: 1.02,
-              x: 5
-            }}
+            className="group flex items-center gap-3 p-3 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors duration-200"
+            whileHover={{ x: 5 }}
             whileTap={{ scale: 0.98 }}
             title={link.label}
           >
-            {/* Icon with gradient background */}
-            <div className={`flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br ${link.gradient} group-hover:shadow-lg transition-all duration-300 text-white`}>
+            {/* Simple icon */}
+            <div className="flex h-8 w-8 items-center justify-center text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">
               {renderIcon(link.icon)}
             </div>
             
-            {/* Platform name - hidden on mobile, visible on desktop */}
-            <span className="hidden lg:block text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">
+            {/* Platform name */}
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">
               {link.label}
             </span>
           </motion.a>
@@ -390,72 +383,112 @@ export default function Contact() {
   return (
     <section 
       ref={ref}
-      className="relative mx-auto max-w-7xl px-4 py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
+      className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden"
     >
+      {/* Interactive Background Elements */}
+      <div className="absolute inset-0 z-0">
+        {/* Animated contact elements */}
+        <motion.div
+          className="absolute top-20 right-20 w-40 h-40 opacity-5 dark:opacity-10"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-500 rounded-full blur-3xl" />
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-20 left-20 w-32 h-32 opacity-5 dark:opacity-10"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            rotate: [360, 180, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-full blur-3xl" />
+        </motion.div>
+        
+        {/* Floating communication elements */}
+        <motion.div
+          className="absolute top-1/2 left-1/3 w-24 h-24 opacity-5 dark:opacity-10"
+          animate={{
+            y: [0, -25, 0],
+            x: [0, 15, 0],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-green-500 to-blue-500 rounded-lg blur-2xl" />
+        </motion.div>
+      </div>
+      
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_30%,rgba(99,102,241,0.03),transparent_50%)]"></div>
       
-      <motion.div 
-        className="relative z-10 text-center"
-        initial="hidden"
-        animate={controls}
-        variants={sectionVariants}
-      >
-        {/* Header */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         <motion.div 
-          className="mb-16"
-          variants={childVariants}
+          className="relative z-10"
+          initial="hidden"
+          animate={controls}
+          variants={sectionVariants}
         >
-          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-6">
-            Let&apos;s Connect
-          </h2>
-          <motion.p 
-            className="text-xl lg:text-2xl text-slate-600 dark:text-slate-300 font-medium"
+          {/* Header */}
+          <motion.div 
+            className="mb-16 text-center"
             variants={childVariants}
           >
-            Let&apos;s build something impactful together 🚀
-          </motion.p>
-        </motion.div>
-
-        {/* Contact Form and Social Links Side by Side */}
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
-          {/* Contact Form - Left Side (More Space) */}
-          <motion.div
-            variants={childVariants}
-            className="w-full lg:w-3/4"
-          >
-            <div className="mb-10">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">
-                Send me a message
-              </h3>
-              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                Let&apos;s discuss your project or just say hello. I&apos;d love to hear from you!
-              </p>
-            </div>
-            <ContactForm />
+            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-6">
+              Let&apos;s Connect
+            </h2>
+            <motion.p 
+              className="text-xl text-slate-600 dark:text-slate-300 font-medium mb-4"
+              variants={childVariants}
+            >
+              <em>Ready to collaborate and create something amazing</em>
+            </motion.p>
+            <motion.p 
+              className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto"
+              variants={childVariants}
+            >
+              Whether you&apos;re looking to discuss opportunities, share ideas, or just want to connect with a fellow tech enthusiast, I&apos;d love to hear from you!
+            </motion.p>
           </motion.div>
 
-          {/* Social Links - Right Side (Less Space) */}
-          <motion.div
-            variants={childVariants}
-            className="w-full lg:w-1/4"
-          >
-            <ContactLinks />
-          </motion.div>
-        </div>
+          {/* Contact Form and Social Links Side by Side */}
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+            {/* Contact Form - Left Side (3/4 width) */}
+            <motion.div
+              variants={childVariants}
+              className="w-full lg:w-3/4"
+            >
+              <ContactForm />
+            </motion.div>
 
-        {/* Bottom decorative element */}
-        <motion.div 
-          className="mt-20 flex justify-center"
-          variants={childVariants}
-        >
-          <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-            <span className="h-px w-8 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-600"></span>
-            <span>Ready to collaborate</span>
-            <span className="h-px w-8 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-600"></span>
+            {/* Social Links - Right Side (1/4 width) */}
+            <motion.div
+              variants={childVariants}
+              className="w-full lg:w-1/4"
+            >
+              <ContactLinks />
+            </motion.div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

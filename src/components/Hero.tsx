@@ -1,17 +1,26 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Suspense } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Suspense, useRef } from 'react';
 import FloatingCube from './FloatingCube';
 
 const Hero = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.3,
+        delayChildren: 0.5,
       },
     },
   };
@@ -48,7 +57,40 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 dark:from-slate-950 dark:via-purple-950 dark:to-slate-950">
+    <section 
+      ref={ref}
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 dark:from-slate-950 dark:via-purple-950 dark:to-slate-950"
+    >
+      {/* Animated Background Shapes */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.6, 0.3, 0.6],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+      </div>
+
       {/* 3D Background */}
       <div className="absolute inset-0 z-0">
         <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-slate-900/20 to-purple-900/20" />}>
@@ -56,8 +98,16 @@ const Hero = () => {
         </Suspense>
       </div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30 z-10" />
+      {/* Enhanced Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40 z-10" />
+      
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 z-5 opacity-5">
+        <div className="w-full h-full" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
 
       {/* Content */}
       <motion.div
@@ -65,6 +115,7 @@ const Hero = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
+        style={{ y, opacity }}
       >
         {/* Name */}
         <motion.h1

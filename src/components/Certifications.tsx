@@ -27,14 +27,14 @@ const certifications: Certification[] = [
     icon: "☁️",
     color: "blue",
     gradient: "from-blue-500 to-cyan-500",
-    imageUrl: "/certificates/azure-fundamentals.jpg",
+    imageUrl: "/certificates/AZ900.jpg",
     verificationUrl: "https://verify.kodekloud.com/azure-fundamentals",
     issuedDate: "March 2024",
     credentialId: "AZ-900-2024-001"
   },
   {
     id: "cert-2",
-    title: "Azure 101",
+    title: "Azure 101.jpg",
     organization: "Microsoft Learn Student Ambassadors, Sri Lanka",
     description: "Introduced to core Azure concepts, virtual machines, and deployment workflows.",
     icon: "🔷",
@@ -64,7 +64,7 @@ const certifications: Certification[] = [
     icon: "⚙️",
     color: "emerald",
     gradient: "from-emerald-500 to-teal-500",
-    imageUrl: "/certificates/devops-fundamentals.jpg",
+    imageUrl: "/certificates/Fundamentals of DevOps.jpg",
     verificationUrl: "https://verify.kodekloud.com/devops-fundamentals",
     issuedDate: "December 2023",
     credentialId: "DEV-001-2023"
@@ -77,7 +77,7 @@ const certifications: Certification[] = [
     icon: "📡",
     color: "orange",
     gradient: "from-orange-500 to-red-500",
-    imageUrl: "/certificates/postman-api.jpg",
+    imageUrl: "/certificates/postman.jpg",
     verificationUrl: "https://badgr.com/public/postman-api-fundamentals",
     issuedDate: "November 2023",
     credentialId: "POSTMAN-API-2023-001"
@@ -90,7 +90,7 @@ const certifications: Certification[] = [
     icon: "⚛️",
     color: "cyan",
     gradient: "from-cyan-500 to-blue-500",
-    imageUrl: "/certificates/react-meta.jpg",
+    imageUrl: "/certificates/React Basics by Meta.jpg",
     verificationUrl: "https://coursera.org/verify/react-certificate",
     issuedDate: "October 2023",
     credentialId: "META-REACT-2023-001"
@@ -451,11 +451,11 @@ export default function Certifications() {
   };
 
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-20 bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <section className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.03),transparent_50%)]"></div>
       
-      <div className="relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Header */}
         <motion.div 
           className="mx-auto mb-16 max-w-3xl text-center"

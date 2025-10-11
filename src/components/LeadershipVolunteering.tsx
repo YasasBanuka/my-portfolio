@@ -38,183 +38,135 @@ type Photo = {
 const leadershipRoles: LeadershipRole[] = [
   {
     id: "lead-1",
-    title: "IEEE Student Volunteer",
-    organization: "IEEE Sri Lanka Section",
-    period: "2022 - Present",
-    summary: "Leading tech events, workshops, and mentoring students in emerging technologies.",
+    title: "Student Volunteer",
+    organization: "IEEE Student Branch of University of Vocational Technology",
+    period: "Jan 2025 - Present",
+    summary: "Actively contributing to IEEE through impactful initiatives, leadership roles, and event organizing that empower the tech community at UoVT.",
     logo: "/logos/ieee-logo.png",
     gradient: "from-blue-500 to-purple-600",
     journey: [
       {
-        year: "2022",
-        month: "March",
-        position: "Student Member",
-        description: "Joined IEEE Sri Lanka Section as a student member, attending workshops and tech talks."
-      },
-      {
-        year: "2022",
-        month: "September",
-        position: "Event Volunteer",
-        description: "Started volunteering at IEEE events, helping with organization and logistics."
-      },
-      {
-        year: "2023",
+        year: "2025",
         month: "January",
-        position: "Workshop Coordinator",
-        description: "Coordinated multiple tech workshops on AI, IoT, and web development."
+        position: "Student Member",
+        description: "Joined IEEE Student Branch of UoVT and actively engaged in volunteer initiatives."
       },
       {
-        year: "2024",
-        month: "June",
-        position: "Student Mentor",
-        description: "Mentoring junior students in emerging technologies and career guidance.",
-        highlight: true
+        year: "2025",
+        month: "July",
+        position: "Chair – TechSpark 1.0",
+        description: "Conceptualized, initiated, and led TechSpark 1.0 — a collaborative workshop with the Microsoft Student Ambassadors focused on Cloud Computing and APIs. Led an organizing committee to deliver a professional and well-received event with 100+ participants."
+      },
+      {
+        year: "2025",
+        month: "August",
+        position: "Lead Organizer – Xtreme Ignite 1.0 Awareness Session",
+        description: "Brought together a motivated team to execute the IEEE Xtreme pre-event for 50+ participants."
+      },
+      {
+        year: "2025",
+        month: "August",
+        position: "Publicity Lead – JamboreeIEEE (Inter-University Event)",
+        description: "Led a publicity and design team spanning 6 universities across Sri Lanka to promote JamboreeIEEE, a multi-institutional collaboration fostering tech awareness and networking."
+      },
+      {
+        year: "2025",
+        month: "August",
+        position: "Volunteer of the Month – IEEE SB UoVT",
+        description: "Recognized as Volunteer of the Month for outstanding leadership, initiative, and consistent contribution to IEEE activities."
+      },
+      {
+        year: "2025",
+        month: "October",
+        position: "Lead Organizer – Xtreme Ignite 1.0 Coding Competition",
+        description: "Designed and executed the first-ever coding competition at UoVT, drawing 100+ participants."
+      },
+      {
+        year: "2025",
+        month: "October",
+        position: "IEEE Xtreme Ambassador – UoVT",
+        description: "Selected as IEEE Xtreme Ambassador to represent and motivate students to take part in the global coding competition, mentoring peers and encouraging teamwork."
+      },
+      {
+        year: "2025",
+        month: "October",
+        position: "Chair – IEEE Day",
+        description: "Leading the IEEE Day 2025 celebration at UoVT, aimed at inspiring new members and highlighting the impact of technology-driven volunteering."
       }
     ],
     achievements: [
-      "Organized 15+ tech workshops and events",
-      "Mentored 50+ students in emerging technologies",
-      "Led community initiatives for innovation culture",
-      "Collaborated with industry professionals for knowledge sharing"
+      "Built and led high-performing teams across multiple IEEE projects and collaborations.",
+      "Founded and chaired TechSpark 1.0, one of UoVT’s most successful IEEE collaborations.",
+      "Organized the first-ever coding competition at UoVT, empowering students to collaborate and compete.",
+      "Collaborated with industry professionals for knowledge sharing",
+      "Recognized as Volunteer of the Month for leadership excellence and team contribution.",
+      "Represented UoVT as an IEEE Xtreme Ambassador, mentoring peers and fostering team spirit."
     ],
-    photos: ["/leadership/ieee-workshop.jpg", "/leadership/ieee-mentoring.jpg", "/leadership/ieee-event.jpg"]
+    photos: ["/leadership/XtreamIgnite Group Photo.jpg", "/leadership/BlueWaves Group Photo.jpg", "/leadership/TechSpark Group Photo.jpg"]
   },
   {
     id: "lead-2",
-    title: "Co-Founder & Chair",
-    organization: "TechSpark 1.0",
-    period: "2023 - Present",
-    summary: "Co-founded platform connecting aspiring developers with industry professionals.",
-    logo: "/logos/techspark-logo.png",
-    gradient: "from-emerald-500 to-blue-600",
-    journey: [
-      {
-        year: "2023",
-        month: "March",
-        position: "Co-Founder",
-        description: "Co-founded TechSpark 1.0 with vision to bridge industry-academia gap."
-      },
-      {
-        year: "2023",
-        month: "May",
-        position: "Event Director",
-        description: "Organized first hackathon with 100+ participants from multiple universities."
-      },
-      {
-        year: "2023",
-        month: "October",
-        position: "Community Builder",
-        description: "Built community of 500+ developers and industry professionals."
-      },
-      {
-        year: "2024",
-        month: "January",
-        position: "Chair & Strategic Lead",
-        description: "Leading strategic initiatives and partnerships with tech companies.",
-        highlight: true
-      }
-    ],
-    achievements: [
-      "Co-founded platform with 500+ active members",
-      "Organized 8+ hackathons and tech talks",
-      "Connected 200+ students with industry mentors",
-      "Established partnerships with 10+ tech companies"
-    ],
-    photos: ["/leadership/techspark-hackathon.jpg", "/leadership/techspark-networking.jpg", "/leadership/techspark-event.jpg"]
-  },
-  {
-    id: "lead-3",
-    title: "Robotics Club Member",
-    organization: "Mahinda Rajapaksha College",
-    period: "2018 - 2022",
-    summary: "Active member participating in competitions and mentoring junior students.",
-    logo: "/logos/robotics-club-logo.png",
-    gradient: "from-purple-500 to-pink-600",
-    journey: [
-      {
-        year: "2018",
-        month: "January",
-        position: "Club Member",
-        description: "Joined Robotics & Innovators Club as a beginner member."
-      },
-      {
-        year: "2019",
-        month: "March",
-        position: "Competition Participant",
-        description: "Participated in first robotics competition at school level."
-      },
-      {
-        year: "2020",
-        month: "September",
-        position: "Team Lead",
-        description: "Led robotics team for inter-school competitions."
-      },
-      {
-        year: "2021",
-        month: "January",
-        position: "Mentor",
-        description: "Started mentoring junior students in robotics and programming.",
-        highlight: true
-      }
-    ],
-    achievements: [
-      "Participated in 10+ robotics competitions",
-      "Mentored 30+ junior students",
-      "Led team to 3rd place in national competition",
-      "Developed innovative robotic solutions"
-    ],
-    photos: ["/leadership/robotics-competition.jpg", "/leadership/robotics-mentoring.jpg", "/leadership/robotics-project.jpg"]
-  },
-  {
-    id: "lead-4",
-    title: "Leo Club Member",
-    organization: "Leo Club of Homagama",
-    period: "2019 - 2022",
-    summary: "Community service volunteer focusing on youth development and social impact.",
+    title: "Co-Director of Service",
+    organization: "Leo Club of Colombo Grand Circle",
+    period: "Dec 2024 – Present",
+    summary: "Building leadership through service and teamwork to create real social impact.",
     logo: "/logos/leo-club-logo.png",
     gradient: "from-orange-500 to-red-600",
     journey: [
       {
-        year: "2019",
-        month: "February",
-        position: "Club Member",
-        description: "Joined Leo Club of Homagama as a community service volunteer."
-      },
-      {
-        year: "2020",
-        month: "June",
-        position: "Project Volunteer",
-        description: "Led community service projects focusing on environmental initiatives."
-      },
-      {
-        year: "2021",
-        month: "March",
-        position: "Youth Coordinator",
-        description: "Coordinated youth development programs and charity events."
+        year: "2024",
+        month: "December",
+        position: "Member",
+        description: "Joined the Leo Club to participate in service projects and community-building efforts."
       },
       {
         year: "2025",
-        month: "January",
-        position: "Service Director",
-        description: "Appointed as Service Director, leading all community service initiatives.",
-        highlight: true
+        month: "July",
+        position: "Co-Director of Service",
+        description: "Collaborated with fellow directors to plan and support service-based initiatives, strengthening coordination and teamwork among members."
       }
     ],
     achievements: [
-      "Organized 20+ community service projects",
-      "Led environmental conservation initiatives",
-      "Coordinated charity events raising $5000+",
-      "Mentored youth in leadership development"
+      "Developed leadership and communication skills through volunteering.",
+      "Supported multiple community initiatives with a strong focus on teamwork and empathy."
     ],
     photos: ["/leadership/leo-service.jpg", "/leadership/leo-charity.jpg", "/leadership/leo-youth.jpg"]
+  },
+  {
+    id: "lead-3",
+    title: "Member",
+    organization: "Robotic and Innovators Club – Mahinda Rajapaksha College",
+    period: "2017 - 2020",
+    summary: "Discovered my passion for leadership and mentoring through hands-on innovation and teamwork.",
+    logo: "/logos/robotics-club-logo.png",
+    gradient: "from-purple-500 to-pink-600",
+    journey: [
+      {
+        year: "2017",
+        month: "",
+        position: "Member",
+        description: "Joined Robotics & Innovators Club as a member."
+      },
+      {
+        year: "2018",
+        month: "",
+        position: "Trainer – IoT Workshop",
+        description: "Volunteered as a trainer at the IoT Workshop organized by the Ministry of Education. Worked as a trainer to teach students IoT fundamentals through interactive sessions."
+      }
+    ],
+    achievements: [
+      "Served as one of the youngest trainers in a national IoT workshop.",
+      "Laid the foundation for future leadership through collaboration and knowledge sharing."
+    ],
+    photos: ["/leadership/iot.jpg", "/leadership/iot 2.jpg", "/leadership/robotics-project.jpg"]
   }
 ];
 
 const photos: Photo[] = [
   {
     id: "photo-1",
-    src: "/leadership/ieee-talk.jpg",
-    alt: "IEEE Tech Talk Presentation",
+    src: "/leadership/xtreamignite.jpg",
+    alt: "IEEE XtreamIgnite 1.0 Coding Competition",
     rotation: 3,
     zIndex: 4,
     position: { x: 20, y: 10 },
@@ -222,7 +174,7 @@ const photos: Photo[] = [
   },
   {
     id: "photo-2",
-    src: "/leadership/techspark-chair.jpg",
+    src: "/leadership/techspark.jpg",
     alt: "TechSpark Event Organization",
     rotation: -2,
     zIndex: 3,
@@ -231,8 +183,8 @@ const photos: Photo[] = [
   },
   {
     id: "photo-3",
-    src: "/leadership/jamboree-lead.jpg",
-    alt: "Student Leadership at Jamboree",
+    src: "/leadership/openday.jpg",
+    alt: "Open Day - UoVT",
     rotation: 1,
     zIndex: 5,
     position: { x: 10, y: 60 },
@@ -240,8 +192,8 @@ const photos: Photo[] = [
   },
   {
     id: "photo-4",
-    src: "/leadership/leo-service.jpg",
-    alt: "Leo Club Community Service",
+    src: "/leadership/iot.jpg",
+    alt: "IoT Workshop Training",
     rotation: -3,
     zIndex: 2,
     position: { x: 70, y: 5 },
@@ -249,20 +201,20 @@ const photos: Photo[] = [
   },
   {
     id: "photo-5",
-    src: "/leadership/iot-trainer.jpg",
-    alt: "IoT Workshop Training",
+    src: "/leadership/Leo.jpg",
+    alt: "Leo Club Community Service",
     rotation: 2,
     zIndex: 1,
-    position: { x: 30, y: 70 },
+    position: { x: 37, y: 70 },
     size: "lg"
   },
   {
     id: "photo-6",
-    src: "/leadership/mentoring.jpg",
-    alt: "Student Mentoring Session",
+    src: "/leadership/ms.jpg",
+    alt: "Microsoft Student Champs",
     rotation: -1,
     zIndex: 6,
-    position: { x: 80, y: 50 },
+    position: { x: 72, y: 50 },
     size: "md"
   }
 ];
@@ -536,21 +488,27 @@ function LeadershipModal({
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 }}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
-                          <div className="text-center">
-                            <div className="text-3xl mb-2">📸</div>
-                            <div className="text-sm text-slate-500 dark:text-slate-400 px-2">
-                              Leadership Moment
-                            </div>
-                          </div>
-                        </div>
                         <Image
                           src={photo}
                           alt={`${role.organization} activity`}
                           fill
-                          className="object-cover opacity-0 hover:opacity-100 transition-opacity duration-300"
+                          className="object-cover"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).style.display = 'none';
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const parent = target.parentElement;
+                            if (parent) {
+                              parent.innerHTML = `
+                                <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
+                                  <div class="text-center">
+                                    <div class="text-3xl mb-2">📸</div>
+                                    <div class="text-sm text-slate-500 dark:text-slate-400 px-2">
+                                      Leadership Moment
+                                    </div>
+                                  </div>
+                                </div>
+                              `;
+                            }
                           }}
                         />
                       </motion.div>
@@ -630,41 +588,41 @@ function PhotoCollage() {
             transition={{ duration: 0.3 }}
           >
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-slate-200 dark:bg-slate-700">
-              {/* Placeholder content */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl mb-2">📸</div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400 px-2">
-                    {photo.alt}
-                  </div>
-                </div>
-              </div>
-              
-              {/* Actual image (when available) */}
+              {/* Actual image - always visible */}
               <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                className="object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="object-cover"
                 onError={(e) => {
-                  // Keep placeholder visible on error
-                  (e.target as HTMLImageElement).style.display = 'none';
+                  // Show placeholder on error
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const parent = target.parentElement;
+                  if (parent) {
+                    parent.innerHTML = `
+                      <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
+                        <div class="text-center">
+                          <div class="text-2xl mb-2">📸</div>
+                          <div class="text-xs text-slate-500 dark:text-slate-400 px-2">
+                            ${photo.alt}
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  }
                 }}
               />
               
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                <motion.div
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ scale: 0 }}
-                  whileHover={{ scale: 1 }}
-                >
-                  <div className="bg-white/90 dark:bg-slate-800/90 rounded-full p-2 shadow-lg">
-                    <svg className="w-4 h-4 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                    </svg>
+              {/* Alt text overlay on hover */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-end justify-center p-3">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-white/90 dark:bg-slate-800/90 rounded-lg px-3 py-2 shadow-lg backdrop-blur-sm">
+                    <p className="text-xs font-medium text-slate-700 dark:text-slate-300 text-center max-w-full">
+                      {photo.alt}
+                    </p>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -689,11 +647,62 @@ export default function LeadershipVolunteering() {
   };
 
   return (
-    <section className="relative mx-auto max-w-7xl px-4 py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_70%,rgba(99,102,241,0.03),transparent_50%)]"></div>
-      
-      <div className="relative z-10">
+    <section className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden">
+      {/* Interactive Background Elements */}
+      <div className="absolute inset-0 z-0">
+        {/* Animated volunteer elements */}
+        <motion.div
+          className="absolute top-20 left-20 w-40 h-40 opacity-5 dark:opacity-10"
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, 90, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-green-500 to-blue-500 rounded-full blur-3xl" />
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-20 right-20 w-32 h-32 opacity-5 dark:opacity-10"
+          animate={{
+            scale: [1.3, 1, 1.3],
+            rotate: [0, -90, 0],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3,
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-full blur-3xl" />
+        </motion.div>
+        
+        {/* Floating leadership elements */}
+        <motion.div
+          className="absolute top-1/3 right-1/4 w-24 h-24 opacity-5 dark:opacity-10"
+          animate={{
+            y: [0, -25, 0],
+            x: [0, 15, 0],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-orange-500 to-red-500 rounded-lg blur-2xl" />
+        </motion.div>
+        
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_70%,rgba(99,102,241,0.03),transparent_50%)]"></div>
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Header */}
         <motion.div 
           className="mx-auto mb-16 max-w-3xl text-center"
@@ -780,7 +789,7 @@ export default function LeadershipVolunteering() {
           </div>
         </motion.div>
       </div>
-
+      
       {/* Modal */}
       <LeadershipModal
         role={selectedRole}

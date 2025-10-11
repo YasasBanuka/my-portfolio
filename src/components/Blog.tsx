@@ -147,13 +147,14 @@ export default function Blog() {
     <section 
       id="blog"
       ref={ref}
-      className="relative mx-auto max-w-7xl px-4 py-20 bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
+      className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.03),transparent_50%)]"></div>
       
-      <motion.div 
-        className="relative z-10"
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <motion.div 
+          className="relative z-10"
         initial="hidden"
         animate={controls}
         variants={sectionVariants}
@@ -214,6 +215,7 @@ export default function Blog() {
           </div>
         </motion.div>
       </motion.div>
+      </div>
     </section>
   );
 }

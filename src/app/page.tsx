@@ -10,12 +10,13 @@ import Certifications from '@/components/Certifications';
 import Testimonials from '@/components/Testimonials';
 import Blog from '@/components/Blog';
 import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
     <>
       <Navigation />
-      <main>
+      <main className="relative">
         <Hero />
         <AboutMe />
         <TechnicalSkills />
@@ -28,6 +29,7 @@ export default function Home() {
         <Blog />
         <Contact />
       </main>
+      <Footer />
     </>
   );
 }

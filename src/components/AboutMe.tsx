@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-
+import Image from 'next/image';
 const AboutMe = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -80,8 +80,71 @@ const AboutMe = () => {
   );
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-900">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-900/20 dark:to-purple-900/20 overflow-hidden">
+      {/* Interactive Background Elements */}
+      <div className="absolute inset-0 z-0">
+        {/* Animated volunteer photo overlays */}
+        <motion.div 
+          className="absolute top-10 right-10 w-64 h-64 opacity-5 dark:opacity-10"
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [0, 5, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl" />
+        </motion.div>
+        
+        <motion.div 
+          className="absolute bottom-10 left-10 w-48 h-48 opacity-5 dark:opacity-10"
+          animate={{
+            scale: [1.1, 1, 1.1],
+            rotate: [0, -5, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-600 rounded-full blur-3xl" />
+        </motion.div>
+        
+        {/* Floating volunteer elements */}
+        <motion.div
+          className="absolute top-1/3 left-1/4 w-32 h-32 opacity-5 dark:opacity-10"
+          animate={{
+            y: [0, -20, 0],
+            x: [0, 10, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-green-500 to-blue-500 rounded-lg blur-2xl" />
+        </motion.div>
+        
+        {/* Circuit pattern overlay */}
+        <div className="absolute inset-0 opacity-5 dark:opacity-10">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M0,10 L20,10 M10,0 L10,20" stroke="currentColor" strokeWidth="0.5" fill="none" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#circuit)" />
+          </svg>
+        </div>
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
           className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
           variants={containerVariants}
@@ -94,13 +157,16 @@ const AboutMe = () => {
             variants={itemVariants}
           >
             <div className="relative group">
-              {/* Placeholder for professional photo */}
-              <div className="w-full max-w-md mx-auto lg:mx-0 aspect-square rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-2xl overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center text-white text-6xl font-bold">
-                  Y
-                </div>
-                {/* Animated border */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm -z-10" />
+              {/* Professional Photo */}
+              <div className="w-full max-w-md mx-auto lg:mx-0 aspect-square rounded-2xl shadow-2xl overflow-hidden">
+                <Image 
+                  src="/images/about/professional-photo.jpg" 
+                  alt="Yasas Banuka - Professional Photo" 
+                  width={400} 
+                  height={400}
+                  className="w-full h-full object-cover object-top"
+                  priority
+                />
               </div>
               
               {/* Floating icons around the photo */}

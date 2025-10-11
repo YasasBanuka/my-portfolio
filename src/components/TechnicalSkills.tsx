@@ -3,8 +3,10 @@
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
+// Type definitions for skill proficiency levels
 type ProficiencyLevel = "Beginner" | "Intermediate" | "Advanced" | "Expert";
 
+// Skill interface defining the structure of each technical skill
 type Skill = {
   id: string;
   name: string;
@@ -12,8 +14,11 @@ type Skill = {
   proficiency: ProficiencyLevel;
   color: string;
   gradient: string;
+  description?: string; // Optional description field for tooltips
+  yearsOfExperience?: number; // Optional years of experience
 };
 
+// Skill category interface for organizing skills into groups
 type SkillCategory = {
   id: string;
   name: string;
@@ -22,6 +27,7 @@ type SkillCategory = {
   skills: Skill[];
 };
 
+// Comprehensive skill categories with detailed descriptions
 const skillCategories: SkillCategory[] = [
   {
     id: "frontend",
@@ -35,7 +41,9 @@ const skillCategories: SkillCategory[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
         proficiency: "Advanced",
         color: "blue",
-        gradient: "from-blue-500 to-blue-600"
+        gradient: "from-blue-500 to-blue-600",
+        description: "Strong understanding of component-based architecture, hooks, state management, and modern React patterns",
+        yearsOfExperience: 3
       },
       {
         id: "javascript",
@@ -43,7 +51,9 @@ const skillCategories: SkillCategory[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
         proficiency: "Advanced",
         color: "orange",
-        gradient: "from-orange-500 to-red-500"
+        gradient: "from-orange-500 to-red-500",
+        description: "Modern JavaScript with ES6+ features, async/await, modules, and functional programming concepts",
+        yearsOfExperience: 4
       },
       {
         id: "html5",
@@ -67,7 +77,9 @@ const skillCategories: SkillCategory[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
         proficiency: "Advanced",
         color: "cyan",
-        gradient: "from-cyan-500 to-blue-500"
+        gradient: "from-cyan-500 to-blue-500",
+        description: "Utility-first CSS framework for rapid UI development with responsive design and custom components",
+        yearsOfExperience: 2
       },
       {
         id: "bootstrap",
@@ -107,7 +119,9 @@ const skillCategories: SkillCategory[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
         proficiency: "Advanced",
         color: "red",
-        gradient: "from-red-500 to-orange-500"
+        gradient: "from-red-500 to-orange-500",
+        description: "Enterprise Java development with Spring Boot, dependency injection, and microservices architecture",
+        yearsOfExperience: 3
       },
       {
         id: "spring-security",
@@ -477,9 +491,12 @@ function useRevealOnce<T extends HTMLElement>() {
   return { ref, controls } as const;
 }
 
+// Enhanced SkillCard component with tooltips, glow effects, and detailed hover animations
 function SkillCard({ skill, index }: { skill: Skill; index: number }) {
   const { ref, controls } = useRevealOnce<HTMLDivElement>();
+  const [showTooltip, setShowTooltip] = useState(false);
 
+  // Animation variants for the skill card
   const cardVariants = {
     hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: { 
@@ -489,6 +506,7 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
     }
   };
 
+  // Get proficiency level color coding
   const getProficiencyColor = (proficiency: ProficiencyLevel) => {
     switch (proficiency) {
       case "Expert": return "text-green-600 dark:text-green-400";
@@ -499,29 +517,61 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
     }
   };
 
+  // Get proficiency level background color for glow effect
+  const getProficiencyGlowColor = (proficiency: ProficiencyLevel) => {
+    switch (proficiency) {
+      case "Expert": return "shadow-green-400/50";
+      case "Advanced": return "shadow-blue-400/50";
+      case "Intermediate": return "shadow-yellow-400/50";
+      case "Beginner": return "shadow-gray-400/50";
+      default: return "shadow-gray-400/50";
+    }
+  };
+
   return (
     <motion.div
       ref={ref}
       initial="hidden"
       animate={controls}
       variants={cardVariants}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
       className="group relative"
     >
+      {/* Main skill card with enhanced hover effects */}
       <motion.div
-        className="relative p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
+        className={`relative p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-blue-400/20 hover:border-blue-300 dark:hover:border-blue-600`}
         whileHover={{ 
-          scale: 1.02,
-          y: -2
+          scale: 1.05,
+          y: -4,
+          rotateY: 2,
+          transition: { duration: 0.2 }
         }}
         whileTap={{ scale: 0.98 }}
+        onHoverStart={() => setShowTooltip(true)}
+        onHoverEnd={() => setShowTooltip(false)}
+        style={{
+          // Add subtle gradient background on hover
+          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%)"
+        }}
       >
+        {/* Glow effect overlay */}
+        <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${skill.gradient} blur-sm -z-10`} />
+        
         {/* Skill Logo and Name */}
-        <div className="flex flex-col items-center text-center space-y-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white dark:bg-slate-700 shadow-sm overflow-hidden">
+        <div className="flex flex-col items-center text-center space-y-3 relative z-10">
+          {/* Logo container with enhanced styling */}
+          <motion.div 
+            className="flex h-12 w-12 items-center justify-center rounded-lg bg-white dark:bg-slate-700 shadow-sm overflow-hidden border border-slate-200 dark:border-slate-600"
+            whileHover={{ 
+              scale: 1.1,
+              rotate: 5,
+              transition: { duration: 0.2 }
+            }}
+          >
             <img 
               src={skill.logo} 
               alt={`${skill.name} logo`}
-              className="w-8 h-8 object-contain"
+              className="w-8 h-8 object-contain transition-transform duration-200 group-hover:scale-110"
               onError={(e) => {
                 // Fallback to a generic icon if logo fails to load
                 const target = e.target as HTMLImageElement;
@@ -532,21 +582,57 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
                 }
               }}
             />
-          </div>
+          </motion.div>
+          
+          {/* Skill name and proficiency */}
           <div className="space-y-1">
-            <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-sm">
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
               {skill.name}
             </h3>
             <div className={`text-xs font-medium ${getProficiencyColor(skill.proficiency)}`}>
               {skill.proficiency}
             </div>
+            {/* Years of experience indicator */}
+            {skill.yearsOfExperience && (
+              <div className="text-xs text-slate-500 dark:text-slate-400">
+                {skill.yearsOfExperience}+ years
+              </div>
+            )}
           </div>
         </div>
+
+        {/* Enhanced Tooltip */}
+        <AnimatePresence>
+          {showTooltip && (
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-50"
+            >
+              {/* Tooltip arrow */}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800 dark:border-t-slate-700" />
+              
+              {/* Tooltip content */}
+              <div className="bg-slate-800 dark:bg-slate-700 text-white text-xs rounded-lg px-3 py-2 shadow-lg max-w-xs">
+                <div className="font-semibold mb-1">{skill.name}</div>
+                <div className="text-slate-300">{skill.description}</div>
+                {skill.yearsOfExperience && (
+                  <div className="text-slate-400 mt-1">
+                    {skill.yearsOfExperience}+ years experience
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </motion.div>
   );
 }
 
+// Enhanced TabButton component for category navigation with responsive design
 function TabButton({ 
   category, 
   isActive, 
@@ -556,7 +642,7 @@ function TabButton({
   isActive: boolean; 
   onClick: () => void; 
 }) {
-  // Responsive names - full on desktop, short on mobile/tablet
+  // Responsive names - full on desktop, short on mobile/tablet for better UX
   const getDisplayName = (categoryId: string) => {
     switch (categoryId) {
       case "frontend": return "Frontend";
@@ -600,6 +686,7 @@ function TabButton({
   );
 }
 
+// CategoryNavigation component for pagination controls with visual indicators
 function CategoryNavigation({ 
   currentIndex, 
   totalItems, 
@@ -611,6 +698,7 @@ function CategoryNavigation({
   onPrevious: () => void;
   onNext: () => void;
 }) {
+  // Determine if navigation buttons should be enabled
   const canGoPrevious = currentIndex > 0;
   const canGoNext = currentIndex < totalItems - 1;
 
@@ -666,10 +754,15 @@ function CategoryNavigation({
   );
 }
 
+// Main TechnicalSkills component - the heart of the skills showcase
 export default function TechnicalSkills() {
+  // State management for active category navigation
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
+  
+  // Custom hook for reveal-once animation behavior
   const { ref, controls } = useRevealOnce<HTMLElement>();
 
+  // Animation variants for the main section
   const sectionVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -677,6 +770,7 @@ export default function TechnicalSkills() {
     }
   };
 
+  // Animation variants for child elements (header, navigation, content)
   const childVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
@@ -685,6 +779,7 @@ export default function TechnicalSkills() {
     }
   };
 
+  // Navigation handlers with bounds checking
   const handlePrevious = () => {
     setActiveCategoryIndex(prev => Math.max(0, prev - 1));
   };
@@ -693,114 +788,198 @@ export default function TechnicalSkills() {
     setActiveCategoryIndex(prev => Math.min(skillCategories.length - 1, prev + 1));
   };
 
+  // Get the currently active category for display
   const activeCategory = skillCategories[activeCategoryIndex];
 
   return (
     <section 
       id="skills"
       ref={ref}
-      className="relative mx-auto max-w-7xl px-4 py-20 bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
+      className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/20 dark:from-slate-900 dark:via-blue-900/10 dark:to-purple-900/10 overflow-hidden"
     >
+      {/* Interactive Background Elements - Creates depth and visual interest */}
+      <div className="absolute inset-0 z-0">
+        {/* Animated tech pattern overlay */}
+        <motion.div 
+          className="absolute inset-0 opacity-5 dark:opacity-10"
+          animate={{
+            opacity: [0.05, 0.1, 0.05],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <pattern id="tech-grid" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse">
+                <rect width="25" height="25" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                <circle cx="12.5" cy="12.5" r="1" fill="currentColor" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#tech-grid)" />
+          </svg>
+        </motion.div>
+        
+        {/* Floating tech elements */}
+        <motion.div 
+          className="absolute top-20 right-20 w-32 h-32 opacity-5 dark:opacity-10"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg blur-2xl" />
+        </motion.div>
+        
+        <motion.div 
+          className="absolute bottom-20 left-20 w-24 h-24 opacity-5 dark:opacity-10"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            rotate: [360, 180, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear",
+            delay: 3,
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg blur-2xl" />
+        </motion.div>
+        
+        {/* Additional floating elements */}
+        <motion.div
+          className="absolute top-1/2 left-1/3 w-20 h-20 opacity-5 dark:opacity-10"
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 20, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-green-500 to-blue-500 rounded-full blur-xl" />
+        </motion.div>
+      </div>
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_50%,rgba(99,102,241,0.03),transparent_50%)]"></div>
       
-      <motion.div 
-        className="relative z-10"
-        initial="hidden"
-        animate={controls}
-        variants={sectionVariants}
-      >
-        {/* Header */}
+      {/* Main Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         <motion.div 
-          className="mx-auto mb-12 max-w-3xl text-center"
-          variants={childVariants}
+          className="relative z-10"
+          initial="hidden"
+          animate={controls}
+          variants={sectionVariants}
+          transition={{ duration: 0.6, staggerChildren: 0.1 }}
         >
-          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-6">
-            Technical Arsenal
-          </h2>
-          <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-            The tools and technologies I use to design, build, and scale digital solutions.
-          </p>
-        </motion.div>
+          {/* Section Header with Title and Description */}
+          <motion.div 
+            className="mx-auto mb-12 max-w-3xl text-center"
+            variants={childVariants}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-6">
+              Technical Arsenal
+            </h2>
+            <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
+              The tools and technologies I use to design, build, and scale digital solutions.
+            </p>
+          </motion.div>
 
-        {/* Tab Navigation */}
-        <motion.div 
-          className="mb-8"
-          variants={childVariants}
-        >
-          <div className="flex justify-center gap-2">
-            {skillCategories.map((category, index) => (
-              <TabButton
-                key={category.id}
-                category={category}
-                isActive={activeCategoryIndex === index}
-                onClick={() => setActiveCategoryIndex(index)}
-              />
-            ))}
-          </div>
-        </motion.div>
+          {/* Category Tab Navigation - Allows users to switch between skill categories */}
+          <motion.div 
+            className="mb-8"
+            variants={childVariants}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <div className="flex justify-center gap-2">
+              {skillCategories.map((category, index) => (
+                <TabButton
+                  key={category.id}
+                  category={category}
+                  isActive={activeCategoryIndex === index}
+                  onClick={() => setActiveCategoryIndex(index)}
+                />
+              ))}
+            </div>
+          </motion.div>
 
-        {/* Skills Display Area */}
-        <motion.div 
-          className="min-h-[400px]"
-          variants={childVariants}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategoryIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              {activeCategory && (
-                <div className="space-y-6">
-                  {/* Category Header */}
-                  <div className="flex items-center justify-center gap-3">
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${activeCategory.gradient} shadow-lg`}>
-                      <span className="text-2xl">{activeCategory.icon}</span>
+          {/* Skills Display Area - Shows skills for the currently selected category */}
+          <motion.div 
+            className="min-h-[400px]"
+            variants={childVariants}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            {/* AnimatePresence ensures smooth transitions between categories */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCategoryIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                {activeCategory && (
+                  <div className="space-y-6">
+                    {/* Category Header with Icon and Title */}
+                    <div className="flex items-center justify-center gap-3">
+                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${activeCategory.gradient} shadow-lg`}>
+                        <span className="text-2xl">{activeCategory.icon}</span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
+                        {activeCategory.name}
+                      </h3>
                     </div>
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-                      {activeCategory.name}
-                    </h3>
-                  </div>
 
-                  {/* Skills Grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {activeCategory.skills.map((skill, index) => (
-                      <SkillCard 
-                        key={skill.id} 
-                        skill={skill} 
-                        index={index} 
-                      />
-                    ))}
+                    {/* Responsive Skills Grid - 2 cols mobile, 3 tablet, 4 desktop */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                      {activeCategory.skills.map((skill, index) => (
+                        <SkillCard 
+                          key={skill.id} 
+                          skill={skill} 
+                          index={index} 
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
+                )}
+              </motion.div>
+            </AnimatePresence>
         </motion.div>
 
-        {/* Category Navigation */}
-        <CategoryNavigation
-          currentIndex={activeCategoryIndex}
-          totalItems={skillCategories.length}
-          onPrevious={handlePrevious}
-          onNext={handleNext}
-        />
+          {/* Category Navigation Controls - Previous/Next buttons with pagination dots */}
+          <CategoryNavigation
+            currentIndex={activeCategoryIndex}
+            totalItems={skillCategories.length}
+            onPrevious={handlePrevious}
+            onNext={handleNext}
+          />
 
-        {/* Bottom decorative element */}
-        <motion.div 
-          className="mt-16 flex justify-center"
-          variants={childVariants}
-        >
-          <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-            <span className="h-px w-8 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-600"></span>
-            <span>Always Learning & Growing</span>
-            <span className="h-px w-8 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-600"></span>
-          </div>
-        </motion.div>
+          {/* Footer Decorative Element - Adds visual closure to the section */}
+          <motion.div 
+            className="mt-16 flex justify-center"
+            variants={childVariants}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+              <span className="h-px w-8 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-600"></span>
+              <span>Always Learning & Growing</span>
+              <span className="h-px w-8 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-600"></span>
+            </div>
+          </motion.div>
       </motion.div>
+      </div>
     </section>
   );
 }

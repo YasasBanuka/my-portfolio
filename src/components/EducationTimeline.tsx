@@ -120,13 +120,14 @@ export default function EducationTimeline() {
   return (
     <section 
       ref={ref}
-      className="relative mx-auto max-w-4xl px-4 py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
+      className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.03),transparent_50%)]"></div>
       
-      <motion.div 
-        className="relative z-10"
+      <div className="relative z-10 max-w-4xl mx-auto w-full">
+        <motion.div 
+          className="relative z-10"
         initial="hidden"
         animate={controls}
         variants={sectionVariants}
@@ -181,6 +182,7 @@ export default function EducationTimeline() {
           </div>
         </motion.div>
       </motion.div>
+      </div>
     </section>
   );
 }

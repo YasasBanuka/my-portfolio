@@ -5,7 +5,6 @@ This directory contains logos for organizations and clubs in the Leadership & Vo
 ## Required Logos:
 
 1. `ieee-logo.png` - IEEE Sri Lanka Section logo
-2. `techspark-logo.png` - TechSpark 1.0 logo  
 3. `robotics-club-logo.png` - Mahinda Rajapaksha College Robotics Club logo
 4. `leo-club-logo.png` - Leo Club of Homagama logo
 
