@@ -77,7 +77,7 @@ const Hero = () => {
             textShadow: '0 0 30px rgba(147, 51, 234, 0.5), 0 0 60px rgba(59, 130, 246, 0.3)',
           }}
         >
-          Yasas
+          Yasas Banuka
         </motion.h1>
 
         {/* Tagline */}
