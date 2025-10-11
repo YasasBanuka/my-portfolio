@@ -598,8 +598,6 @@ function PhotoCollage() {
       
       {/* Floating photos */}
       {photos.map((photo, index) => {
-        const { ref, controls } = useRevealOnce<HTMLDivElement>();
-        
         const variants = {
           hidden: { opacity: 0, scale: 0.8, rotate: photo.rotation - 10 },
           visible: { 
@@ -617,9 +615,8 @@ function PhotoCollage() {
         return (
           <motion.div
             key={photo.id}
-            ref={ref}
             initial="hidden"
-            animate={controls}
+            animate="visible"
             variants={variants}
             style={{
               position: "absolute",

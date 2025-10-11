@@ -1,3 +1,4 @@
+import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import AboutMe from '@/components/AboutMe';
 import TechnicalSkills from '@/components/TechnicalSkills';
@@ -6,20 +7,27 @@ import Projects from '@/components/Projects';
 import EducationTimeline from '@/components/EducationTimeline';
 import ProfessionalExperienceTimeline from '@/components/ProfessionalExperienceTimeline';
 import Certifications from '@/components/Certifications';
+import Testimonials from '@/components/Testimonials';
+import Blog from '@/components/Blog';
 import Contact from '@/components/Contact';
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <AboutMe />
-      <TechnicalSkills />
-      <LeadershipVolunteering />
-      <Projects />
-      <ProfessionalExperienceTimeline />
-      <EducationTimeline />
-      <Certifications />
-      <Contact />
-    </main>
+    <>
+      <Navigation />
+      <main>
+        <Hero />
+        <AboutMe />
+        <TechnicalSkills />
+        <LeadershipVolunteering />
+        <Projects />
+        <ProfessionalExperienceTimeline />
+        <EducationTimeline />
+        <Certifications />
+        <Testimonials />
+        <Blog />
+        <Contact />
+      </main>
+    </>
   );
 }

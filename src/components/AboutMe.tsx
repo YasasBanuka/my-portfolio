@@ -16,7 +16,7 @@ const AboutMe = () => {
       { threshold: 0.1 }
     );
 
-    const element = document.getElementById('about-me');
+    const element = document.getElementById('about');
     if (element) {
       observer.observe(element);
     }
@@ -35,7 +35,6 @@ const AboutMe = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: 'easeOut',
         staggerChildren: 0.2,
       },
     },
@@ -48,7 +47,6 @@ const AboutMe = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
       },
     },
   };
@@ -57,11 +55,7 @@ const AboutMe = () => {
     hidden: { opacity: 0, scale: 0 },
     visible: {
       opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-      },
+      scale: 1
     },
     animate: {
       rotate: [0, 10, -10, 0],
@@ -86,7 +80,7 @@ const AboutMe = () => {
   );
 
   return (
-    <section id="about-me" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-900">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-900">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
@@ -158,7 +152,7 @@ const AboutMe = () => {
               className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
-              I'm a passionate dual-degree undergraduate in Software and Network Engineering, 
+              I&apos;m a passionate dual-degree undergraduate in Software and Network Engineering, 
               driven by an insatiable curiosity for technology and innovation. My journey spans 
               across full-stack development, cloud computing, and artificial intelligence, 
               where I constantly explore the intersection of these transformative fields.
@@ -170,7 +164,7 @@ const AboutMe = () => {
               variants={itemVariants}
             >
               What excites me most is the endless possibilities at the crossroads of software 
-              engineering and network systems. Whether I'm architecting scalable cloud solutions, 
+              engineering and network systems. Whether I&apos;m architecting scalable cloud solutions, 
               developing intelligent applications, or optimizing network infrastructures, I bring 
               a holistic approach that bridges theory and practical implementation.
             </motion.p>
@@ -180,7 +174,7 @@ const AboutMe = () => {
               className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
-              Beyond technical expertise, I'm deeply committed to community leadership and 
+              Beyond technical expertise, I&apos;m deeply committed to community leadership and 
               social impact. As an active IEEE volunteer, I organize tech events and mentor 
               fellow students. My involvement in anti-ragging activism reflects my belief in 
               creating inclusive environments. I also co-founded TechSpark 1.0, a platform 
@@ -217,7 +211,7 @@ const AboutMe = () => {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                  Let's Connect
+                  Let&apos;s Connect
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
               </motion.button>

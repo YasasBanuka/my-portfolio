@@ -7,10 +7,9 @@ type ProfessionalEntry = {
   id: string;
   role: string;
   organization: string;
-  location: string;
   duration: string;
   description: string[];
-  icon: string;
+  type: "full-time" | "freelance" | "contract" | "internship";
 };
 
 const professionalEntries: ProfessionalEntry[] = [
@@ -18,27 +17,25 @@ const professionalEntries: ProfessionalEntry[] = [
     id: "prof-1",
     role: "Web Developer",
     organization: "Western Digital Computer Systems & Electronics (PVT) LTD",
-    location: "Hybrid",
     duration: "Jul 2023 – Apr 2024",
     description: [
       "Developed and maintained company websites using WordPress, HTML, CSS, PHP, and JavaScript.",
       "Improved site usability and engagement through UI optimization and SEO campaigns.",
       "Managed social media and boosted digital presence."
     ],
-    icon: "💼"
+    type: "full-time"
   },
   {
     id: "prof-2",
     role: "Freelance Web Developer",
     organization: "Freelancer.com",
-    location: "Remote",
     duration: "Sep 2021 – Jun 2023",
     description: [
       "Built responsive, client-centric websites for international clients in e-commerce, travel, and services industries.",
       "Handled front-end and CMS integrations with strong client feedback.",
       "Gained experience in working independently, managing projects end-to-end."
     ],
-    icon: "🚀"
+    type: "freelance"
   }
 ];
 
@@ -54,161 +51,158 @@ function useRevealOnce<T extends HTMLElement>() {
   return { ref, controls } as const;
 }
 
-function ProfessionalDot({ icon }: { icon: string }) {
-  return (
-    <div className="relative z-10 flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-blue-600 shadow-xl ring-4 ring-white dark:ring-slate-900 ring-offset-2 ring-offset-slate-50 dark:ring-offset-slate-950 hover:scale-110 transition-transform duration-300 cursor-pointer">
-      <span className="text-lg lg:text-xl" aria-hidden>
-        {icon}
-      </span>
-    </div>
-  );
-}
+function ProfessionalItem({ entry, index }: { entry: ProfessionalEntry; index: number }) {
+  const { ref, controls } = useRevealOnce<HTMLLIElement>();
 
-function ProfessionalCard({
-  entry,
-  align,
-}: {
-  entry: ProfessionalEntry;
-  align: "left" | "right";
-}) {
-  const { ref, controls } = useRevealOnce<HTMLDivElement>();
-
-  const isLeft = align === "left";
-  const variants = {
-    hidden: { opacity: 0, y: 32, x: isLeft ? -32 : 32 },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
-      y: 0, 
-      x: 0, 
+      y: 0,
       transition: { 
-        duration: 0.7, 
-        ease: [0.22, 1, 0.36, 1],
-        delay: 0.1 
+        duration: 0.5, 
+        delay: index * 0.1 
       } 
-    },
-  } as const;
+    }
+  };
+
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case "full-time": return "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300";
+      case "freelance": return "bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300";
+      case "contract": return "bg-purple-100 dark:bg-purple-900/20 text-purple-800 dark:text-purple-300";
+      case "internship": return "bg-orange-100 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300";
+      default: return "bg-gray-100 dark:bg-gray-900/20 text-gray-800 dark:text-gray-300";
+    }
+  };
+
+  const getTypeText = (type: string) => {
+    switch (type) {
+      case "full-time": return "Full-time";
+      case "freelance": return "Freelance";
+      case "contract": return "Contract";
+      case "internship": return "Internship";
+      default: return "Unknown";
+    }
+  };
 
   return (
-    <motion.div
+    <motion.li
       ref={ref}
       initial="hidden"
       animate={controls}
-      variants={variants}
-      className="relative w-full rounded-2xl border-l-4 border-emerald-500 bg-white/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-slate-900/90 dark:border-emerald-400 hover:scale-[1.02] hover:border-emerald-600 dark:hover:border-emerald-300"
+      variants={itemVariants}
+      className="border-b border-slate-200 dark:border-slate-700 pb-6 last:border-b-0 last:pb-0"
     >
-      <div className="p-6 lg:p-8">
-        {/* Experience badge */}
-        <div className="mb-4 flex items-center gap-2 text-xs font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">
-          <span>Experience</span>
-          <span>•</span>
-          <span>{entry.duration}</span>
-        </div>
-
-        {/* Role title - Enhanced font sizes for desktop */}
-        <h3 className="text-xl lg:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-3 leading-tight">
-          {entry.role}
-        </h3>
-
-        {/* Organization and location */}
-        <div className="mb-4">
-          <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-300 font-medium mb-1">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">
+            {entry.role}
+          </h3>
+          <p className="text-base text-slate-600 dark:text-slate-300 mb-3">
             {entry.organization}
           </p>
-          <p className="text-sm lg:text-base text-slate-500 dark:text-slate-400 font-medium">
-            {entry.location}
-          </p>
+          <ul className="space-y-1">
+            {entry.description.map((bullet, bulletIndex) => (
+              <li key={bulletIndex} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
+                <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-slate-400 mt-2"></span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-
-        {/* Description bullets */}
-        <ul className="space-y-2">
-          {entry.description.map((bullet, index) => (
-            <li key={index} className="flex items-start gap-2 text-sm lg:text-base leading-6 lg:leading-7 text-slate-600 dark:text-slate-300">
-              <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 mt-2"></span>
-              <span>{bullet}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-col md:items-end gap-2">
+          <span className="text-sm font-medium text-slate-600 dark:text-slate-300">
+            {entry.duration}
+          </span>
+          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getTypeColor(entry.type)}`}>
+            {getTypeText(entry.type)}
+          </span>
+        </div>
       </div>
-
-      {/* Enhanced decorative gradient line */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-blue-500 to-emerald-500 rounded-b-2xl opacity-70"></div>
-    </motion.div>
+    </motion.li>
   );
 }
 
 export default function ProfessionalExperienceTimeline() {
+  const { ref, controls } = useRevealOnce<HTMLElement>();
+
+  const sectionVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
   return (
-    <section className="relative mx-auto max-w-6xl px-4 py-20 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <section 
+      id="experience"
+      ref={ref}
+      className="relative mx-auto max-w-4xl px-4 py-20 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-blue-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(16,185,129,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_20%,rgba(16,185,129,0.03),transparent_50%)]"></div>
       
-      <div className="relative z-10">
+      <motion.div 
+        className="relative z-10"
+        initial="hidden"
+        animate={controls}
+        variants={sectionVariants}
+      >
         {/* Header */}
         <motion.div 
-          className="mx-auto mb-16 max-w-3xl text-center"
+          className="mx-auto mb-12 max-w-3xl text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
-            Professional Journey
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+            Employment
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Building digital solutions and delivering value through web development, 
-            from corporate environments to freelance projects across diverse industries.
+          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            My professional journey in web development and digital solutions.
           </p>
         </motion.div>
 
-        {/* Timeline - Expanded width for desktop */}
-        <div className="relative mx-auto max-w-[90%] lg:max-w-[85%]">
-          {/* Enhanced Vertical line with gradient */}
-          <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full -translate-x-1/2 md:block">
-            <div className="h-full w-1 bg-gradient-to-b from-emerald-400 via-blue-500 to-emerald-400 dark:from-emerald-500 dark:via-blue-600 dark:to-emerald-500 rounded-full shadow-lg"></div>
-          </div>
-
-          <ul className="space-y-16 md:space-y-20">
-            {professionalEntries.map((entry, index) => {
-              const align: "left" | "right" = index % 2 === 0 ? "left" : "right";
-              return (
-                <li key={entry.id} className="relative flex flex-col md:flex-row md:items-center">
-                  {/* Connector and dot on md+ */}
-                  <div className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:block z-20">
-                    <ProfessionalDot icon={entry.icon} />
-                  </div>
-
-                  {/* On mobile, dot above card */}
-                  <div className="mb-4 flex items-center gap-4 md:hidden">
-                    <ProfessionalDot icon={entry.icon} />
-                    <div className="h-px flex-1 bg-gradient-to-r from-emerald-300 to-blue-400 dark:from-emerald-600 dark:to-blue-500"></div>
-                  </div>
-
-                  {/* Card container with improved spacing */}
-                  <div className={`w-full md:w-[calc(50%-3rem)] ${align === "left" ? "md:mr-auto md:pr-16" : "md:ml-auto md:pl-16"}`}>
-                    <ProfessionalCard entry={entry} align={align} />
-                  </div>
-                </li>
-              );
-            })}
+        {/* Professional List */}
+        <motion.div 
+          className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <ul className="space-y-6">
+            {professionalEntries.map((entry, index) => (
+              <ProfessionalItem 
+                key={entry.id} 
+                entry={entry} 
+                index={index} 
+              />
+            ))}
           </ul>
-        </div>
+        </motion.div>
 
         {/* Bottom decorative element */}
         <motion.div 
-          className="mt-16 flex justify-center"
+          className="mt-12 flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
           <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
             <span className="h-px w-8 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-600"></span>
-            <span>Building Digital Excellence</span>
+            <span>Professional Growth</span>
             <span className="h-px w-8 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-600"></span>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
-

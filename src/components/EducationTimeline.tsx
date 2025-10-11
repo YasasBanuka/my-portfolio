@@ -9,7 +9,7 @@ type EducationEntry = {
   institution: string;
   duration: string;
   description: string;
-  icon: string;
+  status: "completed" | "ongoing";
 };
 
 const educationEntries: EducationEntry[] = [
@@ -19,7 +19,7 @@ const educationEntries: EducationEntry[] = [
     institution: "IIC University of Technology",
     duration: "Aug 2021 – 2025",
     description: "Focusing on enterprise software systems, Spring Boot, and modern web development. Strengthened backend, API design, and system integration skills.",
-    icon: "🎓"
+    status: "ongoing"
   },
   {
     id: "edu-2", 
@@ -27,7 +27,7 @@ const educationEntries: EducationEntry[] = [
     institution: "University of Vocational Technology (UoVT)",
     duration: "May 2024 – Present",
     description: "Building strong foundation in networking, cybersecurity, and cloud infrastructure — complementing software engineering expertise.",
-    icon: "🌐"
+    status: "ongoing"
   },
   {
     id: "edu-3",
@@ -35,7 +35,7 @@ const educationEntries: EducationEntry[] = [
     institution: "Mahinda Rajapaksha College, Homagama",
     duration: "Jan 2014 – Jan 2022", 
     description: "Studied technology stream with focus on ICT and engineering fundamentals. Member of Robotics & Innovators Club.",
-    icon: "🔬"
+    status: "completed"
   }
 ];
 
@@ -51,150 +51,136 @@ function useRevealOnce<T extends HTMLElement>() {
   return { ref, controls } as const;
 }
 
-function EducationDot({ icon }: { icon: string }) {
-  return (
-    <div className="relative z-10 flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-xl ring-4 ring-white dark:ring-slate-900 ring-offset-2 ring-offset-slate-50 dark:ring-offset-slate-950">
-      <span className="text-lg lg:text-xl" aria-hidden>
-        {icon}
-      </span>
-    </div>
-  );
-}
+function EducationItem({ entry, index }: { entry: EducationEntry; index: number }) {
+  const { ref, controls } = useRevealOnce<HTMLLIElement>();
 
-function EducationCard({
-  entry,
-  align,
-}: {
-  entry: EducationEntry;
-  align: "left" | "right";
-}) {
-  const { ref, controls } = useRevealOnce<HTMLDivElement>();
-
-  const isLeft = align === "left";
-  const variants = {
-    hidden: { opacity: 0, y: 32, x: isLeft ? -32 : 32 },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
-      y: 0, 
-      x: 0, 
+      y: 0,
       transition: { 
-        duration: 0.7, 
-        ease: [0.22, 1, 0.36, 1],
-        delay: 0.1 
+        duration: 0.5, 
+        delay: index * 0.1 
       } 
-    },
-  } as const;
+    }
+  };
 
   return (
-    <motion.div
+    <motion.li
       ref={ref}
       initial="hidden"
       animate={controls}
-      variants={variants}
-      className="relative w-full rounded-2xl border-l-4 border-blue-500 bg-white/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-slate-900/90 dark:border-blue-400 hover:scale-[1.02] hover:border-blue-600 dark:hover:border-blue-300"
+      variants={itemVariants}
+      className="border-b border-slate-200 dark:border-slate-700 pb-6 last:border-b-0 last:pb-0"
     >
-      <div className="p-6 lg:p-8">
-        {/* Degree badge */}
-        <div className="mb-4 flex items-center gap-2 text-xs font-medium text-blue-600 dark:text-blue-400 uppercase tracking-wide">
-          <span>Education</span>
-          <span>•</span>
-          <span>{entry.duration}</span>
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">
+            {entry.degree}
+          </h3>
+          <p className="text-base text-slate-600 dark:text-slate-300 mb-2">
+            {entry.institution}
+          </p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
+            {entry.description}
+          </p>
         </div>
-
-        {/* Degree title - Enhanced font sizes for desktop */}
-        <h3 className="text-xl lg:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-3 leading-tight">
-          {entry.degree}
-        </h3>
-
-        {/* Institution - Enhanced font sizes for desktop */}
-        <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-300 font-medium mb-4">
-          {entry.institution}
-        </p>
-
-        {/* Description */}
-        <p className="text-sm lg:text-base leading-6 lg:leading-7 text-slate-600 dark:text-slate-300">
-          {entry.description}
-        </p>
+        <div className="flex flex-col md:items-end gap-2">
+          <span className="text-sm font-medium text-slate-600 dark:text-slate-300">
+            {entry.duration}
+          </span>
+          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+            entry.status === "completed" 
+              ? "bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300" 
+              : "bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300"
+          }`}>
+            {entry.status === "completed" ? "Completed" : "Ongoing"}
+          </span>
+        </div>
       </div>
-
-      {/* Enhanced decorative gradient line */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-b-2xl opacity-70"></div>
-    </motion.div>
+    </motion.li>
   );
 }
 
 export default function EducationTimeline() {
+  const { ref, controls } = useRevealOnce<HTMLElement>();
+
+  const sectionVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
   return (
-    <section className="relative mx-auto max-w-6xl px-4 py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <section 
+      ref={ref}
+      className="relative mx-auto max-w-4xl px-4 py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.03),transparent_50%)]"></div>
       
-      <div className="relative z-10">
+      <motion.div 
+        className="relative z-10"
+        initial="hidden"
+        animate={controls}
+        variants={sectionVariants}
+      >
         {/* Header */}
         <motion.div 
-          className="mx-auto mb-16 max-w-3xl text-center"
+          className="mx-auto mb-12 max-w-3xl text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
-            Academic Journey
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+            Education
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            My evolution as an engineer through structured learning, practical application, 
-            and continuous growth in software and network engineering.
+          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            My academic journey in software and network engineering.
           </p>
         </motion.div>
 
-        {/* Timeline - Expanded width for desktop */}
-        <div className="relative mx-auto max-w-[90%] lg:max-w-[85%]">
-          {/* Enhanced Vertical line with gradient */}
-          <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full -translate-x-1/2 md:block">
-            <div className="h-full w-1 bg-gradient-to-b from-blue-400 via-purple-500 to-blue-400 dark:from-blue-500 dark:via-purple-600 dark:to-blue-500 rounded-full shadow-lg"></div>
-          </div>
-
-          <ul className="space-y-16 md:space-y-20">
-            {educationEntries.map((entry, index) => {
-              const align: "left" | "right" = index % 2 === 0 ? "left" : "right";
-              return (
-                <li key={entry.id} className="relative flex flex-col md:flex-row md:items-center">
-                  {/* Connector and dot on md+ */}
-                  <div className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:block z-20">
-                    <EducationDot icon={entry.icon} />
-                  </div>
-
-                  {/* On mobile, dot above card */}
-                  <div className="mb-4 flex items-center gap-4 md:hidden">
-                    <EducationDot icon={entry.icon} />
-                    <div className="h-px flex-1 bg-gradient-to-r from-blue-300 to-purple-400 dark:from-blue-600 dark:to-purple-500"></div>
-                  </div>
-
-                  {/* Card container with improved spacing */}
-                  <div className={`w-full md:w-[calc(50%-3rem)] ${align === "left" ? "md:mr-auto md:pr-16" : "md:ml-auto md:pl-16"}`}>
-                    <EducationCard entry={entry} align={align} />
-                  </div>
-                </li>
-              );
-            })}
+        {/* Education List */}
+        <motion.div 
+          className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <ul className="space-y-6">
+            {educationEntries.map((entry, index) => (
+              <EducationItem 
+                key={entry.id} 
+                entry={entry} 
+                index={index} 
+              />
+            ))}
           </ul>
-        </div>
+        </motion.div>
 
         {/* Bottom decorative element */}
         <motion.div 
-          className="mt-16 flex justify-center"
+          className="mt-12 flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
           <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
             <span className="h-px w-8 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-600"></span>
-            <span>Continuous Learning & Growth</span>
+            <span>Continuous Learning</span>
             <span className="h-px w-8 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-600"></span>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
