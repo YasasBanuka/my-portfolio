@@ -218,7 +218,7 @@ const AboutMe = () => {
               className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
-              I'm a software & network engineering student who believes technology 
+              I&apos;m a software & network engineering student who believes technology 
               should solve real problems while inspiring others to think bigger. 
               My journey spans full-stack development, cloud computing, and 
               community leadership.
@@ -239,7 +239,7 @@ const AboutMe = () => {
               className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
-              As a student influencer, I'm passionate about creating inclusive spaces 
+              As a student influencer, I&apos;m passionate about creating inclusive spaces 
               where everyone can discover their potential in tech and contribute 
               to something greater than themselves.
             </motion.p>

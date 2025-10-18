@@ -167,7 +167,7 @@ const Hero = () => {
           className="text-lg sm:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
           variants={itemVariants}
         >
-          A passionate software & network engineering student who doesn't just code – I build communities, 
+          A passionate software & network engineering student who doesn&apos;t just code – I build communities, 
           solve real problems, and inspire fellow students to make a difference through technology.
         </motion.p>
 
