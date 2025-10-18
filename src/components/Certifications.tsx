@@ -29,7 +29,7 @@ const certifications: Certification[] = [
     logo: "/logos/kodekloud-logo.png",
     color: "blue",
     gradient: "from-blue-500 to-cyan-500",
-    imageUrl: "/certificates/AZ900.jpg",
+    imageUrl: "/certificates/microsoft-azure-fundamentals-az900-certificate.jpg",
     verificationUrl: "https://learn.kodekloud.com/certificate/f942ef5d-f89f-4cc7-af17-58366e7753c7",
     issuedDate: "Feb 2025",
     credentialId: "f942ef5d-f89f-4cc7-af17-58366e7753c7"
@@ -43,7 +43,7 @@ const certifications: Certification[] = [
     logo: "/logos/mlsa-logo.png",
     color: "blue",
     gradient: "from-blue-500 to-indigo-500",
-    imageUrl: "/certificates/azure-101.jpg",
+    imageUrl: "/certificates/azure-cloud-computing-fundamentals-certificate.jpg",
     verificationUrl: "",
     issuedDate: "Jul 2025"
   },
@@ -56,7 +56,7 @@ const certifications: Certification[] = [
     logo: "/logos/mlsa-logo.png",
     color: "violet",
     gradient: "from-violet-500 to-purple-500",
-    imageUrl: "/certificates/azure-openai.jpg",
+    imageUrl: "/certificates/azure-openai-integration-certificate.jpg",
     verificationUrl: "",
     issuedDate: "Mar 2025"
   },
@@ -69,7 +69,7 @@ const certifications: Certification[] = [
     logo: "/logos/mlsa-logo.png",
     color: "purple",
     gradient: "from-purple-500 to-pink-500",
-    imageUrl: "/certificates/azure-custom-vision.jpg",
+    imageUrl: "/certificates/azure-custom-vision-ai-certificate.jpg",
     verificationUrl: "",
     issuedDate: "Jun 2025",
     credentialId: "MSC2025062150"
@@ -83,7 +83,7 @@ const certifications: Certification[] = [
     logo: "/logos/kodekloud-logo.png",
     color: "emerald",
     gradient: "from-emerald-500 to-teal-500",
-    imageUrl: "/certificates/devops-fundamentals.jpg",
+    imageUrl: "/certificates/devops-fundamentals-certification.jpg",
     verificationUrl: "https://learn.kodekloud.com/certificate/8772c139-a794-40fc-a48c-2816b12568f4",
     issuedDate: "Feb 2025",
     credentialId: "8772c139-a794-40fc-a48c-2816b12568f4"
@@ -97,7 +97,7 @@ const certifications: Certification[] = [
     logo: "/logos/kodekloud-logo.png",
     color: "teal",
     gradient: "from-teal-500 to-green-500",
-    imageUrl: "/certificates/devops-prereq.jpg",
+    imageUrl: "/certificates/devops-prerequisites-certification.jpg",
     verificationUrl: "https://learn.kodekloud.com/certificate/695e1bdf-7edf-42ed-8cc2-106aa1f38cd7",
     issuedDate: "Feb 2025",
     credentialId: "695e1bdf-7edf-42ed-8cc2-106aa1f38cd7"
@@ -111,7 +111,7 @@ const certifications: Certification[] = [
     logo: "/logos/kodekloud-logo.png",
     color: "amber",
     gradient: "from-amber-500 to-yellow-500",
-    imageUrl: "/certificates/12factor.jpg",
+    imageUrl: "/certificates/twelve-factor-app-methodology-certificate.jpg",
     verificationUrl: "https://learn.kodekloud.com/certificate/9bde3365-4de7-446c-8a34-f856ddaf943f",
     issuedDate: "Feb 2025",
     credentialId: "9bde3365-4de7-446c-8a34-f856ddaf943f"
@@ -125,7 +125,7 @@ const certifications: Certification[] = [
     logo: "/logos/kodekloud-logo.png",
     color: "gray",
     gradient: "from-gray-500 to-slate-500",
-    imageUrl: "/certificates/linux-basics.jpg",
+    imageUrl: "/certificates/linux-operating-system-fundamentals-certificate.jpg",
     verificationUrl: "https://learn.kodekloud.com/certificate/f82ba6e0-c79d-40c9-951a-be9fadcfaeb6",
     issuedDate: "Feb 2025",
     credentialId: "f82ba6e0-c79d-40c9-951a-be9fadcfaeb6"
@@ -139,7 +139,7 @@ const certifications: Certification[] = [
     logo: "/logos/postman.webp",
     color: "orange",
     gradient: "from-orange-500 to-red-500",
-    imageUrl: "/certificates/postman.jpg",
+    imageUrl: "/certificates/postman-api-testing-fundamentals-certificate.jpg",
     verificationUrl: "https://badgr.com/public/assertions/BDpZVSqFRY67yUTlaihvRw?identity__email=ybanuka2003%40gmail.com",
     issuedDate: "Feb 2025",
     credentialId: "67ae42475e30cd4f64d294da"
@@ -153,7 +153,7 @@ const certifications: Certification[] = [
     logo: "/logos/pieces-logo.png",
     color: "pink",
     gradient: "from-pink-500 to-rose-500",
-    imageUrl: "/certificates/genai-101.jpg",
+    imageUrl: "/certificates/generative-ai-fundamentals-certificate.jpg",
     verificationUrl: "https://badgr.com/public/assertions/tRUiHUAsSKGs_U7w_Cnq5g?identity__email=ybanuka2003@gmail.com",
     issuedDate: "Feb 2025",
     credentialId: "67aed9e5157e9b171a2af6e4"
@@ -167,7 +167,7 @@ const certifications: Certification[] = [
     logo: "/logos/meta-logo.png",
     color: "cyan",
     gradient: "from-cyan-500 to-blue-500",
-    imageUrl: "/certificates/advanced-react.jpg",
+    imageUrl: "/certificates/advanced-react-development-certificate.jpg",
     verificationUrl: "https://www.coursera.org/account/accomplishments/verify/HVC9FTYHHY5S",
     issuedDate: "May 2024",
     credentialId: "HVC9FTYHHY5S"
@@ -181,7 +181,7 @@ const certifications: Certification[] = [
     logo: "/logos/meta-logo.png",
     color: "blue",
     gradient: "from-blue-500 to-cyan-500",
-    imageUrl: "/certificates/react-basics.jpg",
+    imageUrl: "/certificates/react-javascript-fundamentals-certificate.jpg",
     verificationUrl: "https://www.coursera.org/account/accomplishments/verify/HY6VLSSE4ZCE",
     issuedDate: "May 2024",
     credentialId: "HY6VLSSE4ZCE"
@@ -195,7 +195,7 @@ const certifications: Certification[] = [
     logo: "/logos/meta-logo.png",
     color: "rose",
     gradient: "from-rose-500 to-pink-500",
-    imageUrl: "/certificates/uxui-meta.jpg",
+    imageUrl: "/certificates/meta-ux-ui-design-fundamentals-certificate.jpg",
     verificationUrl: "https://www.coursera.org/account/accomplishments/verify/TR43HLD1J1Q8",
     issuedDate: "Oct 2024",
     credentialId: "TR43HLD1J1Q8"
@@ -209,7 +209,7 @@ const certifications: Certification[] = [
     logo: "/logos/inotrend-logo.png",
     color: "amber",
     gradient: "from-amber-500 to-orange-500",
-    imageUrl: "/certificates/neuro-selling.jpg",
+    imageUrl: "/certificates/neuro-linguistic-programming-selling-certificate.jpg",
     verificationUrl: "https://inotrend.net/ht5ee7es0t.html",
     issuedDate: "Feb 2024",
     credentialId: "ht5ee7es0t"
@@ -223,7 +223,7 @@ const certifications: Certification[] = [
     logo: "/logos/slim-logo.png",
     color: "yellow",
     gradient: "from-yellow-500 to-orange-500",
-    imageUrl: "/certificates/slim-brand.jpg",
+    imageUrl: "/certificates/slim-brand-management-certificate.jpg",
     verificationUrl: "",
     issuedDate: "Dec 2023",
     credentialId: "SN:30305"
@@ -237,7 +237,7 @@ const certifications: Certification[] = [
     logo: "/logos/ministry-education-logo.png",
     color: "indigo",
     gradient: "from-indigo-500 to-blue-500",
-    imageUrl: "/certificates/smart-school.jpg",
+    imageUrl: "/certificates/smart-school-management-system-certificate.jpg",
     verificationUrl: "",
     issuedDate: "Jan 2018"
   }
@@ -302,7 +302,7 @@ function CertificationCard({ certification, index }: { certification: Certificat
           </div>
           <Image
             src={certification.imageUrl}
-            alt={`${certification.title} Certificate`}
+            alt={`${certification.title} Professional Certificate from ${certification.organization}`}
             fill
             className={`object-cover transition-opacity duration-300 ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
             onLoad={() => setIsImageLoading(false)}
@@ -331,7 +331,7 @@ function CertificationCard({ certification, index }: { certification: Certificat
             <div className="flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-xl bg-white dark:bg-slate-100 shadow-lg overflow-hidden border border-slate-200 dark:border-slate-300">
               <Image
                 src={certification.logo}
-                alt={`${certification.organization} logo`}
+                alt={`${certification.organization} Official Logo`}
                 width={56}
                 height={56}
                 className="object-contain p-2"
@@ -426,7 +426,7 @@ function CertificationModal({
               <div className="lg:w-1/2 relative h-64 lg:h-auto">
                 <Image
                   src={certification.imageUrl}
-                  alt={`${certification.title} Certificate`}
+                  alt={`${certification.title} Professional Certificate from ${certification.organization}`}
                   fill
                   className="object-cover"
                 />
@@ -438,7 +438,7 @@ function CertificationModal({
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white dark:bg-slate-100 shadow-lg overflow-hidden border border-slate-200 dark:border-slate-300">
                     <Image
                       src={certification.logo}
-                      alt={`${certification.organization} logo`}
+                      alt={`${certification.organization} Official Logo`}
                       width={48}
                       height={48}
                       className="object-contain p-2"

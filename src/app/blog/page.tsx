@@ -21,11 +21,17 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
   const { ref, controls } = useRevealOnce<HTMLDivElement>();
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    hidden: { opacity: 0, y: 50, scale: 0.9, rotateX: 15 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      scale: 1
+      scale: 1,
+      rotateX: 0,
+      transition: {
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
     }
   };
 
@@ -39,85 +45,167 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
     >
       <Link href={`/blog/${post.id}`}>
         <motion.div
-          className="relative p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden h-full"
+          className="relative p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden h-full"
           whileHover={{ 
-            scale: 1.02,
-            y: -4
+            scale: 1.05,
+            y: -8,
+            rotateY: 2,
+            transition: {
+              duration: 0.3,
+              ease: "easeOut"
+            }
+          }}
+          whileTap={{ 
+            scale: 0.98,
+            transition: { duration: 0.1 }
           }}
         >
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {/* Animated background gradient */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0"
+            whileHover={{ 
+              opacity: 1,
+              transition: { duration: 0.3 }
+            }}
+          />
           
-          {/* Category badge */}
-          <div className="absolute top-4 right-4">
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
-              {post.category}
-            </span>
-          </div>
-
-          {/* Blog image */}
-          {post.image && (
-            <div className="relative h-48 w-full rounded-lg overflow-hidden mb-4">
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">📝</div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400 px-2">
-                    Blog Post Image
-                  </div>
-                </div>
-              </div>
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
+          {/* Floating particles effect */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-blue-400/20 rounded-full"
+                style={{
+                  left: `${20 + i * 30}%`,
+                  top: `${30 + i * 20}%`,
+                }}
+                animate={{
+                  y: [-10, 10, -10],
+                  opacity: [0.3, 0.8, 0.3],
+                }}
+                transition={{
+                  duration: 3 + i,
+                  repeat: Infinity,
+                  ease: "easeInOut"
                 }}
               />
-            </div>
+            ))}
+          </div>
+
+          {/* Category badge with animation */}
+          <motion.div 
+            className="absolute top-4 right-4 z-10"
+            whileHover={{ 
+              scale: 1.05,
+              transition: { duration: 0.2 }
+            }}
+          >
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/40 dark:to-purple-900/40 text-blue-800 dark:text-blue-300 shadow-sm">
+              {post.category}
+            </span>
+          </motion.div>
+
+          {/* Blog image with enhanced effects */}
+          {post.image && (
+            <motion.div 
+              className="relative h-48 w-full rounded-xl overflow-hidden mb-6"
+            >
+              <motion.img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const parent = target.parentElement;
+                  if (parent) {
+                    parent.innerHTML = `
+                      <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
+                        <div class="text-center">
+                          <div class="text-4xl mb-2">📝</div>
+                          <div class="text-sm text-slate-500 dark:text-slate-400 px-2">
+                            Blog Post Image
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  }
+                }}
+              />
+              {/* Image overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </motion.div>
           )}
 
-          {/* Content */}
+          {/* Content with staggered animations */}
           <div className="relative z-10">
-            {/* Meta info */}
-            <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400 mb-3">
+            {/* Meta info with animation */}
+            <motion.div 
+              className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400 mb-4"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 + index * 0.1 }}
+            >
               <span>{post.date}</span>
-              <span>•</span>
+              <span className="text-slate-300">•</span>
               <span>{post.readTime}</span>
-            </div>
+            </motion.div>
 
-            {/* Title */}
-            <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-3 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            {/* Title with enhanced styling */}
+            <motion.h3 
+              className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + index * 0.1 }}
+            >
               {post.title}
-            </h3>
+            </motion.h3>
 
-            {/* Excerpt */}
-            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+            {/* Excerpt with fade-in */}
+            <motion.p 
+              className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 + index * 0.1 }}
+            >
               {post.excerpt}
-            </p>
+            </motion.p>
 
-            {/* Tags */}
+            {/* Tags with individual animations */}
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag, tagIndex) => (
-                <span
+                <motion.span
                   key={tagIndex}
-                  className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
+                  className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 text-slate-600 dark:text-slate-300 shadow-sm"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5 + index * 0.1 + tagIndex * 0.1 }}
                 >
                   {tag}
-                </span>
+                </motion.span>
               ))}
             </div>
           </div>
 
-          {/* Read more indicator */}
-          <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 font-medium">
-              <span>Read More</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {/* Interactive read indicator */}
+          <motion.div 
+            className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300"
+            whileHover={{ scale: 1.1 }}
+          >
+            <div className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 font-semibold">
+              <span>Read</span>
+              <motion.svg 
+                className="w-4 h-4" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l6 6m0 0l-6 6m6-6H4" />
-              </svg>
+              </motion.svg>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </Link>
     </motion.article>

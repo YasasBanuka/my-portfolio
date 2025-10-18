@@ -3,6 +3,15 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+/**
+ * AboutMe Component - Main Component Function
+ * 
+ * Manages intersection observer for scroll-triggered animations and renders
+ * the complete about section with professional photo, biography content,
+ * and interactive elements.
+ * 
+ * @returns JSX element containing the complete about section
+ */
 const AboutMe = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -160,8 +169,8 @@ const AboutMe = () => {
               {/* Professional Photo */}
               <div className="w-full max-w-md mx-auto lg:mx-0 aspect-square rounded-2xl shadow-2xl overflow-hidden">
                 <Image 
-                  src="/images/about/professional-photo.jpg" 
-                  alt="Yasas Banuka - Professional Photo" 
+                  src="/images/about/yasas-banuka-professional-headshot-portrait.jpg" 
+                  alt="Yasas Banuka - Software Engineer and Student Leader Professional Headshot" 
                   width={400} 
                   height={400}
                   className="w-full h-full object-cover object-top"

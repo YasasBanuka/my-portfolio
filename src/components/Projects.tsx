@@ -1,33 +1,69 @@
+/**
+ * Projects Component - Showcases featured portfolio projects
+ * 
+ * This component displays a carousel of project cards with detailed modals,
+ * featuring smooth animations, responsive design, and interactive elements.
+ * Each project includes comprehensive information about technologies used,
+ * challenges faced, solutions implemented, and project outcomes.
+ * 
+ * Key Features:
+ * - Responsive carousel navigation with touch/swipe support
+ * - Detailed project modals with screenshots and technical details
+ * - Smooth animations using Framer Motion
+ * - SEO-optimized project descriptions and metadata
+ * - Accessibility features with proper ARIA labels
+ * 
+ * @author Yasas Banuka
+ * @version 1.0.0
+ */
+
 "use client";
 
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
+/**
+ * Project interface defining the structure of each portfolio project
+ * Includes comprehensive project metadata for display and SEO optimization
+ */
 type Project = {
-  id: string;
-  title: string;
-  description: string;
-  detailedDescription: string;
-  techStack: string[];
-  features: string[];
-  challenges: string[];
-  solutions: string[];
-  imageUrl: string;
-  githubUrl?: string;
-  liveDemoUrl?: string;
-  frontendRepo?: string;
-  backendRepo?: string;
-  gradient: string;
-  category: string;
-  duration: string;
-  teamSize?: string;
-  screenshots?: string[];
+  id: string;                    // Unique identifier for the project
+  title: string;                 // Project name/title
+  description: string;           // Brief project description for cards
+  detailedDescription: string;   // Comprehensive project overview for modals
+  techStack: string[];          // Technologies and frameworks used
+  features: string[];            // Key features and functionalities
+  challenges: string[];          // Technical challenges encountered
+  solutions: string[];           // Solutions implemented to overcome challenges
+  imageUrl: string;             // Main project image/screenshot
+  githubUrl?: string;           // Primary GitHub repository URL
+  liveDemoUrl?: string;         // Live demo/production URL
+  frontendRepo?: string;        // Frontend-specific repository URL
+  backendRepo?: string;         // Backend-specific repository URL
+  gradient: string;             // CSS gradient for visual theming
+  category: string;             // Project category (Web Dev, Mobile, etc.)
+  duration: string;             // Project development timeline
+  teamSize?: string;            // Team composition information
+  screenshots?: string[];       // Additional project screenshots
 };
 
+/**
+ * Portfolio Projects Data
+ * 
+ * Comprehensive collection of featured projects showcasing diverse technical skills
+ * and problem-solving abilities. Each project includes detailed metadata for
+ * SEO optimization and comprehensive project information display.
+ * 
+ * Projects are organized by complexity and impact, featuring:
+ * - Full-stack web applications
+ * - Mobile applications (Android/React Native)
+ * - IoT and hardware integration projects
+ * - Enterprise software solutions
+ */
 const projects: Project[] = [
   {
-    id: "project-portfolio",
+    id: "project-1",
     title: "Personal Portfolio Website",
     description: "Modern, responsive portfolio showcasing my journey as a software engineer, built with Next.js and enhanced by AI-assisted development.",
     detailedDescription: "A sophisticated portfolio website built with Next.js 14, TypeScript, and Tailwind CSS, featuring smooth animations with Framer Motion. The project demonstrates modern web development practices while leveraging AI tools like Cursor to accelerate development without compromising code quality. It showcases my technical skills, projects, and professional journey through an interactive, visually appealing interface.",
@@ -66,7 +102,7 @@ const projects: Project[] = [
     screenshots: ["/projects/portfolio-hero.jpg", "/projects/portfolio-projects.jpg", "/projects/portfolio-contact.jpg"]
   },
   {
-    id: "project-1",
+    id: "project-2",
     title: "Full-Stack E-Commerce Application",
     "description": "Full stack e-commerce using React (Vite) frontend and Spring Boot backend with Spring Security.",
     "detailedDescription": "A split frontend-backend ecommerce project. The frontend is built with React (Vite + Axios), handling UI, routing, API calls. The backend is Spring Boot with H2 database (for testing) and Spring Security for user auth and role-based access. CRUD endpoints for products, orders, users, and a secured API layer.",
@@ -101,7 +137,7 @@ const projects: Project[] = [
     screenshots: ["/projects/ecommerce-home.jpg", "/projects/ecommerce-products.jpg", "/projects/ecommerce-cart.jpg"]
   },
   {
-    id: "project-2",
+    id: "project-3",
     "title": "Smart Trade – E-Commerce Platform",
     "description": "Built a Java-based full featured ecommerce platform with secure checkout and user workflows.",
     "detailedDescription": "Smart Trade is a Java EE / Hibernate backend with a frontend in HTML, CSS, and JavaScript. It supports user registration (email verification), product listing, shopping cart, and a secure checkout integrated with a payment gateway. The system handles end-to-end shopping flows and data persistence via Hibernate and JSON serialization with Gson.",
@@ -135,7 +171,7 @@ const projects: Project[] = [
     screenshots: ["/projects/data-dashboard.jpg", "/projects/data-reports.jpg", "/projects/data-analytics.jpg"]
   },
   {
-    id: "project-3",
+    id: "project-4",
     "title": "QuickCart – Mobile Food Delivery Application",
     "description": "Android delivery app connecting users to restaurants with real-time orders, payments, and notifications.",
     "detailedDescription": "QuickCart is an Android mobile application enabling users to browse restaurants, place orders, and track delivery. It uses Firebase for authentication and real-time database, integrates PayHere for payments, and pushes notifications for order updates.",
@@ -169,7 +205,7 @@ const projects: Project[] = [
     screenshots: ["/projects/quickcart-home.jpg", "/projects/quickcart-restaurants.jpg", "/projects/quickcart-tracking.jpg"]
   },
   {
-    id: "project-4",
+    id: "project-5",
     "title": "Smart Gas Detector – IoT Safety System",
     "description": "IoT system for gas level monitoring with alerts via mobile app and backend processing.",
     "detailedDescription": "A system using an ESP32 + MQ-2 gas sensor to read gas levels and transmit data to a Java EE backend. A mobile app built with React Native / Expo allows real-time viewing of gas levels, and triggers alerts (LED, buzzer) if thresholds are exceeded. The backend handles data logging and app-device communication.",
@@ -204,7 +240,7 @@ const projects: Project[] = [
     screenshots: ["/projects/gas-dashboard.jpg", "/projects/gas-alerts.jpg", "/projects/gas-analytics.jpg"]
   },
   {
-    id: "project-5",
+    id: "project-6",
     "title": "ConsultConnect – Android M-Commerce / Consultation App",
     "description": "Android app connecting clients to consultants with booking and in-app payments.",
     "detailedDescription": "ConsultConnect allows users to search consultant profiles, book sessions, manage profiles, and pay securely inside the app. It includes user authentication, directory browsing, secure payment flows, and direct interactions between users and consultants.",
@@ -239,7 +275,7 @@ const projects: Project[] = [
     screenshots: ["/projects/gas-dashboard.jpg", "/projects/gas-alerts.jpg", "/projects/gas-analytics.jpg"]
   },
   {
-    id: "project-6",
+    id: "project-7",
     "title": "E-Commerce (React + Spring Boot)",
     "description": "Full stack e-commerce using React (Vite) frontend and Spring Boot backend with Spring Security.",
     "detailedDescription": "A split frontend-backend ecommerce project. The frontend is built with React (Vite + Axios), handling UI, routing, API calls. The backend is Spring Boot with H2 database (for testing) and Spring Security for user auth and role-based access. CRUD endpoints for products, orders, users, and a secured API layer.",
@@ -272,187 +308,225 @@ const projects: Project[] = [
     teamSize: "Solo Project",
     screenshots: ["/projects/gas-dashboard.jpg", "/projects/gas-alerts.jpg", "/projects/gas-analytics.jpg"]
   },
-  {
-    id: "project-7",
-    title: "Student Management System",
-    description: "Comprehensive web-based system for managing student records, grades, and academic progress with role-based access control.",
-    detailedDescription: "A full-featured student management system designed for educational institutions to streamline administrative tasks, track student progress, and facilitate communication between students, teachers, and administrators.",
-    techStack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
-    features: [
-      "Student enrollment and profile management",
-      "Grade tracking and report generation",
-      "Course scheduling and management",
-      "Attendance monitoring system",
-      "Parent-teacher communication portal",
-      "Academic calendar and event management",
-      "Financial tracking for fees and payments"
-    ],
-    challenges: [
-      "Managing complex user roles and permissions",
-      "Handling large amounts of student data efficiently",
-      "Creating intuitive interface for different user types",
-      "Ensuring data security and privacy compliance"
-    ],
-    solutions: [
-      "Implemented comprehensive role-based access control",
-      "Used MongoDB aggregation for efficient data queries",
-      "Created responsive design with role-specific dashboards",
-      "Applied encryption and secure authentication practices"
-    ],
-    imageUrl: "/projects/student-management.jpg",
-    githubUrl: "https://github.com/YasasBanuka/Student-Management-System",
-    gradient: "from-orange-500 to-red-600",
-    category: "Web Application",
-    duration: "4 months",
-    teamSize: "Team of 4",
-    screenshots: ["/projects/sms-dashboard.jpg", "/projects/sms-grades.jpg", "/projects/sms-reports.jpg"]
-  },
-  {
-    id: "project-8",
-    title: "Weather Analytics Dashboard",
-    description: "Real-time weather data visualization dashboard with historical analysis and predictive forecasting capabilities.",
-    detailedDescription: "An advanced weather analytics platform that aggregates data from multiple sources to provide comprehensive weather insights, historical analysis, and predictive forecasting for various applications.",
-    techStack: ["React", "D3.js", "Python", "Flask", "PostgreSQL", "Redis"],
-    features: [
-      "Real-time weather data visualization",
-      "Historical weather trend analysis",
-      "Interactive maps and charts",
-      "Weather alerts and notifications",
-      "API integration with multiple weather services",
-      "Data export and reporting features",
-      "Customizable dashboard layouts"
-    ],
-    challenges: [
-      "Processing large volumes of real-time weather data",
-      "Creating smooth animations and transitions for data visualization",
-      "Optimizing performance for complex charts and graphs",
-      "Ensuring data accuracy from multiple sources"
-    ],
-    solutions: [
-      "Used Redis for caching and real-time data processing",
-      "Implemented D3.js for custom data visualizations",
-      "Applied lazy loading and virtualization for large datasets",
-      "Created data validation and cleaning pipelines"
-    ],
-    imageUrl: "/projects/weather-dashboard.jpg",
-    githubUrl: "https://github.com/YasasBanuka/Weather-Analytics-Dashboard",
-    gradient: "from-teal-500 to-green-600",
-    category: "Data Visualization",
-    duration: "3 months",
-    teamSize: "Solo Project",
-    screenshots: ["/projects/weather-charts.jpg", "/projects/weather-maps.jpg", "/projects/weather-forecast.jpg"]
-  },
-  {
-    id: "project-9",
-    title: "Blockchain Voting System",
-    description: "Secure, transparent voting system built on blockchain technology ensuring immutability and verifiability of votes.",
-    detailedDescription: "A revolutionary voting system that leverages blockchain technology to provide secure, transparent, and verifiable voting mechanisms. The system ensures vote integrity while maintaining voter privacy through advanced cryptographic techniques.",
-    techStack: ["Solidity", "Web3.js", "React", "Node.js", "Ethereum"],
-    features: [
-      "Immutable vote recording on blockchain",
-      "Voter identity verification system",
-      "Real-time voting statistics and results",
-      "Transparent audit trail for all votes",
-      "Multi-election support with different voting mechanisms",
-      "Secure key management for voters",
-      "Results verification and validation tools"
-    ],
-    challenges: [
-      "Ensuring voter privacy while maintaining transparency",
-      "Handling blockchain transaction costs and scalability",
-      "Creating user-friendly interface for non-technical users",
-      "Implementing secure key management and recovery"
-    ],
-    solutions: [
-      "Used zero-knowledge proofs for privacy-preserving verification",
-      "Implemented layer 2 solutions for cost optimization",
-      "Created intuitive wizard-based voting interface",
-      "Developed secure key generation and backup mechanisms"
-    ],
-    imageUrl: "/projects/blockchain-voting.jpg",
-    githubUrl: "https://github.com/YasasBanuka/Blockchain-Voting-System",
-    gradient: "from-indigo-500 to-purple-600",
-    category: "Blockchain Application",
-    duration: "6 months",
-    teamSize: "Team of 3",
-    screenshots: ["/projects/voting-interface.jpg", "/projects/voting-results.jpg", "/projects/voting-verification.jpg"]
-  },
-  {
-    id: "project-10",
-    title: "AI-Powered Code Review Assistant",
-    description: "Intelligent code review tool that uses machine learning to analyze code quality, suggest improvements, and detect potential bugs.",
-    detailedDescription: "An advanced AI-powered tool that automates code review processes using machine learning algorithms. The system analyzes code patterns, identifies potential issues, and provides intelligent suggestions for improvement, significantly reducing manual review time.",
-    techStack: ["Python", "TensorFlow", "FastAPI", "React", "PostgreSQL", "Docker"],
-    features: [
-      "Automated code quality analysis",
-      "Bug detection and vulnerability scanning",
-      "Code style and best practices recommendations",
-      "Performance optimization suggestions",
-      "Integration with popular version control systems",
-      "Customizable review rules and standards",
-      "Team collaboration and discussion features"
-    ],
-    challenges: [
-      "Training accurate ML models for code analysis",
-      "Handling multiple programming languages and frameworks",
-      "Providing actionable and contextually relevant suggestions",
-      "Integrating with various development workflows"
-    ],
-    solutions: [
-      "Used transformer-based models trained on large code datasets",
-      "Implemented language-specific parsers and analyzers",
-      "Created contextual suggestion engine with user feedback loop",
-      "Developed flexible API for easy integration with existing tools"
-    ],
-    imageUrl: "/projects/ai-code-review.jpg",
-    githubUrl: "https://github.com/YasasBanuka/AI-Code-Review-Assistant",
-    gradient: "from-cyan-500 to-blue-600",
-    category: "AI/ML Application",
-    duration: "8 months",
-    teamSize: "Team of 4",
-    screenshots: ["/projects/code-analysis.jpg", "/projects/code-suggestions.jpg", "/projects/code-dashboard.jpg"]
-  }
+  // {
+  //   id: "project-8",
+  //   title: "Student Management System",
+  //   description: "Comprehensive web-based system for managing student records, grades, and academic progress with role-based access control.",
+  //   detailedDescription: "A full-featured student management system designed for educational institutions to streamline administrative tasks, track student progress, and facilitate communication between students, teachers, and administrators.",
+  //   techStack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+  //   features: [
+  //     "Student enrollment and profile management",
+  //     "Grade tracking and report generation",
+  //     "Course scheduling and management",
+  //     "Attendance monitoring system",
+  //     "Parent-teacher communication portal",
+  //     "Academic calendar and event management",
+  //     "Financial tracking for fees and payments"
+  //   ],
+  //   challenges: [
+  //     "Managing complex user roles and permissions",
+  //     "Handling large amounts of student data efficiently",
+  //     "Creating intuitive interface for different user types",
+  //     "Ensuring data security and privacy compliance"
+  //   ],
+  //   solutions: [
+  //     "Implemented comprehensive role-based access control",
+  //     "Used MongoDB aggregation for efficient data queries",
+  //     "Created responsive design with role-specific dashboards",
+  //     "Applied encryption and secure authentication practices"
+  //   ],
+  //   imageUrl: "/projects/student-management.jpg",
+  //   githubUrl: "https://github.com/YasasBanuka/Student-Management-System",
+  //   gradient: "from-orange-500 to-red-600",
+  //   category: "Web Application",
+  //   duration: "4 months",
+  //   teamSize: "Team of 4",
+  //   screenshots: ["/projects/sms-dashboard.jpg", "/projects/sms-grades.jpg", "/projects/sms-reports.jpg"]
+  // },
+  // {
+  //   id: "project-8",
+  //   title: "Weather Analytics Dashboard",
+  //   description: "Real-time weather data visualization dashboard with historical analysis and predictive forecasting capabilities.",
+  //   detailedDescription: "An advanced weather analytics platform that aggregates data from multiple sources to provide comprehensive weather insights, historical analysis, and predictive forecasting for various applications.",
+  //   techStack: ["React", "D3.js", "Python", "Flask", "PostgreSQL", "Redis"],
+  //   features: [
+  //     "Real-time weather data visualization",
+  //     "Historical weather trend analysis",
+  //     "Interactive maps and charts",
+  //     "Weather alerts and notifications",
+  //     "API integration with multiple weather services",
+  //     "Data export and reporting features",
+  //     "Customizable dashboard layouts"
+  //   ],
+  //   challenges: [
+  //     "Processing large volumes of real-time weather data",
+  //     "Creating smooth animations and transitions for data visualization",
+  //     "Optimizing performance for complex charts and graphs",
+  //     "Ensuring data accuracy from multiple sources"
+  //   ],
+  //   solutions: [
+  //     "Used Redis for caching and real-time data processing",
+  //     "Implemented D3.js for custom data visualizations",
+  //     "Applied lazy loading and virtualization for large datasets",
+  //     "Created data validation and cleaning pipelines"
+  //   ],
+  //   imageUrl: "/projects/weather-dashboard.jpg",
+  //   githubUrl: "https://github.com/YasasBanuka/Weather-Analytics-Dashboard",
+  //   gradient: "from-teal-500 to-green-600",
+  //   category: "Data Visualization",
+  //   duration: "3 months",
+  //   teamSize: "Solo Project",
+  //   screenshots: ["/projects/weather-charts.jpg", "/projects/weather-maps.jpg", "/projects/weather-forecast.jpg"]
+  // },
+  // {
+  //   id: "project-9",
+  //   title: "Blockchain Voting System",
+  //   description: "Secure, transparent voting system built on blockchain technology ensuring immutability and verifiability of votes.",
+  //   detailedDescription: "A revolutionary voting system that leverages blockchain technology to provide secure, transparent, and verifiable voting mechanisms. The system ensures vote integrity while maintaining voter privacy through advanced cryptographic techniques.",
+  //   techStack: ["Solidity", "Web3.js", "React", "Node.js", "Ethereum"],
+  //   features: [
+  //     "Immutable vote recording on blockchain",
+  //     "Voter identity verification system",
+  //     "Real-time voting statistics and results",
+  //     "Transparent audit trail for all votes",
+  //     "Multi-election support with different voting mechanisms",
+  //     "Secure key management for voters",
+  //     "Results verification and validation tools"
+  //   ],
+  //   challenges: [
+  //     "Ensuring voter privacy while maintaining transparency",
+  //     "Handling blockchain transaction costs and scalability",
+  //     "Creating user-friendly interface for non-technical users",
+  //     "Implementing secure key management and recovery"
+  //   ],
+  //   solutions: [
+  //     "Used zero-knowledge proofs for privacy-preserving verification",
+  //     "Implemented layer 2 solutions for cost optimization",
+  //     "Created intuitive wizard-based voting interface",
+  //     "Developed secure key generation and backup mechanisms"
+  //   ],
+  //   imageUrl: "/projects/blockchain-voting.jpg",
+  //   githubUrl: "https://github.com/YasasBanuka/Blockchain-Voting-System",
+  //   gradient: "from-indigo-500 to-purple-600",
+  //   category: "Blockchain Application",
+  //   duration: "6 months",
+  //   teamSize: "Team of 3",
+  //   screenshots: ["/projects/voting-interface.jpg", "/projects/voting-results.jpg", "/projects/voting-verification.jpg"]
+  // },
+  // {
+  //   id: "project-10",
+  //   title: "AI-Powered Code Review Assistant",
+  //   description: "Intelligent code review tool that uses machine learning to analyze code quality, suggest improvements, and detect potential bugs.",
+  //   detailedDescription: "An advanced AI-powered tool that automates code review processes using machine learning algorithms. The system analyzes code patterns, identifies potential issues, and provides intelligent suggestions for improvement, significantly reducing manual review time.",
+  //   techStack: ["Python", "TensorFlow", "FastAPI", "React", "PostgreSQL", "Docker"],
+  //   features: [
+  //     "Automated code quality analysis",
+  //     "Bug detection and vulnerability scanning",
+  //     "Code style and best practices recommendations",
+  //     "Performance optimization suggestions",
+  //     "Integration with popular version control systems",
+  //     "Customizable review rules and standards",
+  //     "Team collaboration and discussion features"
+  //   ],
+  //   challenges: [
+  //     "Training accurate ML models for code analysis",
+  //     "Handling multiple programming languages and frameworks",
+  //     "Providing actionable and contextually relevant suggestions",
+  //     "Integrating with various development workflows"
+  //   ],
+  //   solutions: [
+  //     "Used transformer-based models trained on large code datasets",
+  //     "Implemented language-specific parsers and analyzers",
+  //     "Created contextual suggestion engine with user feedback loop",
+  //     "Developed flexible API for easy integration with existing tools"
+  //   ],
+  //   imageUrl: "/projects/ai-code-review.jpg",
+  //   githubUrl: "https://github.com/YasasBanuka/AI-Code-Review-Assistant",
+  //   gradient: "from-cyan-500 to-blue-600",
+  //   category: "AI/ML Application",
+  //   duration: "8 months",
+  //   teamSize: "Team of 4",
+  //   screenshots: ["/projects/code-analysis.jpg", "/projects/code-suggestions.jpg", "/projects/code-dashboard.jpg"]
+  // }
 ];
 
-// Tech stack color mapping
+/**
+ * Technology Stack Color Mapping
+ * 
+ * Provides consistent color coding for technology badges throughout the portfolio.
+ * Each technology is assigned specific colors that reflect their brand identity
+ * and provide visual distinction between different categories of tools.
+ * 
+ * Color categories:
+ * - Frontend Frameworks: Blue/Cyan tones
+ * - Backend Technologies: Green/Emerald tones  
+ * - Databases: Blue/Gray tones
+ * - Cloud Services: Orange/Yellow tones
+ * - Mobile Development: Purple/Pink tones
+ * - IoT/Hardware: Indigo/Gray tones
+ * 
+ * @param tech - Technology name to get color for
+ * @returns CSS classes for background and text colors
+ */
 const getTechColor = (tech: string): string => {
   const colorMap: { [key: string]: string } = {
-    // Frontend
+    // Frontend Frameworks & Libraries
     "React": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    "Next.js 14": "bg-black text-white dark:bg-white dark:text-black",
     "Vite": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
     "React Native": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200",
+    "React Native / Expo": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200",
     "D3.js": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     
-    // Backend
-    "Spring Boot": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-    "Spring Security": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
+    // Languages
+    "TypeScript": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    "JavaScript": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
+    "Java": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     "Java SE": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     "Java EE": "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200",
+    "Python": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
+    
+    // Styling & UI
+    "Tailwind CSS": "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200",
+    "CSS": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    "HTML": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+    "XML": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+    "Framer Motion": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
+    
+    // Backend Frameworks
+    "Spring Boot": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+    "Spring Security": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
     "Node.js": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
     "Express": "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200",
-    "Python": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
     "Flask": "bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-200",
     "FastAPI": "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200",
     
-    // Database
+    // Database & ORM
     "H2": "bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-200",
     "MySQL": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
     "MongoDB": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
     "PostgreSQL": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
     "Redis": "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+    "SQLite": "bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-200",
+    "Hibernate": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+    
+    // HTTP & API
+    "Axios": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
+    "PayHere API": "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200",
+    "Google Maps API": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
     
     // Cloud & Services
     "AWS S3": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
     "Firebase": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+    "Firebase (Auth & Realtime DB)": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+    "Vercel": "bg-black text-white dark:bg-white dark:text-black",
     
-    // Mobile
+    // Mobile Development
     "Android SDK": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
     
-    // IoT
+    // IoT & Hardware
     "ESP32": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
-    
-    // APIs
-    "PayHere API": "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200",
+    "MQ-2 sensor": "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200",
     
     // Blockchain
     "Solidity": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
@@ -462,10 +536,16 @@ const getTechColor = (tech: string): string => {
     // AI/ML
     "TensorFlow": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     
-    // Authentication
+    // Authentication & Security
     "JWT": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
     
-    // Tools
+    // Data Processing
+    "Gson": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+    
+    // AI Tools
+    "Cursor AI": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
+    
+    // Development Tools
     "Git": "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
     "JUnit": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
     "Docker": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
@@ -474,6 +554,20 @@ const getTechColor = (tech: string): string => {
   return colorMap[tech] || "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
 };
 
+/**
+ * Custom Hook: useRevealOnce
+ * 
+ * Provides animation controls for elements that should animate into view only once.
+ * Uses Framer Motion's useInView hook with intersection observer to trigger
+ * animations when elements enter the viewport.
+ * 
+ * Features:
+ * - Triggers animation only on first view (once: true)
+ * - Uses margin offset for earlier trigger point
+ * - Returns ref for element binding and controls for animation state
+ * 
+ * @returns Object containing ref for element binding and controls for animation
+ */
 function useRevealOnce<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
   const controls = useAnimation();
@@ -486,6 +580,24 @@ function useRevealOnce<T extends HTMLElement>() {
   return { ref, controls } as const;
 }
 
+/**
+ * ProjectCard Component
+ * 
+ * Individual project card displaying project information in a visually appealing format.
+ * Features hover effects, smooth animations, and interactive elements that enhance
+ * user engagement and provide clear call-to-action for project exploration.
+ * 
+ * Key Features:
+ * - Staggered animation entrance based on card index
+ * - Hover effects with scale, glow, and color transitions
+ * - Responsive design adapting to different screen sizes
+ * - Error handling for missing project images
+ * - Accessibility features with proper alt text and ARIA labels
+ * 
+ * @param project - Project data object containing all project information
+ * @param index - Card index for staggered animation timing
+ * @param onClick - Callback function triggered when card is clicked
+ */
 function ProjectCard({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) {
   const { ref, controls } = useRevealOnce<HTMLDivElement>();
 
@@ -666,7 +778,26 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
   );
 }
 
-// Project Modal Component
+/**
+ * ProjectModal Component
+ * 
+ * Comprehensive modal dialog displaying detailed project information including
+ * technical specifications, challenges, solutions, and project outcomes.
+ * Provides an immersive experience for users to explore project details.
+ * 
+ * Key Features:
+ * - Full-screen modal with backdrop blur effect
+ * - Detailed project timeline and technical specifications
+ * - Interactive screenshots gallery with error handling
+ * - Responsive design adapting to different screen sizes
+ * - Smooth enter/exit animations with AnimatePresence
+ * - Keyboard navigation support (ESC to close)
+ * - Click-outside-to-close functionality
+ * 
+ * @param project - Project data object or null if modal is closed
+ * @param isOpen - Boolean indicating whether modal should be visible
+ * @param onClose - Callback function to close the modal
+ */
 function ProjectModal({ 
   project, 
   isOpen, 
@@ -927,7 +1058,26 @@ function ProjectModal({
   );
 }
 
-// Carousel Navigation Component
+/**
+ * CarouselNavigation Component
+ * 
+ * Navigation controls for the project carousel including previous/next buttons
+ * and pagination dots. Provides intuitive navigation through project cards
+ * with visual feedback and accessibility features.
+ * 
+ * Key Features:
+ * - Previous/Next navigation buttons with disabled states
+ * - Pagination dots showing current position
+ * - Smooth hover animations and visual feedback
+ * - Responsive design adapting to different screen sizes
+ * - Accessibility features with proper ARIA labels
+ * 
+ * @param currentIndex - Current active carousel position
+ * @param totalItems - Total number of items in the carousel
+ * @param onPrevious - Callback function for previous button click
+ * @param onNext - Callback function for next button click
+ * @param itemsPerView - Number of items visible at once
+ */
 function CarouselNavigation({ 
   currentIndex, 
   totalItems, 
@@ -997,14 +1147,49 @@ function CarouselNavigation({
   );
 }
 
+/**
+ * Projects Component - Main Export
+ * 
+ * The primary Projects component that orchestrates the entire project showcase experience.
+ * Manages state for carousel navigation, modal interactions, and responsive behavior.
+ * Provides a comprehensive view of portfolio projects with smooth animations and
+ * interactive elements that enhance user engagement.
+ * 
+ * State Management:
+ * - currentIndex: Tracks current carousel position
+ * - selectedProject: Stores project data for modal display
+ * - isModalOpen: Controls modal visibility state
+ * - itemsPerView: Responsive carousel configuration
+ * 
+ * Key Features:
+ * - Responsive carousel with dynamic item count
+ * - Smooth animations and transitions
+ * - Interactive project modals with detailed information
+ * - SEO-optimized content structure
+ * - Accessibility features throughout
+ * 
+ * @returns JSX element containing the complete projects showcase
+ */
 export default function Projects() {
+  // State management for carousel and modal interactions
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Responsive items per view
+  // Responsive configuration for items per view
   const [itemsPerView, setItemsPerView] = useState(3);
 
+  /**
+   * Responsive Configuration Effect
+   * 
+   * Dynamically adjusts the number of items visible in the carousel based on
+   * screen size to ensure optimal viewing experience across all devices.
+   * 
+   * Breakpoints:
+   * - Mobile (< 768px): 1 item per view
+   * - Tablet (768px - 1024px): 2 items per view  
+   * - Desktop (> 1024px): 3 items per view
+   */
   useEffect(() => {
     const updateItemsPerView = () => {
       if (window.innerWidth < 768) {
@@ -1021,6 +1206,12 @@ export default function Projects() {
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, []);
 
+  /**
+   * Carousel Navigation Handlers
+   * 
+   * Functions to handle carousel navigation with boundary checking to prevent
+   * navigation beyond available items.
+   */
   const handlePrevious = () => {
     setCurrentIndex(prev => Math.max(0, prev - 1));
   };
@@ -1029,6 +1220,12 @@ export default function Projects() {
     setCurrentIndex(prev => Math.min(projects.length - itemsPerView, prev + 1));
   };
 
+  /**
+   * Project Modal Handlers
+   * 
+   * Functions to manage project modal state and provide smooth user interactions
+   * when viewing detailed project information.
+   */
   const handleCardClick = (project: Project) => {
     setSelectedProject(project);
     setIsModalOpen(true);

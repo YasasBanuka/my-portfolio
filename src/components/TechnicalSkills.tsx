@@ -49,8 +49,8 @@ const skillCategories: SkillCategory[] = [
         name: "JavaScript (ES6+)",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
         proficiency: "Intermediate",
-        color: "orange",
-        gradient: "from-orange-500 to-red-500",
+        color: "yellow",
+        gradient: "from-yellow-500 to-yellow-500",
         description: "Modern JavaScript with ES6+ features, async/await, modules, and functional programming concepts",
       },
       {
@@ -99,8 +99,8 @@ const skillCategories: SkillCategory[] = [
         name: "Elementor",
         logo: "https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/elementor.svg",
         proficiency: "Advanced",
-        color: "green",
-        gradient: "from-green-500 to-emerald-500"
+        color: "gray",
+        gradient: "from-gray-500 to-gray-500"
       }
     ]
   },
@@ -115,8 +115,8 @@ const skillCategories: SkillCategory[] = [
         name: "Java (Spring Boot)",
         logo: "https://spring.io/img/projects/spring-boot.svg",
         proficiency: "Advanced",
-        color: "red",
-        gradient: "from-red-500 to-orange-500",
+        color: "green",
+        gradient: "from-green-500 to-green-500",
         description: "Enterprise Java development with Spring Boot, dependency injection, and microservices architecture",
       },
       {
@@ -132,8 +132,8 @@ const skillCategories: SkillCategory[] = [
         name: "Hibernate",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/hibernate/hibernate-original.svg",
         proficiency: "Intermediate",
-        color: "purple",
-        gradient: "from-purple-500 to-pink-500"
+        color: "gray",
+        gradient: "from-gray-500 to-gray-500"
       },
       {
         id: "jpa",
@@ -141,7 +141,7 @@ const skillCategories: SkillCategory[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
         proficiency: "Intermediate",
         color: "blue",
-        gradient: "from-blue-500 to-indigo-500"
+        gradient: "from-blue-500 to-blue-700"
       },
       {
         id: "nodejs",
@@ -180,8 +180,8 @@ const skillCategories: SkillCategory[] = [
         name: "REST API",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg",
         proficiency: "Advanced",
-        color: "green",
-        gradient: "from-green-500 to-emerald-500"
+        color: "gray",
+        gradient: "from-gray-500 to-gray-500"
       },
       {
         id: "java-ee",
@@ -205,15 +205,15 @@ const skillCategories: SkillCategory[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
         proficiency: "Intermediate",
         color: "blue",
-        gradient: "from-blue-500 to-purple-500"
+        gradient: "from-blue-500 to-cyan-500"
       },
       {
         id: "expo",
         name: "Expo",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/expo/expo-original.svg",
         proficiency: "Intermediate",
-        color: "purple",
-        gradient: "from-purple-500 to-pink-500"
+        color: "gray",
+        gradient: "from-gray-500 to-gray-500"
       },
       {
         id: "android-sdk",
@@ -388,8 +388,8 @@ const skillCategories: SkillCategory[] = [
         name: "Payara",
         logo: "https://cdn.payara.fish/wp-content/uploads/2025/08/Payara_Server.svg",
         proficiency: "Intermediate",
-        color: "green",
-        gradient: "from-green-500 to-emerald-500"
+        color: "orange",
+        gradient: "from-orange-500 to-orange-500"
       }
     ]
   },
@@ -412,16 +412,16 @@ const skillCategories: SkillCategory[] = [
         name: "RESTful API Design",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg",
         proficiency: "Advanced",
-        color: "green",
-        gradient: "from-green-500 to-emerald-500"
+        color: "gray",
+        gradient: "from-gray-500 to-gray-500"
       },
       {
         id: "agile-scrum",
         name: "Agile / Scrum",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg",
         proficiency: "Intermediate",
-        color: "orange",
-        gradient: "from-orange-500 to-yellow-500"
+        color: "blue",
+        gradient: "from-blue-500 to-blue-500"
       },
       {
         id: "cicd",
@@ -444,8 +444,8 @@ const skillCategories: SkillCategory[] = [
         name: "Authentication & Authorization",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
         proficiency: "Intermediate",
-        color: "indigo",
-        gradient: "from-indigo-500 to-purple-500"
+        color: "green",
+        gradient: "from-green-500 to-emerlad-500"
       },
       {
         id: "jwt",

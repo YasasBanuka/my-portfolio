@@ -12,9 +12,39 @@ import Blog from '@/components/Blog';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
+/**
+ * Home Page Component
+ * 
+ * Main landing page for Yasas Banuka's portfolio website.
+ * Optimized for SEO with comprehensive content about software engineering,
+ * cloud computing, and community leadership experience in Sri Lanka.
+ * 
+ * SEO Features:
+ * - Structured content hierarchy
+ * - Keyword-rich content sections
+ * - Local SEO optimization for Sri Lanka
+ * - Comprehensive portfolio showcase
+ */
+
 export default function Home() {
   return (
     <>
+      {/* Hidden SEO content for search engines */}
+      <div className="sr-only">
+        <h1>Yasas Banuka - Software Engineer & Student Leader from Sri Lanka</h1>
+        <p>
+          Yasas Banuka is a passionate software engineer and student leader based in Sri Lanka, 
+          specializing in full-stack development, cloud computing, and community leadership. 
+          As an IEEE volunteer and University of Vocational Technology student, Yasas builds 
+          scalable solutions while mentoring fellow students and organizing tech events.
+        </p>
+        <p>
+          Explore Yasas Banuka's portfolio featuring React.js projects, Java Spring Boot 
+          applications, Azure cloud solutions, and IoT innovations. Connect with this 
+          Sri Lankan software engineer for collaboration opportunities.
+        </p>
+      </div>
+      
       <Navigation />
       <main className="relative">
         <Hero />
@@ -25,7 +55,7 @@ export default function Home() {
         <EducationTimeline />
         <LeadershipVolunteering />
         <Certifications />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Blog />
         <Contact />
       </main>

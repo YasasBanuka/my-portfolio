@@ -102,7 +102,7 @@ const leadershipRoles: LeadershipRole[] = [
       "Recognized as Volunteer of the Month for leadership excellence and team contribution.",
       "Represented UoVT as an IEEE Xtreme Ambassador, mentoring peers and fostering team spirit."
     ],
-    photos: ["/leadership/XtreamIgnite Group Photo.jpg", "/leadership/BlueWaves Group Photo.jpg", "/leadership/TechSpark Group Photo.jpg"]
+    photos: ["/leadership/ieee-xtreme-ignite-coding-competition-group-photo.jpg", "/leadership/ieee-bluewaves-workshop-group-photo.jpg", "/leadership/ieee-techspark-workshop-group-photo.jpg"]
   },
   {
     id: "lead-2",
@@ -130,7 +130,7 @@ const leadershipRoles: LeadershipRole[] = [
       "Developed leadership and communication skills through volunteering.",
       "Supported multiple community initiatives with a strong focus on teamwork and empathy."
     ],
-    photos: ["/leadership/leo-service.jpg", "/leadership/leo-charity.jpg", "/leadership/leo-youth.jpg"]
+    photos: ["/leadership/leo-club-colombo-grand-circle-service-event.jpg"]
   },
   {
     id: "lead-3",
@@ -158,15 +158,15 @@ const leadershipRoles: LeadershipRole[] = [
       "Served as one of the youngest trainers in a national IoT workshop.",
       "Laid the foundation for future leadership through collaboration and knowledge sharing."
     ],
-    photos: ["/leadership/iot.jpg", "/leadership/iot 2.jpg", "/leadership/robotics-project.jpg"]
+    photos: ["/leadership/ministry-education-iot-workshop-participants.jpg", "/leadership/ministry-education-iot-workshop-training-session.jpg"]
   }
 ];
 
 const photos: Photo[] = [
   {
     id: "photo-1",
-    src: "/leadership/xtreamignite.jpg",
-    alt: "IEEE XtreamIgnite 1.0 Coding Competition",
+    src: "/leadership/ieee-xtreme-ignite-coding-competition-event.jpg",
+    alt: "IEEE Xtreme Ignite 1.0 Coding Competition Event",
     rotation: 3,
     zIndex: 4,
     position: { x: 20, y: 10 },
@@ -174,8 +174,8 @@ const photos: Photo[] = [
   },
   {
     id: "photo-2",
-    src: "/leadership/techspark.jpg",
-    alt: "TechSpark Event Organization",
+    src: "/leadership/ieee-techspark-cloud-computing-workshop.jpg",
+    alt: "IEEE TechSpark Cloud Computing Workshop Organization",
     rotation: -2,
     zIndex: 3,
     position: { x: 60, y: 30 },
@@ -183,8 +183,8 @@ const photos: Photo[] = [
   },
   {
     id: "photo-3",
-    src: "/leadership/openday.jpg",
-    alt: "Open Day - UoVT",
+    src: "/leadership/university-vocational-technology-open-day-event.jpg",
+    alt: "University of Vocational Technology Open Day Event",
     rotation: 1,
     zIndex: 5,
     position: { x: 10, y: 60 },
@@ -192,8 +192,8 @@ const photos: Photo[] = [
   },
   {
     id: "photo-4",
-    src: "/leadership/iot.jpg",
-    alt: "IoT Workshop Training",
+    src: "/leadership/ministry-education-iot-workshop-participants.jpg",
+    alt: "Ministry of Education IoT Workshop Training Session",
     rotation: -3,
     zIndex: 2,
     position: { x: 70, y: 5 },
@@ -201,8 +201,8 @@ const photos: Photo[] = [
   },
   {
     id: "photo-5",
-    src: "/leadership/Leo.jpg",
-    alt: "Leo Club Community Service",
+    src: "/leadership/leo-club-colombo-grand-circle-service-event.jpg",
+    alt: "Leo Club Colombo Grand Circle Community Service Event",
     rotation: 2,
     zIndex: 1,
     position: { x: 37, y: 70 },
@@ -210,8 +210,8 @@ const photos: Photo[] = [
   },
   {
     id: "photo-6",
-    src: "/leadership/ms.jpg",
-    alt: "Microsoft Student Champs",
+    src: "/leadership/microsoft-student-ambassadors-event.jpg",
+    alt: "Microsoft Student Ambassadors Event",
     rotation: -1,
     zIndex: 6,
     position: { x: 72, y: 50 },
