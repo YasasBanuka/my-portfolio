@@ -3,6 +3,18 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Brand Colors */
+  --brand-purple: #7C3AED;
+  --brand-blue: #3B82F6;
+  --brand-cyan: #06B6D4;
+  --brand-orange: #F97316;
+  --brand-green: #10B981;
+  
+  /* Brand Gradients */
+  --gradient-hero: linear-gradient(135deg, #0F172A 0%, #7C3AED 50%, #3B82F6 100%);
+  --gradient-text: linear-gradient(90deg, #60A5FA 0%, #A78BFA 50%, #06B6D4 100%);
+  --gradient-cta: linear-gradient(90deg, #3B82F6 0%, #7C3AED 50%, #06B6D4 100%);
 }
 
 @theme inline {
@@ -35,12 +47,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #6366f1, #8b5cf6);
+  background: linear-gradient(45deg, #6366f1, #8b5cf6, #06B6D4);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  background: linear-gradient(45deg, #4f46e5, #7c3aed, #0891B2);
 }
 
 /* Smooth scrolling */
@@ -67,9 +79,25 @@ html {
 }
 
 .animated-gradient {
-  background: linear-gradient(-45deg, #6366f1, #8b5cf6, #06b6d4, #f59e0b);
+  background: linear-gradient(-45deg, #6366f1, #8b5cf6, #06B6D4, #F97316);
   background-size: 400% 400%;
   animation: gradient-shift 15s ease infinite;
+}
+
+/* Brand gradient utilities */
+.brand-gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-gradient-bg {
+  background: var(--gradient-hero);
+}
+
+.brand-gradient-cta {
+  background: var(--gradient-cta);
 }
 
 /* Glassmorphism effect */

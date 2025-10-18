@@ -207,10 +207,10 @@ const AboutMe = () => {
           <motion.div className="space-y-6" variants={itemVariants}>
             {/* Headline */}
             <motion.h2
-              className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+              className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent"
               variants={itemVariants}
             >
-              Who I Am
+              Beyond the Code
             </motion.h2>
 
             {/* Main paragraph */}
@@ -218,10 +218,10 @@ const AboutMe = () => {
               className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
-              I&apos;m a passionate dual-degree undergraduate in Software and Network Engineering, 
-              driven by an insatiable curiosity for technology and innovation. My journey spans 
-              across full-stack development, cloud computing, and artificial intelligence, 
-              where I constantly explore the intersection of these transformative fields.
+              I'm a software & network engineering student who believes technology 
+              should solve real problems while inspiring others to think bigger. 
+              My journey spans full-stack development, cloud computing, and 
+              community leadership.
             </motion.p>
 
             {/* Tech interests paragraph */}
@@ -229,10 +229,9 @@ const AboutMe = () => {
               className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
-              What excites me most is the endless possibilities at the crossroads of software 
-              engineering and network systems. Whether I&apos;m architecting scalable cloud solutions, 
-              developing intelligent applications, or optimizing network infrastructures, I bring 
-              a holistic approach that bridges theory and practical implementation.
+              What drives me is mentoring fellow students and organizing events that 
+              spark innovation. I combine strong technical skills with a collaborative 
+              mindset, always focused on creating meaningful impact.
             </motion.p>
 
             {/* Leadership and volunteer paragraph */}
@@ -240,14 +239,12 @@ const AboutMe = () => {
               className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
-              Beyond technical expertise, I&apos;m deeply committed to community leadership and 
-              social impact. As an active IEEE volunteer, I organize tech events and mentor 
-              fellow students. My involvement in anti-ragging activism reflects my belief in 
-              creating inclusive environments. I also co-founded TechSpark 1.0, a platform 
-              that connects aspiring developers with industry professionals.
+              As a student influencer, I'm passionate about creating inclusive spaces 
+              where everyone can discover their potential in tech and contribute 
+              to something greater than themselves.
             </motion.p>
 
-            {/* Personality icons */}
+            {/* Personality descriptors */}
             <motion.div
               className="flex items-center pt-4"
               variants={itemVariants}
@@ -255,9 +252,17 @@ const AboutMe = () => {
               <span className="text-lg font-medium text-gray-700 dark:text-gray-300 mr-4">
                 My essence:
               </span>
-              <AnimatedIcon emoji="⚡" delay={0.2} />
-              <AnimatedIcon emoji="💡" delay={0.4} />
-              <AnimatedIcon emoji="🚀" delay={0.6} />
+              <div className="flex flex-wrap gap-3">
+                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium">
+                  Problem Solver
+                </span>
+                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-medium">
+                  Community Builder
+                </span>
+                <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-medium">
+                  Student Leader
+                </span>
+              </div>
             </motion.div>
 
             {/* Call to action */}
@@ -266,9 +271,10 @@ const AboutMe = () => {
               variants={itemVariants}
             >
               <motion.button
-                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.open('https://linkedin.com/in/yasasbanuka', '_blank')}
                 style={{
                   boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
                 }}
@@ -279,7 +285,7 @@ const AboutMe = () => {
                   </svg>
                   Let&apos;s Connect
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
               </motion.button>
             </motion.div>
           </motion.div>

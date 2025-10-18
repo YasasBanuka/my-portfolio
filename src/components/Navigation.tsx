@@ -13,8 +13,12 @@ const navItems: NavItem[] = [
   { id: "home", label: "Home", href: "#home" },
   { id: "about", label: "About", href: "#about" },
   { id: "skills", label: "Skills", href: "#skills" },
-  { id: "experience", label: "Experience", href: "#experience" },
   { id: "projects", label: "Projects", href: "#projects" },
+  { id: "experience", label: "Experience", href: "#experience" },
+  { id: "education", label: "Education", href: "#education" },
+  { id: "leadership", label: "Leadership", href: "#leadership" },
+  { id: "certifications", label: "Certifications", href: "#certifications" },
+  { id: "testimonials", label: "Testimonials", href: "#testimonials" },
   { id: "blog", label: "Blog", href: "/blog" },
   { id: "contact", label: "Contact", href: "#contact" }
 ];
@@ -27,13 +31,19 @@ export default function Navigation() {
   const backgroundColor = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.95)"]
+    ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.98)"]
   );
   
   const backdropFilter = useTransform(
     scrollY,
     [0, 100],
-    ["blur(0px)", "blur(10px)"]
+    ["blur(0px)", "blur(12px)"]
+  );
+  
+  const shadowOpacity = useTransform(
+    scrollY,
+    [0, 100],
+    [0, 0.1]
   );
 
   useEffect(() => {
@@ -42,17 +52,32 @@ export default function Navigation() {
       
       // Update active section based on scroll position
       const sections = navItems.map(item => item.id);
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 150; // Increased offset for better detection
+      
+      // Find the current section by checking which section is most visible
+      let currentSection = "home";
       
       for (let i = sections.length - 1; i >= 0; i--) {
         const element = document.getElementById(sections[i]);
-        if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
+          const elementBottom = elementTop + rect.height;
+          
+          // Check if the section is in view
+          if (scrollPosition >= elementTop - 100 && scrollPosition < elementBottom - 100) {
+            currentSection = sections[i];
+            break;
+          }
         }
       }
+      
+      setActiveSection(currentSection);
     };
 
+    // Initial call to set correct active section
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -78,7 +103,8 @@ export default function Navigation() {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
         backgroundColor: isScrolled ? backgroundColor : "transparent",
-        backdropFilter: isScrolled ? backdropFilter : "none"
+        backdropFilter: isScrolled ? backdropFilter : "none",
+        boxShadow: isScrolled ? `0 4px 20px rgba(0, 0, 0, ${shadowOpacity.get()})` : "none"
       }}
     >
       <div className="mx-auto max-w-7xl px-4">
@@ -92,7 +118,7 @@ export default function Navigation() {
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
               <span className="text-white font-bold text-sm">YB</span>
             </div>
-            <span className="font-bold text-slate-900 dark:text-slate-100 text-lg">
+            <span className="font-bold text-slate-800 dark:text-slate-100 text-lg">
               Yasas Banuka
             </span>
           </motion.div>
@@ -105,8 +131,8 @@ export default function Navigation() {
                 onClick={() => scrollToSection(item.href)}
                 className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   activeSection === item.id
-                    ? 'text-blue-600 dark:text-blue-400'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100'
+                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                    : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800/50'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -127,7 +153,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="md:hidden p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

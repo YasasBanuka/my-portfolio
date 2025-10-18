@@ -27,31 +27,69 @@ type Project = {
 
 const projects: Project[] = [
   {
-    id: "project-1",
-    title: "Full-Stack E-Commerce Application",
-    description: "Designed a full-stack online store with secure backend and responsive frontend. Implemented JWT-based authentication and efficient API communication via Axios.",
-    detailedDescription: "A comprehensive e-commerce platform built from scratch featuring user authentication, product catalog, shopping cart, order management, and payment processing. The application demonstrates modern web development practices with a clean separation between frontend and backend services.",
-    techStack: ["React", "Vite", "Spring Boot", "H2", "Spring Security", "AWS S3"],
+    id: "project-portfolio",
+    title: "Personal Portfolio Website",
+    description: "Modern, responsive portfolio showcasing my journey as a software engineer, built with Next.js and enhanced by AI-assisted development.",
+    detailedDescription: "A sophisticated portfolio website built with Next.js 14, TypeScript, and Tailwind CSS, featuring smooth animations with Framer Motion. The project demonstrates modern web development practices while leveraging AI tools like Cursor to accelerate development without compromising code quality. It showcases my technical skills, projects, and professional journey through an interactive, visually appealing interface.",
+    techStack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "Cursor AI", "Vercel"],
     features: [
-      "User registration and authentication with JWT tokens",
-      "Product catalog with search and filtering",
-      "Shopping cart with persistent storage",
-      "Order management and tracking",
-      "File upload for product images using AWS S3",
-      "Responsive design for all devices",
-      "Admin panel for product management"
+      "Responsive design with mobile-first approach",
+      "Smooth scroll animations and micro-interactions",
+      "Interactive project showcases with detailed modals",
+      "Dynamic navigation with active section highlighting",
+      "Contact form with email integration",
+      "Dark/light theme support",
+      "SEO optimized with metadata",
+      "Performance optimized with Next.js Image component"
     ],
     challenges: [
-      "Implementing secure authentication across frontend and backend",
-      "Managing state for complex shopping cart functionality",
-      "Optimizing image uploads and storage with AWS S3",
-      "Creating responsive design that works on all screen sizes"
+      "Balancing AI-assisted development with maintaining code quality",
+      "Creating smooth animations without performance impact",
+      "Implementing complex scroll-based interactions",
+      "Ensuring accessibility across all components",
+      "Optimizing for various screen sizes and devices"
     ],
     solutions: [
-      "Used Spring Security with JWT for stateless authentication",
-      "Implemented Redux for state management in the frontend",
-      "Created efficient file upload system with proper error handling",
-      "Used CSS Grid and Flexbox for responsive layouts"
+      "Used Cursor AI strategically for boilerplate code while maintaining architectural decisions",
+      "Implemented Framer Motion with proper optimization techniques",
+      "Created custom hooks for scroll detection and intersection observers",
+      "Applied ARIA labels and semantic HTML throughout",
+      "Used CSS Grid and Flexbox for responsive layouts with Tailwind utilities"
+    ],
+    imageUrl: "/projects/portfolio-website.jpg",
+    githubUrl: "https://github.com/YasasBanuka/my-portfolio",
+    liveDemoUrl: "https://iamyasasbanuka.me",
+    gradient: "from-purple-500 to-pink-600",
+    category: "Web Development",
+    duration: "2 weeks",
+    teamSize: "Solo Project",
+    screenshots: ["/projects/portfolio-hero.jpg", "/projects/portfolio-projects.jpg", "/projects/portfolio-contact.jpg"]
+  },
+  {
+    id: "project-1",
+    title: "Full-Stack E-Commerce Application",
+    "description": "Full stack e-commerce using React (Vite) frontend and Spring Boot backend with Spring Security.",
+    "detailedDescription": "A split frontend-backend ecommerce project. The frontend is built with React (Vite + Axios), handling UI, routing, API calls. The backend is Spring Boot with H2 database (for testing) and Spring Security for user auth and role-based access. CRUD endpoints for products, orders, users, and a secured API layer.",
+    "techStack": ["React", "Vite", "Axios", "Spring Boot", "Spring Security", "H2"],
+    "features": [
+      "JWT / session-based authentication",
+      "Product catalog CRUD APIs",
+      "Cart and order APIs",
+      "Role-based access (user, admin)",
+      "Image upload support (future expansion)",
+      "Responsive UI"
+    ],
+    "challenges": [
+      "Synchronizing frontend state with backend data",
+      "Securing APIs from unauthorized access",
+      "Handling CSRF, CORS, and security issues",
+      "Setting up development vs production configs"
+    ],
+    "solutions": [
+      "Used Axios interceptors for token refreshing",
+      "Configured CORS and CSRF tokens properly",
+      "Modularized API layers and service layers",
+      "Used profiles for environment separation"
     ],
     imageUrl: "/projects/ecommerce-app.jpg",
     frontendRepo: "https://github.com/YasasBanuka/ecom-frontend",
@@ -64,111 +102,178 @@ const projects: Project[] = [
   },
   {
     id: "project-2",
-    title: "Data Monetization Software System – Production Module",
-    description: "Developed production data management system for r-pac Printcare Lanka (Pvt) Ltd, automating workflow and data recording with centralized Java SE module.",
-    detailedDescription: "An enterprise-grade production data management system designed for r-pac Printcare Lanka (Pvt) Ltd to streamline their manufacturing workflow. The system automates data collection, processing, and reporting for production modules, significantly improving operational efficiency.",
-    techStack: ["Java SE", "MySQL", "Git", "JUnit"],
-    features: [
-      "Automated data collection from production lines",
-      "Real-time data processing and validation",
-      "Comprehensive reporting and analytics dashboard",
-      "User role-based access control",
-      "Data export functionality for external systems",
-      "Audit trail for all data modifications",
-      "Backup and recovery mechanisms"
+    "title": "Smart Trade – E-Commerce Platform",
+    "description": "Built a Java-based full featured ecommerce platform with secure checkout and user workflows.",
+    "detailedDescription": "Smart Trade is a Java EE / Hibernate backend with a frontend in HTML, CSS, and JavaScript. It supports user registration (email verification), product listing, shopping cart, and a secure checkout integrated with a payment gateway. The system handles end-to-end shopping flows and data persistence via Hibernate and JSON serialization with Gson.",
+    "techStack": ["Java EE", "Hibernate", "Gson", "HTML", "CSS", "JavaScript"],
+    "features": [
+      "User registration with email verification",
+      "Product catalog with CRUD operations",
+      "Shopping cart synchronization",
+      "Secure checkout flow integrated with payment gateway",
+      "Order history for users",
+      "Input validation & error handling"
     ],
-    challenges: [
-      "Integrating with existing legacy systems",
-      "Ensuring data integrity across multiple production lines",
-      "Optimizing database performance for large datasets",
-      "Creating intuitive user interface for non-technical users"
+    "challenges": [
+      "Managing transaction consistency during checkout",
+      "Handling concurrency on stock updates",
+      "Integrating with external payment gateway APIs",
+      "Ensuring safe data serialization / deserialization"
     ],
-    solutions: [
-      "Developed custom API adapters for legacy system integration",
-      "Implemented database transactions and validation rules",
-      "Used database indexing and query optimization techniques",
-      "Created user-friendly interface with clear navigation and help documentation"
+    "solutions": [
+      "Used database transactions to guard against partial failures",
+      "Employed optimistic locking / validations for stock updates",
+      "Wrapped payment API calls in fallback / retry logic",
+      "Sanitized inputs and used Gson for safe JSON handling"
     ],
-    imageUrl: "/projects/data-monetization.jpg",
-    githubUrl: "https://github.com/YasasBanuka/RPac-Data-Monetization-System",
+    imageUrl: "/projects/smart-trade.jpg",
+    githubUrl: "https://github.com/YasasBanuka/SmartTrade",
     gradient: "from-emerald-500 to-blue-600",
     category: "Enterprise Software",
-    duration: "6 months",
-    teamSize: "Team of 3",
+    duration: "1 month",
+    teamSize: "Solo Project",
     screenshots: ["/projects/data-dashboard.jpg", "/projects/data-reports.jpg", "/projects/data-analytics.jpg"]
   },
   {
     id: "project-3",
-    title: "QuickCart – Mobile Food Delivery Application",
-    description: "Built full-featured Android delivery app with Firebase Auth, Realtime Database, and PayHere integration for order payments.",
-    detailedDescription: "A comprehensive mobile food delivery application that connects customers with local restaurants. The app features real-time order tracking, secure payment processing, and a user-friendly interface for both customers and restaurant partners.",
-    techStack: ["Android SDK", "Java", "Firebase", "PayHere API"],
-    features: [
-      "User authentication and profile management",
-      "Restaurant browsing with search and filters",
-      "Real-time order tracking with GPS integration",
-      "Secure payment processing with PayHere API",
-      "Push notifications for order updates",
-      "Rating and review system",
-      "Order history and favorites management"
+    "title": "QuickCart – Mobile Food Delivery Application",
+    "description": "Android delivery app connecting users to restaurants with real-time orders, payments, and notifications.",
+    "detailedDescription": "QuickCart is an Android mobile application enabling users to browse restaurants, place orders, and track delivery. It uses Firebase for authentication and real-time database, integrates PayHere for payments, and pushes notifications for order updates.",
+    "techStack": ["Android SDK", "Java", "Firebase (Auth & Realtime DB)", "PayHere API"],
+    "features": [
+      "User registration & login",
+      "Restaurant listing with search & filters",
+      "Order placement & tracking in real-time",
+      "Secure payment integration (PayHere)",
+      "Push notifications for order status",
+      "Order history"
     ],
-    challenges: [
-      "Implementing real-time order tracking with GPS",
-      "Integrating secure payment gateway with PayHere",
-      "Managing offline functionality and data synchronization",
-      "Creating smooth user experience across different Android versions"
+    "challenges": [
+      "Synchronizing real-time order state across users and restaurants",
+      "Handling payment failures / rollbacks",
+      "Ensuring compatibility across Android versions",
+      "Offline / connectivity fallback"
     ],
-    solutions: [
-      "Used Firebase Realtime Database for instant updates",
-      "Implemented PayHere SDK with proper security measures",
-      "Created local database for offline functionality with sync capabilities",
-      "Used Android best practices for backward compatibility"
+    "solutions": [
+      "Used Firebase Realtime Database for live updates",
+      "Wrapped payment logic with rollback and retry mechanisms",
+      "Followed Android best practices and support libraries for compatibility",
+      "Stored transient state locally to mitigate intermittent connectivity"
     ],
     imageUrl: "/projects/quickcart-app.jpg",
     githubUrl: "https://github.com/YasasBanuka/QuickCart",
     gradient: "from-orange-500 to-red-600",
     category: "Mobile Application",
-    duration: "4 months",
+    duration: "1 month",
     teamSize: "Solo Project",
     screenshots: ["/projects/quickcart-home.jpg", "/projects/quickcart-restaurants.jpg", "/projects/quickcart-tracking.jpg"]
   },
   {
     id: "project-4",
-    title: "Smart Gas Detector – IoT Safety System",
-    description: "Built IoT-based gas detection system with live alerts via mobile app. Integrated Java EE backend and real-time data processing.",
-    detailedDescription: "An innovative IoT-based safety system that monitors gas levels in real-time and provides instant alerts through a mobile application. The system combines hardware sensors, cloud connectivity, and mobile technology to create a comprehensive safety solution for homes and workplaces.",
-    techStack: ["ESP32", "React Native", "Java EE"],
-    features: [
-      "Real-time gas level monitoring with ESP32 sensors",
-      "Instant mobile alerts and notifications",
-      "Historical data logging and analysis",
-      "Multi-user support with role-based access",
-      "Emergency contact system with automated calls",
-      "Cloud-based data storage and backup",
-      "Customizable alert thresholds and sensitivity"
+    "title": "Smart Gas Detector – IoT Safety System",
+    "description": "IoT system for gas level monitoring with alerts via mobile app and backend processing.",
+    "detailedDescription": "A system using an ESP32 + MQ-2 gas sensor to read gas levels and transmit data to a Java EE backend. A mobile app built with React Native / Expo allows real-time viewing of gas levels, and triggers alerts (LED, buzzer) if thresholds are exceeded. The backend handles data logging and app-device communication.",
+    "techStack": ["ESP32", "MQ-2 sensor", "Java EE", "Gson", "React Native / Expo"],
+    "features": [
+      "Real-time sensor data transmission",
+      "Alert triggers (LED, buzzer) on threshold breach",
+      "Mobile app view of gas levels and status",
+      "Ability to stop alarm via app",
+      "Persisting historical data",
+      "Multi-device support"
     ],
-    challenges: [
-      "Ensuring reliable sensor data transmission",
-      "Implementing real-time communication between IoT device and mobile app",
-      "Creating robust error handling for network connectivity issues",
-      "Optimizing battery life for continuous monitoring"
+    "challenges": [
+      "Maintaining reliable connectivity between ESP and backend",
+      "Minimizing latency for alert delivery",
+      "Handling intermittent network failures",
+      "Balancing sensor sampling rate vs power consumption"
     ],
-    solutions: [
-      "Used MQTT protocol for efficient IoT communication",
-      "Implemented WebSocket connections for real-time updates",
-      "Created fallback mechanisms and retry logic for network issues",
-      "Optimized ESP32 power management and sleep modes"
+    "solutions": [
+      "Retried failed transmissions and queued data locally",
+      "Used efficient JSON payloads and WebSocket / HTTP polling",
+      "Implemented fallback logic and connection checking",
+      "Optimized sampling rate and used sleep mode strategies"
     ],
+
     imageUrl: "/projects/smart-gas-detector.jpg",
     githubUrl: "https://github.com/YasasBanuka/Smart-Gas-Detector",
     gradient: "from-purple-500 to-pink-600",
     category: "IoT & Mobile",
-    duration: "5 months",
-    teamSize: "Team of 2",
+    duration: "1 month",
+    teamSize: "Solo Project",
     screenshots: ["/projects/gas-dashboard.jpg", "/projects/gas-alerts.jpg", "/projects/gas-analytics.jpg"]
   },
   {
     id: "project-5",
+    "title": "ConsultConnect – Android M-Commerce / Consultation App",
+    "description": "Android app connecting clients to consultants with booking and in-app payments.",
+    "detailedDescription": "ConsultConnect allows users to search consultant profiles, book sessions, manage profiles, and pay securely inside the app. It includes user authentication, directory browsing, secure payment flows, and direct interactions between users and consultants.",
+    "techStack": ["Java", "XML", "Android SDK", "SQLite", "Firebase", "Google Maps API"],
+    "features": [
+      "User & consultant authentication and profiles",
+      "Consultant directory & search",
+      "Booking / scheduling system",
+      "Secure in-app payments",
+      "Map / location integration",
+      "User reviews / ratings"
+    ],
+    "challenges": [
+      "Managing booking conflicts and time zones",
+      "Handling payment errors and rollback",
+      "Ensuring data consistency between user and consultant modules",
+      "Providing smooth UX across Android devices"
+    ],
+    "solutions": [
+      "Implemented booking Lock / reservation checks",
+      "Handled payment exceptions and rollbacks transactionally",
+      "Used structured data models and consistency checks",
+      "Tested on multiple device form factors"
+    ],
+
+    imageUrl: "/projects/consult-connect.jpg",
+    githubUrl: "https://github.com/YasasBanuka/ConsultConnect",
+    gradient: "from-blue-500 to-purple-600",
+    category: "Mobile Application",
+    duration: "1 month",
+    teamSize: "Solo Project",
+    screenshots: ["/projects/gas-dashboard.jpg", "/projects/gas-alerts.jpg", "/projects/gas-analytics.jpg"]
+  },
+  {
+    id: "project-6",
+    "title": "E-Commerce (React + Spring Boot)",
+    "description": "Full stack e-commerce using React (Vite) frontend and Spring Boot backend with Spring Security.",
+    "detailedDescription": "A split frontend-backend ecommerce project. The frontend is built with React (Vite + Axios), handling UI, routing, API calls. The backend is Spring Boot with H2 database (for testing) and Spring Security for user auth and role-based access. CRUD endpoints for products, orders, users, and a secured API layer.",
+    "techStack": ["React", "Vite", "Axios", "Spring Boot", "Spring Security", "H2"],
+    "features": [
+      "JWT / session-based authentication",
+      "Product catalog CRUD APIs",
+      "Cart and order APIs",
+      "Role-based access (user, admin)",
+      "Image upload support (future expansion)",
+      "Responsive UI"
+    ],
+    "challenges": [
+      "Synchronizing frontend state with backend data",
+      "Securing APIs from unauthorized access",
+      "Handling CSRF, CORS, and security issues",
+      "Setting up development vs production configs"
+    ],
+    "solutions": [
+      "Used Axios interceptors for token refreshing",
+      "Configured CORS and CSRF tokens properly",
+      "Modularized API layers and service layers",
+      "Used profiles for environment separation"
+    ],
+    imageUrl: "/projects/ecom.jpg",
+    githubUrl: "https://github.com/YasasBanuka/ConsultConnect",
+    gradient: "from-emerald-500 to-blue-600",
+    category: "Full-Stack Web Application",
+    duration: "1 month",
+    teamSize: "Solo Project",
+    screenshots: ["/projects/gas-dashboard.jpg", "/projects/gas-alerts.jpg", "/projects/gas-analytics.jpg"]
+  },
+  {
+    id: "project-7",
     title: "Student Management System",
     description: "Comprehensive web-based system for managing student records, grades, and academic progress with role-based access control.",
     detailedDescription: "A full-featured student management system designed for educational institutions to streamline administrative tasks, track student progress, and facilitate communication between students, teachers, and administrators.",
@@ -196,14 +301,14 @@ const projects: Project[] = [
     ],
     imageUrl: "/projects/student-management.jpg",
     githubUrl: "https://github.com/YasasBanuka/Student-Management-System",
-    gradient: "from-cyan-500 to-blue-600",
+    gradient: "from-orange-500 to-red-600",
     category: "Web Application",
     duration: "4 months",
     teamSize: "Team of 4",
     screenshots: ["/projects/sms-dashboard.jpg", "/projects/sms-grades.jpg", "/projects/sms-reports.jpg"]
   },
   {
-    id: "project-6",
+    id: "project-8",
     title: "Weather Analytics Dashboard",
     description: "Real-time weather data visualization dashboard with historical analysis and predictive forecasting capabilities.",
     detailedDescription: "An advanced weather analytics platform that aggregates data from multiple sources to provide comprehensive weather insights, historical analysis, and predictive forecasting for various applications.",
@@ -238,7 +343,7 @@ const projects: Project[] = [
     screenshots: ["/projects/weather-charts.jpg", "/projects/weather-maps.jpg", "/projects/weather-forecast.jpg"]
   },
   {
-    id: "project-7",
+    id: "project-9",
     title: "Blockchain Voting System",
     description: "Secure, transparent voting system built on blockchain technology ensuring immutability and verifiability of votes.",
     detailedDescription: "A revolutionary voting system that leverages blockchain technology to provide secure, transparent, and verifiable voting mechanisms. The system ensures vote integrity while maintaining voter privacy through advanced cryptographic techniques.",
@@ -273,7 +378,7 @@ const projects: Project[] = [
     screenshots: ["/projects/voting-interface.jpg", "/projects/voting-results.jpg", "/projects/voting-verification.jpg"]
   },
   {
-    id: "project-8",
+    id: "project-10",
     title: "AI-Powered Code Review Assistant",
     description: "Intelligent code review tool that uses machine learning to analyze code quality, suggest improvements, and detect potential bugs.",
     detailedDescription: "An advanced AI-powered tool that automates code review processes using machine learning algorithms. The system analyzes code patterns, identifies potential issues, and provides intelligent suggestions for improvement, significantly reducing manual review time.",
@@ -301,7 +406,7 @@ const projects: Project[] = [
     ],
     imageUrl: "/projects/ai-code-review.jpg",
     githubUrl: "https://github.com/YasasBanuka/AI-Code-Review-Assistant",
-    gradient: "from-pink-500 to-rose-600",
+    gradient: "from-cyan-500 to-blue-600",
     category: "AI/ML Application",
     duration: "8 months",
     teamSize: "Team of 4",
@@ -998,12 +1103,11 @@ export default function Projects() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
             Featured Projects
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Explore my diverse portfolio of innovative solutions across full-stack development, 
-            mobile applications, IoT systems, AI/ML, and enterprise software solutions.
+            Innovative solutions across full-stack development, mobile apps, IoT, and AI/ML.
           </p>
         </motion.div>
 

@@ -2,6 +2,7 @@
 
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 type ProfessionalEntry = {
   id: string;
@@ -10,6 +11,7 @@ type ProfessionalEntry = {
   duration: string;
   description: string[];
   type: "full-time" | "freelance" | "contract" | "internship";
+  logo: string;
 };
 
 const professionalEntries: ProfessionalEntry[] = [
@@ -23,7 +25,8 @@ const professionalEntries: ProfessionalEntry[] = [
       "Improved site usability and engagement through UI optimization and SEO campaigns.",
       "Managed social media and boosted digital presence."
     ],
-    type: "full-time"
+    type: "full-time",
+    logo: "/logos/wdcse.png"
   },
   {
     id: "prof-2",
@@ -35,7 +38,8 @@ const professionalEntries: ProfessionalEntry[] = [
       "Handled front-end and CMS integrations with strong client feedback.",
       "Gained experience in working independently, managing projects end-to-end."
     ],
-    type: "freelance"
+    type: "freelance",
+    logo: "/logos/freelancer.png"
   }
 ];
 
@@ -94,22 +98,43 @@ function ProfessionalItem({ entry, index }: { entry: ProfessionalEntry; index: n
       variants={itemVariants}
       className="border-b border-slate-200 dark:border-slate-700 pb-6 last:border-b-0 last:pb-0"
     >
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
-        <div className="flex-1">
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">
-            {entry.role}
-          </h3>
-          <p className="text-base text-slate-600 dark:text-slate-300 mb-3">
-            {entry.organization}
-          </p>
-          <ul className="space-y-1">
-            {entry.description.map((bullet, bulletIndex) => (
-              <li key={bulletIndex} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
-                <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-slate-400 mt-2"></span>
-                <span>{bullet}</span>
-              </li>
-            ))}
-          </ul>
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div className="flex gap-4 flex-1">
+          {/* Company Logo */}
+          <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+            <Image
+              src={entry.logo}
+              alt={`${entry.organization} logo`}
+              width={48}
+              height={48}
+              className="object-contain p-1"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent) {
+                  parent.innerHTML = `<span class="text-lg font-bold text-slate-600 dark:text-slate-300">${entry.organization.charAt(0)}</span>`;
+                }
+              }}
+            />
+          </div>
+          
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">
+              {entry.role}
+            </h3>
+            <p className="text-base text-slate-600 dark:text-slate-300 mb-3">
+              {entry.organization}
+            </p>
+            <ul className="space-y-1">
+              {entry.description.map((bullet, bulletIndex) => (
+                <li key={bulletIndex} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
+                  <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-slate-400 mt-2"></span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="flex flex-col md:items-end gap-2">
           <span className="text-sm font-medium text-slate-600 dark:text-slate-300">
@@ -162,11 +187,11 @@ export default function ProfessionalExperienceTimeline() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
-            Employment
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+            Professional Journey
           </h2>
-          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            My professional journey in web development and digital solutions.
+          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Real-world experience in web development and digital solutions.
           </p>
         </motion.div>
 

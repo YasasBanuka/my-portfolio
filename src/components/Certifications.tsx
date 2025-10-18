@@ -10,6 +10,7 @@ type Certification = {
   organization: string;
   description: string;
   icon: string;
+  logo: string;
   color: string;
   gradient: string;
   imageUrl: string;
@@ -25,6 +26,7 @@ const certifications: Certification[] = [
     organization: "KodeKloud",
     description: "Validated foundational cloud computing knowledge and Azure services understanding.",
     icon: "☁️",
+    logo: "/logos/kodekloud-logo.png",
     color: "blue",
     gradient: "from-blue-500 to-cyan-500",
     imageUrl: "/certificates/AZ900.jpg",
@@ -38,6 +40,7 @@ const certifications: Certification[] = [
     organization: "Microsoft Learn Student Ambassadors, Sri Lanka",
     description: "Introduced to Azure fundamentals, services, and practical cloud deployment workflows.",
     icon: "🔷",
+    logo: "/logos/mlsa-logo.png",
     color: "blue",
     gradient: "from-blue-500 to-indigo-500",
     imageUrl: "/certificates/azure-101.jpg",
@@ -50,6 +53,7 @@ const certifications: Certification[] = [
     organization: "Microsoft Learn Student Ambassadors, Sri Lanka",
     description: "Explored Azure OpenAI integration with GitHub Models for modern AI-driven development.",
     icon: "🧠",
+    logo: "/logos/mlsa-logo.png",
     color: "violet",
     gradient: "from-violet-500 to-purple-500",
     imageUrl: "/certificates/azure-openai.jpg",
@@ -62,6 +66,7 @@ const certifications: Certification[] = [
     organization: "Microsoft Learn Student Ambassadors, Sri Lanka",
     description: "Developed an AI-powered image classifier using Azure Custom Vision and DPAPI secure storage.",
     icon: "🤖",
+    logo: "/logos/mlsa-logo.png",
     color: "purple",
     gradient: "from-purple-500 to-pink-500",
     imageUrl: "/certificates/azure-custom-vision.jpg",
@@ -75,6 +80,7 @@ const certifications: Certification[] = [
     organization: "KodeKloud",
     description: "Learned the core principles of CI/CD, automation, and containerized deployment workflows.",
     icon: "⚙️",
+    logo: "/logos/kodekloud-logo.png",
     color: "emerald",
     gradient: "from-emerald-500 to-teal-500",
     imageUrl: "/certificates/devops-fundamentals.jpg",
@@ -88,6 +94,7 @@ const certifications: Certification[] = [
     organization: "KodeKloud",
     description: "Covered DevOps foundations including Linux, Git, and automation basics.",
     icon: "🧩",
+    logo: "/logos/kodekloud-logo.png",
     color: "teal",
     gradient: "from-teal-500 to-green-500",
     imageUrl: "/certificates/devops-prereq.jpg",
@@ -101,6 +108,7 @@ const certifications: Certification[] = [
     organization: "KodeKloud",
     description: "Mastered 12-factor app methodology for building scalable, cloud-native applications.",
     icon: "🏗️",
+    logo: "/logos/kodekloud-logo.png",
     color: "amber",
     gradient: "from-amber-500 to-yellow-500",
     imageUrl: "/certificates/12factor.jpg",
@@ -114,6 +122,7 @@ const certifications: Certification[] = [
     organization: "KodeKloud",
     description: "Gained practical Linux experience, file system management, and shell scripting knowledge.",
     icon: "🐧",
+    logo: "/logos/kodekloud-logo.png",
     color: "gray",
     gradient: "from-gray-500 to-slate-500",
     imageUrl: "/certificates/linux-basics.jpg",
@@ -127,6 +136,7 @@ const certifications: Certification[] = [
     organization: "Postman",
     description: "Certified in API testing, environment setup, and request automation with Postman.",
     icon: "📡",
+    logo: "/logos/postman.webp",
     color: "orange",
     gradient: "from-orange-500 to-red-500",
     imageUrl: "/certificates/postman.jpg",
@@ -140,6 +150,7 @@ const certifications: Certification[] = [
     organization: "Pieces",
     description: "Explored fundamentals of generative AI tools and prompt engineering workflows.",
     icon: "💡",
+    logo: "/logos/pieces-logo.png",
     color: "pink",
     gradient: "from-pink-500 to-rose-500",
     imageUrl: "/certificates/genai-101.jpg",
@@ -153,6 +164,7 @@ const certifications: Certification[] = [
     organization: "Meta",
     description: "Mastered hooks, context, routing, and testing for scalable React applications.",
     icon: "⚛️",
+    logo: "/logos/meta-logo.png",
     color: "cyan",
     gradient: "from-cyan-500 to-blue-500",
     imageUrl: "/certificates/advanced-react.jpg",
@@ -166,6 +178,7 @@ const certifications: Certification[] = [
     organization: "Meta",
     description: "Learned React fundamentals; components, JSX, state, and props for dynamic web apps.",
     icon: "⚛️",
+    logo: "/logos/meta-logo.png",
     color: "blue",
     gradient: "from-blue-500 to-cyan-500",
     imageUrl: "/certificates/react-basics.jpg",
@@ -179,6 +192,7 @@ const certifications: Certification[] = [
     organization: "Meta",
     description: "Learned user-centered design, prototyping, and usability testing with Figma.",
     icon: "🎨",
+    logo: "/logos/meta-logo.png",
     color: "rose",
     gradient: "from-rose-500 to-pink-500",
     imageUrl: "/certificates/uxui-meta.jpg",
@@ -192,6 +206,7 @@ const certifications: Certification[] = [
     organization: "Inotrend Int.",
     description: "Explored human psychology and persuasive communication in digital product contexts.",
     icon: "🧠",
+    logo: "/logos/inotrend-logo.png",
     color: "amber",
     gradient: "from-amber-500 to-orange-500",
     imageUrl: "/certificates/neuro-selling.jpg",
@@ -205,6 +220,7 @@ const certifications: Certification[] = [
     organization: "Sri Lanka Institute of Marketing (SLIM)",
     description: "Awarded for dedication and contribution during the Brand Management workshop.",
     icon: "🏅",
+    logo: "/logos/slim-logo.png",
     color: "yellow",
     gradient: "from-yellow-500 to-orange-500",
     imageUrl: "/certificates/slim-brand.jpg",
@@ -218,6 +234,7 @@ const certifications: Certification[] = [
     organization: "Ministry of Education - Sri Lanka",
     description: "Recognized for exceptional service as a trainer in a robotics and IoT workshop.",
     icon: "🤖",
+    logo: "/logos/ministry-education-logo.png",
     color: "indigo",
     gradient: "from-indigo-500 to-blue-500",
     imageUrl: "/certificates/smart-school.jpg",
@@ -311,10 +328,22 @@ function CertificationCard({ certification, index }: { certification: Certificat
         <div className="relative p-6 lg:p-8">
           {/* Icon and organization badge */}
           <div className="flex items-start justify-between mb-4">
-            <div className={`flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-xl bg-gradient-to-br ${certification.gradient} shadow-lg`}>
-              <span className="text-xl lg:text-2xl" aria-hidden>
-                {certification.icon}
-              </span>
+            <div className="flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-xl bg-white dark:bg-slate-100 shadow-lg overflow-hidden border border-slate-200 dark:border-slate-300">
+              <Image
+                src={certification.logo}
+                alt={`${certification.organization} logo`}
+                width={56}
+                height={56}
+                className="object-contain p-2"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const parent = target.parentElement;
+                  if (parent) {
+                    parent.innerHTML = `<span class="text-xl lg:text-2xl" aria-hidden>${certification.icon}</span>`;
+                  }
+                }}
+              />
             </div>
             <div className="flex-1 ml-4">
               <div className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">
@@ -406,10 +435,22 @@ function CertificationModal({
               {/* Content Section */}
               <div className="lg:w-1/2 p-8 lg:p-12">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${certification.gradient} shadow-lg`}>
-                    <span className="text-2xl" aria-hidden>
-                      {certification.icon}
-                    </span>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white dark:bg-slate-100 shadow-lg overflow-hidden border border-slate-200 dark:border-slate-300">
+                    <Image
+                      src={certification.logo}
+                      alt={`${certification.organization} logo`}
+                      width={48}
+                      height={48}
+                      className="object-contain p-2"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<span class="text-2xl" aria-hidden>${certification.icon}</span>`;
+                        }
+                      }}
+                    />
                   </div>
                   <div>
                     <div className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">
@@ -580,7 +621,7 @@ export default function Certifications() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden">
+    <section id="certifications" className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.03),transparent_50%)]"></div>
       
@@ -593,12 +634,11 @@ export default function Certifications() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
             Certifications & Achievements
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Continuous learning and professional development through industry-recognized 
-            certifications in cloud computing, DevOps, and modern web technologies.
+            Industry-recognized certifications in cloud computing, DevOps, and web technologies.
           </p>
         </motion.div>
 

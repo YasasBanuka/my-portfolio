@@ -52,6 +52,19 @@ const Footer = () => {
             delay: 2,
           }}
         />
+        <motion.div 
+          className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.03, 0.08, 0.03],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4,
+          }}
+        />
         
         {/* Floating footer elements */}
         <motion.div
@@ -81,8 +94,8 @@ const Footer = () => {
           className="mb-12"
           variants={itemVariants}
         >
-          <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-            Driven by passion, powered by purpose.
+          <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+            Leading Where Vision Meets Action
           </h3>
           <p className="text-lg text-slate-400 font-medium">
             — Yasas Banuka

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { getAllBlogPosts, BlogPost } from "@/data/blog";
 
@@ -58,20 +58,26 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
         {/* Blog image */}
         {post.image && (
           <div className="relative h-48 w-full rounded-lg overflow-hidden mb-4">
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-4xl mb-2">📝</div>
-                <div className="text-sm text-slate-500 dark:text-slate-400 px-2">
-                  Blog Post Image
-                </div>
-              </div>
-            </div>
             <img
               src={post.image}
               alt={post.title}
-              className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="w-full h-full object-cover"
               onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none';
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent) {
+                  parent.innerHTML = `
+                    <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
+                      <div class="text-center">
+                        <div class="text-4xl mb-2">📝</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400 px-2">
+                          Blog Post Image
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                }
               }}
             />
           </div>
@@ -127,6 +133,32 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
 export default function Blog() {
   const { ref, controls } = useRevealOnce<HTMLElement>();
   const blogPosts = getAllBlogPosts().slice(0, 6); // Show only first 6 posts on homepage
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(3);
+
+  useEffect(() => {
+    const updateItemsPerView = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerView(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(2);
+      } else {
+        setItemsPerView(3);
+      }
+    };
+
+    updateItemsPerView();
+    window.addEventListener('resize', updateItemsPerView);
+    return () => window.removeEventListener('resize', updateItemsPerView);
+  }, []);
+
+  const handlePrevious = () => {
+    setCurrentIndex(prev => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex(prev => Math.min(blogPosts.length - itemsPerView, prev + 1));
+  };
 
   const sectionVariants = {
     hidden: { opacity: 0 },
@@ -168,23 +200,85 @@ export default function Blog() {
             Blog & Articles
           </h2>
           <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-            Sharing insights, tutorials, and thoughts on software development, 
-            technology trends, and industry best practices.
+            Insights, tutorials, and thoughts on software development and technology trends.
           </p>
         </motion.div>
 
-        {/* Blog Posts Grid */}
+        {/* Blog Posts Carousel */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="relative overflow-hidden"
           variants={childVariants}
         >
-          {blogPosts.map((post, index) => (
-            <BlogCard 
-              key={post.id} 
-              post={post} 
-              index={index} 
-            />
-          ))}
+          <motion.div
+            className="flex transition-transform duration-500 ease-out"
+            style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
+          >
+            {blogPosts.map((post, index) => (
+              <div
+                key={post.id}
+                className="w-full flex-shrink-0 px-4"
+                style={{ width: `${100 / itemsPerView}%` }}
+              >
+                <BlogCard 
+                  post={post} 
+                  index={index} 
+                />
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* Carousel Navigation */}
+        <motion.div 
+          className="flex items-center justify-center gap-4 mt-8"
+          variants={childVariants}
+        >
+          <motion.button
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            className={`p-3 rounded-full shadow-lg transition-all duration-300 ${
+              currentIndex === 0 
+                ? 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed' 
+                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+            }`}
+            whileHover={currentIndex > 0 ? { scale: 1.1 } : {}}
+            whileTap={currentIndex > 0 ? { scale: 0.9 } : {}}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </motion.button>
+
+          {/* Dots indicator */}
+          <div className="flex gap-2">
+            {Array.from({ length: Math.max(1, blogPosts.length - itemsPerView + 1) }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'bg-blue-600 w-8' 
+                    : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
+                }`}
+              />
+            ))}
+          </div>
+
+          <motion.button
+            onClick={handleNext}
+            disabled={currentIndex >= blogPosts.length - itemsPerView}
+            className={`p-3 rounded-full shadow-lg transition-all duration-300 ${
+              currentIndex >= blogPosts.length - itemsPerView 
+                ? 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed' 
+                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+            }`}
+            whileHover={currentIndex < blogPosts.length - itemsPerView ? { scale: 1.1 } : {}}
+            whileTap={currentIndex < blogPosts.length - itemsPerView ? { scale: 0.9 } : {}}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </motion.button>
         </motion.div>
 
         {/* Load More Button */}

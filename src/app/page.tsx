@@ -20,10 +20,10 @@ export default function Home() {
         <Hero />
         <AboutMe />
         <TechnicalSkills />
-        <LeadershipVolunteering />
         <Projects />
         <ProfessionalExperienceTimeline />
         <EducationTimeline />
+        <LeadershipVolunteering />
         <Certifications />
         <Testimonials />
         <Blog />

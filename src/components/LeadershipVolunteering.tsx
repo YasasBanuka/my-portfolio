@@ -138,7 +138,7 @@ const leadershipRoles: LeadershipRole[] = [
     organization: "Robotic and Innovators Club – Mahinda Rajapaksha College",
     period: "2017 - 2020",
     summary: "Discovered my passion for leadership and mentoring through hands-on innovation and teamwork.",
-    logo: "/logos/robotics-club-logo.png",
+    logo: "/logos/mrc-logo.png",
     gradient: "from-purple-500 to-pink-600",
     journey: [
       {
@@ -323,11 +323,13 @@ function LeadershipCard({ role, index, onClick }: { role: LeadershipRole; index:
 function LeadershipModal({ 
   role, 
   isOpen, 
-  onClose 
+  onClose,
+  onPhotoClick
 }: { 
   role: LeadershipRole | null; 
   isOpen: boolean; 
-  onClose: () => void; 
+  onClose: () => void;
+  onPhotoClick: (photo: string) => void;
 }) {
   if (!role) return null;
 
@@ -479,40 +481,44 @@ function LeadershipModal({
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6">
                     Moments & Memories
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {role.photos.map((photo, index) => (
-                      <motion.div
-                        key={index}
-                        className="relative h-48 rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        <Image
-                          src={photo}
-                          alt={`${role.organization} activity`}
-                          fill
-                          className="object-cover"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                            const parent = target.parentElement;
-                            if (parent) {
-                              parent.innerHTML = `
-                                <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
-                                  <div class="text-center">
-                                    <div class="text-3xl mb-2">📸</div>
-                                    <div class="text-sm text-slate-500 dark:text-slate-400 px-2">
-                                      Leadership Moment
+                  <div className="overflow-x-auto">
+                    <div className="flex gap-6 pb-4" style={{ width: 'max-content' }}>
+                      {role.photos.map((photo, index) => (
+                        <motion.div
+                          key={index}
+                          className="relative h-48 w-64 rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-700 flex-shrink-0 cursor-pointer"
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: index * 0.1 }}
+                          onClick={() => onPhotoClick(photo)}
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          <Image
+                            src={photo}
+                            alt={`${role.organization} activity`}
+                            fill
+                            className="object-cover"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              const parent = target.parentElement;
+                              if (parent) {
+                                parent.innerHTML = `
+                                  <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
+                                    <div class="text-center">
+                                      <div class="text-3xl mb-2">📸</div>
+                                      <div class="text-sm text-slate-500 dark:text-slate-400 px-2">
+                                        Leadership Moment
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                              `;
-                            }
-                          }}
-                        />
-                      </motion.div>
-                    ))}
+                                `;
+                              }
+                            }}
+                          />
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -635,6 +641,7 @@ function PhotoCollage() {
 export default function LeadershipVolunteering() {
   const [selectedRole, setSelectedRole] = useState<LeadershipRole | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
   const handleCardClick = (role: LeadershipRole) => {
     setSelectedRole(role);
@@ -647,7 +654,7 @@ export default function LeadershipVolunteering() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden">
+    <section id="leadership" className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden">
       {/* Interactive Background Elements */}
       <div className="absolute inset-0 z-0">
         {/* Animated volunteer elements */}
@@ -711,11 +718,11 @@ export default function LeadershipVolunteering() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
-            Leadership & Volunteering
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+            Community Impact
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Inspiring change through community, collaboration, and courage.
+            Making a positive impact through community leadership and volunteer work.
           </p>
         </motion.div>
 
@@ -795,7 +802,45 @@ export default function LeadershipVolunteering() {
         role={selectedRole}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
+        onPhotoClick={setSelectedPhoto}
       />
+      
+      {/* Photo Popup Modal */}
+      <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPhoto(null)}
+          >
+            <motion.div
+              className="relative max-w-4xl max-h-[90vh]"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image 
+                src={selectedPhoto} 
+                alt="Full size photo" 
+                width={800} 
+                height={600} 
+                className="rounded-lg max-w-full max-h-full object-contain" 
+              />
+              <button
+                onClick={() => setSelectedPhoto(null)}
+                className="absolute top-4 right-4 p-2 bg-white/90 dark:bg-slate-800/90 rounded-full shadow-lg hover:bg-white dark:hover:bg-slate-800 transition-colors"
+              >
+                <svg className="w-6 h-6 text-slate-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

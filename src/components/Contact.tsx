@@ -96,10 +96,23 @@ function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     try {
-      // In a real application, you would send this data to your backend
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Create email content
+      const emailContent = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+
+Message:
+${formData.message}
+      `.trim();
+
+      // Create mailto link
+      const mailtoLink = `mailto:ybanuka2003@gmail.com?subject=Portfolio Contact Form - ${formData.name}&body=${encodeURIComponent(emailContent)}`;
+      
+      // Open email client
+      window.open(mailtoLink, '_blank');
+      
       setSubmitStatus('success');
       setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
@@ -254,7 +267,7 @@ function ContactForm() {
           ) : submitStatus === 'success' ? (
             <span className="flex items-center justify-center gap-2">
               <span>✓</span>
-              Message sent successfully!
+              Email client opened! Please send the message.
             </span>
           ) : submitStatus === 'error' ? (
             <span className="flex items-center justify-center gap-2">
@@ -327,8 +340,8 @@ function ContactLinks() {
       variants={containerVariants}
       className="w-full"
     >
-      {/* Social Media Links - Clean List */}
-      <div className="space-y-4">
+      {/* Desktop: Full links with text */}
+      <div className="hidden lg:block space-y-4">
         {contactLinks.map((link) => (
           <motion.a
             key={link.id}
@@ -350,6 +363,27 @@ function ContactLinks() {
             <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">
               {link.label}
             </span>
+          </motion.a>
+        ))}
+      </div>
+
+      {/* Mobile: Only icons horizontally */}
+      <div className="lg:hidden flex justify-center gap-6">
+        {contactLinks.map((link) => (
+          <motion.a
+            key={link.id}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            variants={linkVariants}
+            className="group flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-slate-800 shadow-lg hover:shadow-xl transition-all duration-200"
+            whileHover={{ scale: 1.1, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            title={link.label}
+          >
+            <div className="text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">
+              {renderIcon(link.icon)}
+            </div>
           </motion.a>
         ))}
       </div>
@@ -382,6 +416,7 @@ export default function Contact() {
 
   return (
     <section 
+      id="contact"
       ref={ref}
       className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden"
     >

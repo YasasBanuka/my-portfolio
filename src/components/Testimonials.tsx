@@ -350,6 +350,7 @@ export default function Testimonials() {
 
   return (
     <section 
+      id="testimonials"
       ref={ref}
       className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden"
     >
@@ -372,7 +373,7 @@ export default function Testimonials() {
             What People Say
           </h2>
           <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-            Testimonials from clients, colleagues, and collaborators who have worked with me on various projects.
+            What clients, colleagues, and collaborators say about working with me.
           </p>
         </motion.div>
 

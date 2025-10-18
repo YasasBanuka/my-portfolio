@@ -39,27 +39,25 @@ const skillCategories: SkillCategory[] = [
         id: "react",
         name: "React.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-        proficiency: "Advanced",
+        proficiency: "Intermediate",
         color: "blue",
         gradient: "from-blue-500 to-blue-600",
         description: "Strong understanding of component-based architecture, hooks, state management, and modern React patterns",
-        yearsOfExperience: 3
       },
       {
         id: "javascript",
         name: "JavaScript (ES6+)",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-        proficiency: "Advanced",
+        proficiency: "Intermediate",
         color: "orange",
         gradient: "from-orange-500 to-red-500",
         description: "Modern JavaScript with ES6+ features, async/await, modules, and functional programming concepts",
-        yearsOfExperience: 4
       },
       {
         id: "html5",
         name: "HTML5",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
-        proficiency: "Advanced",
+        proficiency: "Expert",
         color: "red",
         gradient: "from-red-500 to-orange-500"
       },
@@ -67,7 +65,7 @@ const skillCategories: SkillCategory[] = [
         id: "css3",
         name: "CSS3",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
-        proficiency: "Advanced",
+        proficiency: "Expert",
         color: "blue",
         gradient: "from-blue-500 to-indigo-500"
       },
@@ -75,11 +73,10 @@ const skillCategories: SkillCategory[] = [
         id: "tailwind",
         name: "Tailwind CSS",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
-        proficiency: "Advanced",
+        proficiency: "Intermediate",
         color: "cyan",
         gradient: "from-cyan-500 to-blue-500",
         description: "Utility-first CSS framework for rapid UI development with responsive design and custom components",
-        yearsOfExperience: 2
       },
       {
         id: "bootstrap",
@@ -100,8 +97,8 @@ const skillCategories: SkillCategory[] = [
       {
         id: "elementor",
         name: "Elementor",
-        logo: "https://elementor.com/mark/wp-content/uploads/2021/10/cropped-Elementor-Logo-Symbol-Red-32x32.png",
-        proficiency: "Intermediate",
+        logo: "https://cdn.jsdelivr.net/npm/simple-icons@14.11.0/icons/elementor.svg",
+        proficiency: "Advanced",
         color: "green",
         gradient: "from-green-500 to-emerald-500"
       }
@@ -116,18 +113,17 @@ const skillCategories: SkillCategory[] = [
       {
         id: "java-spring",
         name: "Java (Spring Boot)",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+        logo: "https://spring.io/img/projects/spring-boot.svg",
         proficiency: "Advanced",
         color: "red",
         gradient: "from-red-500 to-orange-500",
         description: "Enterprise Java development with Spring Boot, dependency injection, and microservices architecture",
-        yearsOfExperience: 3
       },
       {
         id: "spring-security",
         name: "Spring Security",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
-        proficiency: "Advanced",
+        proficiency: "Intermediate",
         color: "green",
         gradient: "from-green-500 to-emerald-500"
       },
@@ -151,7 +147,7 @@ const skillCategories: SkillCategory[] = [
         id: "nodejs",
         name: "Node.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-        proficiency: "Intermediate",
+        proficiency: "Beginner",
         color: "green",
         gradient: "from-green-500 to-emerald-500"
       },
@@ -159,7 +155,7 @@ const skillCategories: SkillCategory[] = [
         id: "express",
         name: "Express",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
-        proficiency: "Intermediate",
+        proficiency: "Beginner",
         color: "gray",
         gradient: "from-gray-500 to-gray-600"
       },
@@ -182,7 +178,7 @@ const skillCategories: SkillCategory[] = [
       {
         id: "rest-api",
         name: "REST API",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg",
         proficiency: "Advanced",
         color: "green",
         gradient: "from-green-500 to-emerald-500"
@@ -207,7 +203,7 @@ const skillCategories: SkillCategory[] = [
         id: "react-native",
         name: "React Native",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-        proficiency: "Advanced",
+        proficiency: "Intermediate",
         color: "blue",
         gradient: "from-blue-500 to-purple-500"
       },
@@ -246,7 +242,7 @@ const skillCategories: SkillCategory[] = [
       {
         id: "payhere",
         name: "PayHere API",
-        logo: "https://www.payhere.lk/downloads/images/payhere_logo.png",
+        logo: "https://payherestorage.blob.core.windows.net/payhere-resources/www/images/PayHere-Logo.png",
         proficiency: "Intermediate",
         color: "blue",
         gradient: "from-blue-500 to-indigo-500"
@@ -262,8 +258,8 @@ const skillCategories: SkillCategory[] = [
       {
         id: "aws-s3",
         name: "AWS S3",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg",
-        proficiency: "Intermediate",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+        proficiency: "Beginner",
         color: "orange",
         gradient: "from-orange-500 to-yellow-500"
       },
@@ -278,7 +274,7 @@ const skillCategories: SkillCategory[] = [
       {
         id: "azure-vision",
         name: "Azure Custom Vision",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoft/microsoft-original.svg",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
         proficiency: "Intermediate",
         color: "blue",
         gradient: "from-blue-500 to-indigo-500"
@@ -382,7 +378,7 @@ const skillCategories: SkillCategory[] = [
       {
         id: "glassfish",
         name: "GlassFish",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/8/85/GlassFish_logo.svg/330px-GlassFish_logo.svg.png",
         proficiency: "Intermediate",
         color: "blue",
         gradient: "from-blue-500 to-cyan-500"
@@ -390,7 +386,7 @@ const skillCategories: SkillCategory[] = [
       {
         id: "payara",
         name: "Payara",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+        logo: "https://cdn.payara.fish/wp-content/uploads/2025/08/Payara_Server.svg",
         proficiency: "Intermediate",
         color: "green",
         gradient: "from-green-500 to-emerald-500"
@@ -414,7 +410,7 @@ const skillCategories: SkillCategory[] = [
       {
         id: "rest-api-design",
         name: "RESTful API Design",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg",
         proficiency: "Advanced",
         color: "green",
         gradient: "from-green-500 to-emerald-500"
@@ -430,7 +426,7 @@ const skillCategories: SkillCategory[] = [
       {
         id: "cicd",
         name: "CI/CD",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+        logo: "https://s3.amazonaws.com/vipm-io-media-files-production/media/package-list-images/7d7747a7-68b1-4cd7-9527-19eb96be9d7c.png",
         proficiency: "Beginner",
         color: "purple",
         gradient: "from-purple-500 to-pink-500"
@@ -447,15 +443,15 @@ const skillCategories: SkillCategory[] = [
         id: "auth-auth",
         name: "Authentication & Authorization",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
-        proficiency: "Advanced",
+        proficiency: "Intermediate",
         color: "indigo",
         gradient: "from-indigo-500 to-purple-500"
       },
       {
         id: "jwt",
         name: "JWT",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-        proficiency: "Advanced",
+        logo: "https://www.jwt.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fjwt-flower.f20616b0.png&w=1920&q=75",
+        proficiency: "Beginner",
         color: "blue",
         gradient: "from-blue-500 to-cyan-500"
       },
@@ -463,14 +459,14 @@ const skillCategories: SkillCategory[] = [
         id: "spring-security-method",
         name: "Spring Security",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
-        proficiency: "Advanced",
+        proficiency: "Intermediate",
         color: "green",
         gradient: "from-green-500 to-emerald-500"
       },
       {
         id: "sdlc",
         name: "Software Development Life Cycle",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+        logo: "https://cdn2.iconfinder.com/data/icons/programming-76/512/SDLC-software-development-life_cycle-512.png",
         proficiency: "Intermediate",
         color: "purple",
         gradient: "from-purple-500 to-indigo-500"

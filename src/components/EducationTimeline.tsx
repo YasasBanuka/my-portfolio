@@ -2,6 +2,7 @@
 
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 type EducationEntry = {
   id: string;
@@ -10,6 +11,7 @@ type EducationEntry = {
   duration: string;
   description: string;
   status: "completed" | "ongoing";
+  logo: string;
 };
 
 const educationEntries: EducationEntry[] = [
@@ -19,7 +21,8 @@ const educationEntries: EducationEntry[] = [
     institution: "IIC University of Technology",
     duration: "Aug 2021 – 2025",
     description: "Focusing on enterprise software systems, Spring Boot, and modern web development. Strengthened backend, API design, and system integration skills.",
-    status: "ongoing"
+    status: "ongoing",
+    logo: "/logos/iic-logo.png"
   },
   {
     id: "edu-2", 
@@ -27,7 +30,8 @@ const educationEntries: EducationEntry[] = [
     institution: "University of Vocational Technology (UoVT)",
     duration: "May 2024 – Present",
     description: "Building strong foundation in networking, cybersecurity, and cloud infrastructure — complementing software engineering expertise.",
-    status: "ongoing"
+    status: "ongoing",
+    logo: "/logos/uovt-logo.png"
   },
   {
     id: "edu-3",
@@ -35,7 +39,8 @@ const educationEntries: EducationEntry[] = [
     institution: "Mahinda Rajapaksha College, Homagama",
     duration: "Jan 2014 – Jan 2022", 
     description: "Studied technology stream with focus on ICT and engineering fundamentals. Member of Robotics & Innovators Club.",
-    status: "completed"
+    status: "completed",
+    logo: "/logos/mrc-logo.png"
   }
 ];
 
@@ -74,17 +79,38 @@ function EducationItem({ entry, index }: { entry: EducationEntry; index: number 
       variants={itemVariants}
       className="border-b border-slate-200 dark:border-slate-700 pb-6 last:border-b-0 last:pb-0"
     >
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
-        <div className="flex-1">
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">
-            {entry.degree}
-          </h3>
-          <p className="text-base text-slate-600 dark:text-slate-300 mb-2">
-            {entry.institution}
-          </p>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
-            {entry.description}
-          </p>
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div className="flex gap-4 flex-1">
+          {/* Institution Logo */}
+          <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+            <Image
+              src={entry.logo}
+              alt={`${entry.institution} logo`}
+              width={48}
+              height={48}
+              className="object-contain p-1"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent) {
+                  parent.innerHTML = `<span class="text-lg font-bold text-slate-600 dark:text-slate-300">${entry.institution.charAt(0)}</span>`;
+                }
+              }}
+            />
+          </div>
+          
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-1">
+              {entry.degree}
+            </h3>
+            <p className="text-base text-slate-600 dark:text-slate-300 mb-2">
+              {entry.institution}
+            </p>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
+              {entry.description}
+            </p>
+          </div>
         </div>
         <div className="flex flex-col md:items-end gap-2">
           <span className="text-sm font-medium text-slate-600 dark:text-slate-300">
@@ -119,6 +145,7 @@ export default function EducationTimeline() {
 
   return (
     <section 
+      id="education"
       ref={ref}
       className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden"
     >
@@ -140,11 +167,11 @@ export default function EducationTimeline() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
-            Education
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+            Academic Foundation
           </h2>
-          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            My academic journey in software and network engineering.
+          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            My academic foundation in software and network engineering.
           </p>
         </motion.div>
 
