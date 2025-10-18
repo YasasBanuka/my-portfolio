@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -104,7 +104,7 @@ function useRevealOnce<T extends HTMLElement>() {
   return { ref, controls } as const;
 }
 
-function TestimonialCard({ testimonial, index }: { testimonial: Testimonial; index: number }) {
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   const { ref, controls } = useRevealOnce<HTMLDivElement>();
 
   const cardVariants = {
@@ -383,7 +383,7 @@ export default function Testimonials() {
             className="flex transition-transform duration-500 ease-out"
             style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
           >
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
                 className="w-full flex-shrink-0 px-4"
@@ -391,7 +391,6 @@ export default function Testimonials() {
               >
                 <TestimonialCard 
                   testimonial={testimonial} 
-                  index={index} 
                 />
               </div>
             ))}

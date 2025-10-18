@@ -2,6 +2,7 @@
 
 import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 // Type definitions for skill proficiency levels
 type ProficiencyLevel = "Beginner" | "Intermediate" | "Advanced" | "Expert";
@@ -513,16 +514,6 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
     }
   };
 
-  // Get proficiency level background color for glow effect
-  const getProficiencyGlowColor = (proficiency: ProficiencyLevel) => {
-    switch (proficiency) {
-      case "Expert": return "shadow-green-400/50";
-      case "Advanced": return "shadow-blue-400/50";
-      case "Intermediate": return "shadow-yellow-400/50";
-      case "Beginner": return "shadow-gray-400/50";
-      default: return "shadow-gray-400/50";
-    }
-  };
 
   return (
     <motion.div
@@ -564,9 +555,11 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
               transition: { duration: 0.2 }
             }}
           >
-            <img 
+            <Image 
               src={skill.logo} 
               alt={`${skill.name} logo`}
+              width={32}
+              height={32}
               className="w-8 h-8 object-contain transition-transform duration-200 group-hover:scale-110"
               onError={(e) => {
                 // Fallback to a generic icon if logo fails to load

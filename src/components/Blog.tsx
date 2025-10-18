@@ -26,12 +26,7 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
       opacity: 1, 
       y: 0, 
       scale: 1,
-      rotateX: 0,
-      transition: {
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: "easeOut"
-      }
+      rotateX: 0
     }
   };
 
@@ -41,6 +36,11 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
       initial="hidden"
       animate={controls}
       variants={cardVariants}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: "easeOut"
+      }}
       className="group relative"
     >
       <Link href={`/blog/${post.id}`}>

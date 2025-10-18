@@ -7,7 +7,6 @@ import Projects from '@/components/Projects';
 import EducationTimeline from '@/components/EducationTimeline';
 import ProfessionalExperienceTimeline from '@/components/ProfessionalExperienceTimeline';
 import Certifications from '@/components/Certifications';
-import Testimonials from '@/components/Testimonials';
 import Blog from '@/components/Blog';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -39,7 +38,7 @@ export default function Home() {
           scalable solutions while mentoring fellow students and organizing tech events.
         </p>
         <p>
-          Explore Yasas Banuka's portfolio featuring React.js projects, Java Spring Boot 
+          Explore Yasas Banuka&apos;s portfolio featuring React.js projects, Java Spring Boot 
           applications, Azure cloud solutions, and IoT innovations. Connect with this 
           Sri Lankan software engineer for collaboration opportunities.
         </p>

@@ -60,33 +60,7 @@ const AboutMe = () => {
     },
   };
 
-  const iconVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1
-    },
-    animate: {
-      rotate: [0, 10, -10, 0],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: 'reverse' as const,
-      },
-    },
-  };
 
-  const AnimatedIcon = ({ emoji, delay }: { emoji: string; delay: number }) => (
-    <motion.span
-      className="inline-block text-2xl mx-2"
-      variants={iconVariants}
-      initial="hidden"
-      animate={isVisible ? ["visible", "animate"] : "hidden"}
-      transition={{ delay }}
-    >
-      {emoji}
-    </motion.span>
-  );
 
   return (
     <section id="about" className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-blue-900/20 dark:to-purple-900/20 overflow-hidden">

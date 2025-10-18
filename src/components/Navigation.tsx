@@ -81,7 +81,7 @@ export default function Navigation() {
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [scrollY]);
 
   const scrollToSection = (href: string) => {
     if (href.startsWith('/')) {
