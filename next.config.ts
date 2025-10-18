@@ -104,12 +104,12 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
     optimizePackageImports: ['framer-motion', 'lucide-react'],
     
-    // Enable server components
-    serverComponentsExternalPackages: [],
-    
     // Enable modern JavaScript features
     esmExternals: true,
   },
+
+  // Server external packages (moved from experimental)
+  serverExternalPackages: [],
 
   // Compiler optimizations
   compiler: {
