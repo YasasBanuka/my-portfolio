@@ -104,10 +104,10 @@ const projects: Project[] = [
   {
     id: "project-2",
     title: "Full-Stack E-Commerce Application",
-    "description": "Full stack e-commerce using React (Vite) frontend and Spring Boot backend with Spring Security.",
-    "detailedDescription": "A split frontend-backend ecommerce project. The frontend is built with React (Vite + Axios), handling UI, routing, API calls. The backend is Spring Boot with H2 database (for testing) and Spring Security for user auth and role-based access. CRUD endpoints for products, orders, users, and a secured API layer.",
-    "techStack": ["React", "Vite", "Axios", "Spring Boot", "Spring Security", "H2"],
-    "features": [
+    description: "Full stack e-commerce using React (Vite) frontend and Spring Boot backend with Spring Security.",
+    detailedDescription: "A split frontend-backend ecommerce project. The frontend is built with React (Vite + Axios), handling UI, routing, API calls. The backend is Spring Boot with H2 database (for testing) and Spring Security for user auth and role-based access. CRUD endpoints for products, orders, users, and a secured API layer.",
+    techStack: ["React", "Vite", "Axios", "Spring Boot", "Spring Security", "H2"],
+    features: [
       "JWT / session-based authentication",
       "Product catalog CRUD APIs",
       "Cart and order APIs",
@@ -115,13 +115,13 @@ const projects: Project[] = [
       "Image upload support (future expansion)",
       "Responsive UI"
     ],
-    "challenges": [
+    challenges: [
       "Synchronizing frontend state with backend data",
       "Securing APIs from unauthorized access",
       "Handling CSRF, CORS, and security issues",
       "Setting up development vs production configs"
     ],
-    "solutions": [
+    solutions: [
       "Used Axios interceptors for token refreshing",
       "Configured CORS and CSRF tokens properly",
       "Modularized API layers and service layers",
@@ -138,11 +138,11 @@ const projects: Project[] = [
   },
   {
     id: "project-3",
-    "title": "Smart Trade – E-Commerce Platform",
-    "description": "Built a Java-based full featured ecommerce platform with secure checkout and user workflows.",
-    "detailedDescription": "Smart Trade is a Java EE / Hibernate backend with a frontend in HTML, CSS, and JavaScript. It supports user registration (email verification), product listing, shopping cart, and a secure checkout integrated with a payment gateway. The system handles end-to-end shopping flows and data persistence via Hibernate and JSON serialization with Gson.",
-    "techStack": ["Java EE", "Hibernate", "Gson", "HTML", "CSS", "JavaScript"],
-    "features": [
+    title: "Smart Trade – E-Commerce Platform",
+    description: "Built a Java-based full featured ecommerce platform with secure checkout and user workflows.",
+    detailedDescription: "Smart Trade is a Java EE / Hibernate backend with a frontend in HTML, CSS, and JavaScript. It supports user registration (email verification), product listing, shopping cart, and a secure checkout integrated with a payment gateway. The system handles end-to-end shopping flows and data persistence via Hibernate and JSON serialization with Gson.",
+    techStack: ["Java EE", "Hibernate", "Gson", "HTML", "CSS", "JavaScript"],
+    features: [
       "User registration with email verification",
       "Product catalog with CRUD operations",
       "Shopping cart synchronization",
@@ -150,13 +150,13 @@ const projects: Project[] = [
       "Order history for users",
       "Input validation & error handling"
     ],
-    "challenges": [
+    challenges: [
       "Managing transaction consistency during checkout",
       "Handling concurrency on stock updates",
       "Integrating with external payment gateway APIs",
       "Ensuring safe data serialization / deserialization"
     ],
-    "solutions": [
+    solutions: [
       "Used database transactions to guard against partial failures",
       "Employed optimistic locking / validations for stock updates",
       "Wrapped payment API calls in fallback / retry logic",
@@ -172,11 +172,11 @@ const projects: Project[] = [
   },
   {
     id: "project-4",
-    "title": "QuickCart – Mobile Food Delivery Application",
-    "description": "Android delivery app connecting users to restaurants with real-time orders, payments, and notifications.",
-    "detailedDescription": "QuickCart is an Android mobile application enabling users to browse restaurants, place orders, and track delivery. It uses Firebase for authentication and real-time database, integrates PayHere for payments, and pushes notifications for order updates.",
-    "techStack": ["Android SDK", "Java", "Firebase (Auth & Realtime DB)", "PayHere API"],
-    "features": [
+    title: "QuickCart – Mobile Food Delivery Application",
+    description: "Android delivery app connecting users to restaurants with real-time orders, payments, and notifications.",
+    detailedDescription: "QuickCart is an Android mobile application enabling users to browse restaurants, place orders, and track delivery. It uses Firebase for authentication and real-time database, integrates PayHere for payments, and pushes notifications for order updates.",
+    techStack: ["Android SDK", "Java", "Firebase (Auth & Realtime DB)", "PayHere API"],
+    features: [
       "User registration & login",
       "Restaurant listing with search & filters",
       "Order placement & tracking in real-time",
@@ -184,13 +184,13 @@ const projects: Project[] = [
       "Push notifications for order status",
       "Order history"
     ],
-    "challenges": [
+    challenges: [
       "Synchronizing real-time order state across users and restaurants",
       "Handling payment failures / rollbacks",
       "Ensuring compatibility across Android versions",
       "Offline / connectivity fallback"
     ],
-    "solutions": [
+    solutions: [
       "Used Firebase Realtime Database for live updates",
       "Wrapped payment logic with rollback and retry mechanisms",
       "Followed Android best practices and support libraries for compatibility",
@@ -206,11 +206,11 @@ const projects: Project[] = [
   },
   {
     id: "project-5",
-    "title": "Smart Gas Detector – IoT Safety System",
-    "description": "IoT system for gas level monitoring with alerts via mobile app and backend processing.",
-    "detailedDescription": "A system using an ESP32 + MQ-2 gas sensor to read gas levels and transmit data to a Java EE backend. A mobile app built with React Native / Expo allows real-time viewing of gas levels, and triggers alerts (LED, buzzer) if thresholds are exceeded. The backend handles data logging and app-device communication.",
-    "techStack": ["ESP32", "MQ-2 sensor", "Java EE", "Gson", "React Native / Expo"],
-    "features": [
+    title: "Smart Gas Detector – IoT Safety System",
+    description: "IoT system for gas level monitoring with alerts via mobile app and backend processing.",
+    detailedDescription: "A system using an ESP32 + MQ-2 gas sensor to read gas levels and transmit data to a Java EE backend. A mobile app built with React Native / Expo allows real-time viewing of gas levels, and triggers alerts (LED, buzzer) if thresholds are exceeded. The backend handles data logging and app-device communication.",
+    techStack: ["ESP32", "MQ-2 sensor", "Java EE", "Gson", "React Native / Expo"],
+    features: [
       "Real-time sensor data transmission",
       "Alert triggers (LED, buzzer) on threshold breach",
       "Mobile app view of gas levels and status",
@@ -218,13 +218,13 @@ const projects: Project[] = [
       "Persisting historical data",
       "Multi-device support"
     ],
-    "challenges": [
+    challenges: [
       "Maintaining reliable connectivity between ESP and backend",
       "Minimizing latency for alert delivery",
       "Handling intermittent network failures",
       "Balancing sensor sampling rate vs power consumption"
     ],
-    "solutions": [
+    solutions: [
       "Retried failed transmissions and queued data locally",
       "Used efficient JSON payloads and WebSocket / HTTP polling",
       "Implemented fallback logic and connection checking",
@@ -241,11 +241,11 @@ const projects: Project[] = [
   },
   {
     id: "project-6",
-    "title": "ConsultConnect – Android M-Commerce / Consultation App",
-    "description": "Android app connecting clients to consultants with booking and in-app payments.",
-    "detailedDescription": "ConsultConnect allows users to search consultant profiles, book sessions, manage profiles, and pay securely inside the app. It includes user authentication, directory browsing, secure payment flows, and direct interactions between users and consultants.",
-    "techStack": ["Java", "XML", "Android SDK", "SQLite", "Firebase", "Google Maps API"],
-    "features": [
+    title: "ConsultConnect – Android M-Commerce / Consultation App",
+    description: "Android app connecting clients to consultants with booking and in-app payments.",
+    detailedDescription: "ConsultConnect allows users to search consultant profiles, book sessions, manage profiles, and pay securely inside the app. It includes user authentication, directory browsing, secure payment flows, and direct interactions between users and consultants.",
+    techStack: ["Java", "XML", "Android SDK", "SQLite", "Firebase", "Google Maps API"],
+    features: [
       "User & consultant authentication and profiles",
       "Consultant directory & search",
       "Booking / scheduling system",
@@ -253,13 +253,13 @@ const projects: Project[] = [
       "Map / location integration",
       "User reviews / ratings"
     ],
-    "challenges": [
+    challenges: [
       "Managing booking conflicts and time zones",
       "Handling payment errors and rollback",
       "Ensuring data consistency between user and consultant modules",
       "Providing smooth UX across Android devices"
     ],
-    "solutions": [
+    solutions: [
       "Implemented booking Lock / reservation checks",
       "Handled payment exceptions and rollbacks transactionally",
       "Used structured data models and consistency checks",
@@ -276,11 +276,11 @@ const projects: Project[] = [
   },
   {
     id: "project-7",
-    "title": "E-Commerce (React + Spring Boot)",
-    "description": "Full stack e-commerce using React (Vite) frontend and Spring Boot backend with Spring Security.",
-    "detailedDescription": "A split frontend-backend ecommerce project. The frontend is built with React (Vite + Axios), handling UI, routing, API calls. The backend is Spring Boot with H2 database (for testing) and Spring Security for user auth and role-based access. CRUD endpoints for products, orders, users, and a secured API layer.",
-    "techStack": ["React", "Vite", "Axios", "Spring Boot", "Spring Security", "H2"],
-    "features": [
+    title: "E-Commerce (React + Spring Boot)",
+    description: "Full stack e-commerce using React (Vite) frontend and Spring Boot backend with Spring Security.",
+    detailedDescription: "A split frontend-backend ecommerce project. The frontend is built with React (Vite + Axios), handling UI, routing, API calls. The backend is Spring Boot with H2 database (for testing) and Spring Security for user auth and role-based access. CRUD endpoints for products, orders, users, and a secured API layer.",
+    techStack: ["React", "Vite", "Axios", "Spring Boot", "Spring Security", "H2"],
+    features: [
       "JWT / session-based authentication",
       "Product catalog CRUD APIs",
       "Cart and order APIs",
@@ -288,13 +288,13 @@ const projects: Project[] = [
       "Image upload support (future expansion)",
       "Responsive UI"
     ],
-    "challenges": [
+    challenges: [
       "Synchronizing frontend state with backend data",
       "Securing APIs from unauthorized access",
       "Handling CSRF, CORS, and security issues",
       "Setting up development vs production configs"
     ],
-    "solutions": [
+    solutions: [
       "Used Axios interceptors for token refreshing",
       "Configured CORS and CSRF tokens properly",
       "Modularized API layers and service layers",

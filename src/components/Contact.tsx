@@ -276,7 +276,7 @@ function ContactForm() {
           ) : submitStatus === 'success' ? (
             <span className="flex items-center justify-center gap-2">
               <span>✓</span>
-              Message sent successfully! I'll get back to you soon.
+              Message sent successfully! I&apos;ll get back to you soon.
             </span>
           ) : submitStatus === 'error' ? (
             <span className="flex items-center justify-center gap-2">
