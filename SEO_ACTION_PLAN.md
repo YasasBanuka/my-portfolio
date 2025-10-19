@@ -12,8 +12,8 @@
    - **HTML meta tag** (alternative)
 
 ### 2. Submit Your Sitemap
-Once verified in Google Search Console:
-1. Go to "Sitemaps" section
+Once verified in to Google Search Console:
+1. Go "Sitemaps" section
 2. Add sitemap URL: `https://iamyasasbanuka.me/sitemap.xml`
 3. Submit and monitor for any errors
 

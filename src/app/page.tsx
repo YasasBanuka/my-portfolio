@@ -30,12 +30,12 @@ export default function Home() {
     <>
       {/* Hidden SEO content for search engines */}
       <div className="sr-only">
-        <h1>Yasas Banuka - Software Engineer & Student Leader from Sri Lanka</h1>
+        <h1>Yasas Banuka - Software Engineer & Community Leader from Sri Lanka</h1>
         <p>
-          Yasas Banuka is a passionate software engineer and student leader based in Sri Lanka, 
-          specializing in full-stack development, cloud computing, and community leadership. 
-          As an IEEE volunteer and University of Vocational Technology student, Yasas builds 
-          scalable solutions while mentoring fellow students and organizing tech events.
+          Yasas Banuka is a passionate software engineer and community leader based in Sri Lanka, 
+          specializing in full-stack development, cloud computing, and innovative solutions. 
+          As an IEEE volunteer and University of Vocational Technology graduate, Yasas builds 
+          scalable applications while mentoring developers and organizing tech events.
         </p>
         <p>
           Explore Yasas Banuka&apos;s portfolio featuring React.js projects, Java Spring Boot 
