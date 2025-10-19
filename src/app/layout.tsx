@@ -134,9 +134,13 @@ export const metadata: Metadata = {
   
   // Icons
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: [
+      { url: "/favicon-16x16.svg", sizes: "16x16", type: "image/svg+xml" },
+      { url: "/favicon-32x32.svg", sizes: "32x32", type: "image/svg+xml" },
+      { url: "/favicon.svg", sizes: "any", type: "image/svg+xml" }
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
   
   // Manifest

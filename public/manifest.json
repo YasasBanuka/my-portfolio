@@ -12,10 +12,22 @@
   "categories": ["technology", "education", "portfolio"],
   "icons": [
     {
-      "src": "/favicon.ico",
+      "src": "/favicon.svg",
       "sizes": "any",
-      "type": "image/x-icon",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-16x16.svg",
+      "sizes": "16x16",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32x32.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ],
   "screenshots": [
@@ -35,7 +47,7 @@
       "url": "/#projects",
       "icons": [
         {
-          "src": "/favicon.ico",
+          "src": "/favicon.svg",
           "sizes": "any"
         }
       ]
@@ -47,7 +59,7 @@
       "url": "/#contact",
       "icons": [
         {
-          "src": "/favicon.ico",
+          "src": "/favicon.svg",
           "sizes": "any"
         }
       ]

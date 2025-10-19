@@ -28,7 +28,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
       "name": "Yasas Banuka Portfolio",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://iamyasasbanuka.me/favicon.ico"
+        "url": "https://iamyasasbanuka.me/favicon.svg"
       }
     },
     "datePublished": post.date,
