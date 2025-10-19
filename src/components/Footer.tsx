@@ -102,31 +102,6 @@ const Footer = () => {
           </p>
         </motion.div>
 
-        {/* Social Links */}
-        <motion.div
-          className="flex justify-center space-x-6 mb-8"
-          variants={itemVariants}
-        >
-          {[
-            { name: "LinkedIn", url: "https://linkedin.com/in/yasasbanuka", icon: "💼" },
-            { name: "GitHub", url: "https://github.com/YasasBanuka", icon: "💻" },
-            { name: "Medium", url: "https://medium.com/@yasasbanuka", icon: "📝" },
-            { name: "Email", url: "mailto:ybanuka2003@gmail.com", icon: "📧" },
-          ].map((link) => (
-            <motion.a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-slate-800/50 hover:bg-slate-700/50 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              title={link.name}
-            >
-              {link.icon}
-            </motion.a>
-          ))}
-        </motion.div>
 
         {/* Copyright */}
         <motion.div
@@ -134,7 +109,7 @@ const Footer = () => {
           variants={itemVariants}
         >
           <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} Yasas Banuka. Built with passion and purpose.
+            © {new Date().getFullYear()} Yasas Banuka. All rights reserved.
           </p>
         </motion.div>
       </motion.div>
