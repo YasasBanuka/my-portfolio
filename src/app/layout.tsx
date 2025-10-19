@@ -13,7 +13,7 @@
  * - Semantic HTML structure
  */
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
@@ -38,6 +38,9 @@ const geistMono = Geist_Mono({
  * social media sharing, and structured data markup.
  */
 export const metadata: Metadata = {
+  // Metadata base for resolving relative URLs
+  metadataBase: new URL("https://iamyasasbanuka.me"),
+  
   // Primary meta tags
   title: {
     default: "Yasas Banuka - Software Engineer & Student Leader",
@@ -113,7 +116,7 @@ export const metadata: Metadata = {
   
   // Verification tags
   verification: {
-    google: "your-google-verification-code", // Replace with actual verification code
+    google: "7_d4q4alzR7Xi3SDZw8G_2GMORoHhVw9ClLR9iyR0H0", // actual verification code
   },
   
   // Additional metadata
@@ -129,19 +132,6 @@ export const metadata: Metadata = {
   applicationName: "Yasas Banuka Portfolio",
   generator: "Next.js",
   
-  // Viewport and theme
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  
-  // Theme color
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" }
-  ],
-  
   // Icons
   icons: {
     icon: "/favicon.ico",
@@ -151,6 +141,22 @@ export const metadata: Metadata = {
   
   // Manifest
   manifest: "/manifest.json",
+};
+
+/**
+ * Viewport configuration
+ * 
+ * Separated from metadata as per Next.js 14+ recommendations
+ * for better performance and proper handling of viewport settings.
+ */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f172a" }
+  ],
 };
 
 export default function RootLayout({

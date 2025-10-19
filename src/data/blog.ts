@@ -41,7 +41,7 @@ I hope my story resonates with others who are considering or are new to this fie
     image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/0*kyTvAglpKqKm-bNu",
     author: {
       name: "Yasas Banuka",
-      avatar: "/images/about/professional-photo-square.jpg",
+      avatar: "/images/about/yasas-banuka-professional-headshot-square.jpg",
       bio: "Software Engineering student passionate about building tech solutions and sharing knowledge."
     }
   }

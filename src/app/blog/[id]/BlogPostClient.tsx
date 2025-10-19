@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import { BlogPost } from "@/data/blog";
 
 interface BlogPostClientProps {
@@ -10,8 +11,50 @@ interface BlogPostClientProps {
 }
 
 export default function BlogPostClient({ post }: BlogPostClientProps) {
+  // Article Schema for SEO
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.image || "https://iamyasasbanuka.me/images/about/yasas-banuka-professional-headshot-square.jpg",
+    "author": {
+      "@type": "Person",
+      "name": post.author.name,
+      "url": "https://iamyasasbanuka.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Yasas Banuka Portfolio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://iamyasasbanuka.me/favicon.ico"
+      }
+    },
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://iamyasasbanuka.me/blog/${post.id}`
+    },
+    "keywords": post.tags.join(", "),
+    "articleSection": post.category,
+    "wordCount": post.content.split(' ').length,
+    "timeRequired": post.readTime
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <>
+      {/* Article Schema */}
+      <Script
+        id="article-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+      
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       {/* Header */}
       <section className="relative py-20 px-4">
         <div className="max-w-4xl mx-auto">
@@ -270,5 +313,6 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

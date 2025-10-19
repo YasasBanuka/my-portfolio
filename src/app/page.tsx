@@ -34,7 +34,7 @@ export default function Home() {
         <p>
           Yasas Banuka is a passionate software engineer and community leader based in Sri Lanka, 
           specializing in full-stack development, cloud computing, and innovative solutions. 
-          As an IEEE volunteer and University of Vocational Technology graduate, Yasas builds 
+          As a volunteer and University of Vocational Technology graduate, Yasas builds 
           scalable applications while mentoring developers and organizing tech events.
         </p>
         <p>

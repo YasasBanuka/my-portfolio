@@ -108,10 +108,16 @@ const nextConfig: NextConfig = {
   experimental: {
     // Enable modern bundling
     optimizeCss: true,
-    optimizePackageImports: ['framer-motion', 'lucide-react'],
     
     // Enable modern JavaScript features
     esmExternals: true,
+    
+    // Core Web Vitals optimizations
+    optimizeServerReact: true,
+    
+    // Additional performance optimizations
+    webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB'],
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'three', '@react-three/fiber', '@react-three/drei'],
   },
 
   // Server external packages (moved from experimental)
@@ -154,6 +160,10 @@ const nextConfig: NextConfig = {
           {
             key: 'X-DNS-Prefetch-Control',
             value: 'on',
+          },
+          {
+            key: 'Vary',
+            value: 'Accept-Encoding',
           },
         ],
       },
