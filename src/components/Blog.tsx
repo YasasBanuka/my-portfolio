@@ -217,6 +217,12 @@ export default function Blog() {
   const blogPosts = getAllBlogPosts().slice(0, 6); // Show only first 6 posts on homepage
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure particles only render on client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const updateItemsPerView = () => {
@@ -265,6 +271,71 @@ export default function Blog() {
     >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.03),transparent_50%)]"></div>
+      
+      {/* Floating Particles - Client Side Only */}
+      {isClient && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(13)].map((_, i) => {
+            // Use deterministic values based on index to prevent hydration mismatch
+            const left = ((i * 7.7) % 100);
+            const top = ((i * 12.3) % 100);
+            const duration = 5 + ((i * 0.3) % 3);
+            const delay = ((i * 0.4) % 2);
+            
+            return (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-purple-500/60 dark:bg-purple-400/70 rounded-full shadow-lg"
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
+                }}
+                initial={{ opacity: 0, scale: 0.4 }}
+                animate={{
+                  y: [0, -85, 0],
+                  opacity: [0, 1, 0],
+                  scale: [0.4, 1.2, 0.4],
+                }}
+                transition={{
+                  duration: duration,
+                  repeat: Infinity,
+                  delay: delay,
+                  ease: "easeInOut",
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
+      
+      {/* Glowing Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-40 h-40 bg-purple-500/10 dark:bg-purple-400/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-1/3 w-32 h-32 bg-pink-500/10 dark:bg-pink-400/10 rounded-full blur-2xl"
+          animate={{
+            scale: [1.3, 1, 1.3],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 5,
+          }}
+        />
+      </div>
       
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <motion.div 

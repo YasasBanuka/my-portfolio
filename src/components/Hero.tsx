@@ -218,25 +218,33 @@ const Hero = () => {
 
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
+        {[...Array(20)].map((_, i) => {
+          // Use deterministic values based on index to prevent hydration mismatch
+          const left = ((i * 7.3) % 100);
+          const top = ((i * 11.7) % 100);
+          const duration = 3 + ((i * 0.3) % 2);
+          const delay = ((i * 0.7) % 2);
+          
+          return (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white/20 rounded-full"
+              style={{
+                left: `${left}%`,
+                top: `${top}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: duration,
+                repeat: Infinity,
+                delay: delay,
+              }}
+            />
+          );
+        })}
       </div>
     </section>
   );

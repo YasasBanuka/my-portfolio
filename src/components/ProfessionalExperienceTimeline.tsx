@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 type ProfessionalEntry = {
@@ -151,6 +151,12 @@ function ProfessionalItem({ entry, index }: { entry: ProfessionalEntry; index: n
 
 export default function ProfessionalExperienceTimeline() {
   const { ref, controls } = useRevealOnce<HTMLElement>();
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure particles only render on client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const sectionVariants = {
     hidden: { opacity: 0 },
@@ -171,6 +177,71 @@ export default function ProfessionalExperienceTimeline() {
     >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(16,185,129,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_20%,rgba(16,185,129,0.03),transparent_50%)]"></div>
+      
+      {/* Floating Particles - Client Side Only */}
+      {isClient && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(10)].map((_, i) => {
+            // Use deterministic values based on index to prevent hydration mismatch
+            const left = ((i * 10.2) % 100);
+            const top = ((i * 15.8) % 100);
+            const duration = 6 + ((i * 0.4) % 2);
+            const delay = ((i * 0.6) % 2);
+            
+            return (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-emerald-500/60 dark:bg-emerald-400/70 rounded-full shadow-lg"
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
+                }}
+                initial={{ opacity: 0, scale: 0.4 }}
+                animate={{
+                  y: [0, -60, 0],
+                  opacity: [0, 1, 0],
+                  scale: [0.4, 1.2, 0.4],
+                }}
+                transition={{
+                  duration: duration,
+                  repeat: Infinity,
+                  delay: delay,
+                  ease: "easeInOut",
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
+      
+      {/* Glowing Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/5 right-1/5 w-36 h-36 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-2xl"
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{
+            duration: 11,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/5 left-1/5 w-20 h-20 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-xl"
+          animate={{
+            scale: [1.4, 1, 1.4],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4,
+          }}
+        />
+      </div>
       
       <div className="relative z-10 max-w-4xl mx-auto w-full">
         <motion.div 

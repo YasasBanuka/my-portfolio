@@ -557,8 +557,6 @@ function PhotoCollage() {
 
   return (
     <div ref={containerRef} className="relative h-96 lg:h-[500px] w-full overflow-hidden">
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50/50 via-blue-50/30 to-purple-50/30 dark:from-slate-950/50 dark:via-slate-900/30 dark:to-slate-950/30 z-0"></div>
       
       {/* Floating photos */}
       {photos.map((photo, index) => {
@@ -642,6 +640,12 @@ export default function LeadershipVolunteering() {
   const [selectedRole, setSelectedRole] = useState<LeadershipRole | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure particles only render on client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleCardClick = (role: LeadershipRole) => {
     setSelectedRole(role);
@@ -708,6 +712,71 @@ export default function LeadershipVolunteering() {
         
         {/* Background decoration */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_70%,rgba(99,102,241,0.03),transparent_50%)]"></div>
+        
+        {/* Floating Particles - Client Side Only */}
+        {isClient && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(14)].map((_, i) => {
+              // Use deterministic values based on index to prevent hydration mismatch
+              const left = ((i * 7.1) % 100);
+              const top = ((i * 11.4) % 100);
+              const duration = 5 + ((i * 0.3) % 3);
+              const delay = ((i * 0.5) % 2);
+              
+              return (
+                <motion.div
+                  key={i}
+                  className="absolute w-2 h-2 bg-green-500/60 dark:bg-green-400/70 rounded-full shadow-lg"
+                  style={{
+                    left: `${left}%`,
+                    top: `${top}%`,
+                  }}
+                  initial={{ opacity: 0, scale: 0.4 }}
+                  animate={{
+                    y: [0, -90, 0],
+                    opacity: [0, 1, 0],
+                    scale: [0.4, 1.2, 0.4],
+                  }}
+                  transition={{
+                    duration: duration,
+                    repeat: Infinity,
+                    delay: delay,
+                    ease: "easeInOut",
+                  }}
+                />
+              );
+            })}
+          </div>
+        )}
+        
+        {/* Glowing Orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="absolute top-1/4 left-1/3 w-44 h-44 bg-green-500/10 dark:bg-green-400/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.5, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 13,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-xl"
+            animate={{
+              scale: [1.5, 1, 1.5],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 6,
+            }}
+          />
+        </div>
       </div>
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Header */}

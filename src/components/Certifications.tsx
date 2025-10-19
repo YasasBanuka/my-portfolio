@@ -582,9 +582,15 @@ export default function Certifications() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedCertification, setSelectedCertification] = useState<Certification | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   // Responsive items per view
   const [itemsPerView, setItemsPerView] = useState(3);
+
+  // Ensure particles only render on client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const updateItemsPerView = () => {
@@ -624,6 +630,71 @@ export default function Certifications() {
     <section id="certifications" className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.03),transparent_50%)]"></div>
+      
+      {/* Floating Particles - Client Side Only */}
+      {isClient && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(11)].map((_, i) => {
+            // Use deterministic values based on index to prevent hydration mismatch
+            const left = ((i * 9.1) % 100);
+            const top = ((i * 13.6) % 100);
+            const duration = 6 + ((i * 0.4) % 2);
+            const delay = ((i * 0.6) % 2);
+            
+            return (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-indigo-500/60 dark:bg-indigo-400/70 rounded-full shadow-lg"
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
+                }}
+                initial={{ opacity: 0, scale: 0.3 }}
+                animate={{
+                  y: [0, -80, 0],
+                  opacity: [0, 1, 0],
+                  scale: [0.3, 1.2, 0.3],
+                }}
+                transition={{
+                  duration: duration,
+                  repeat: Infinity,
+                  delay: delay,
+                  ease: "easeInOut",
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
+      
+      {/* Glowing Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/3 right-1/3 w-36 h-36 bg-indigo-500/10 dark:bg-indigo-400/10 rounded-full blur-2xl"
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{
+            duration: 11,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 left-1/4 w-28 h-28 bg-purple-500/10 dark:bg-purple-400/10 rounded-full blur-xl"
+          animate={{
+            scale: [1.4, 1, 1.4],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4,
+          }}
+        />
+      </div>
       
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Header */}

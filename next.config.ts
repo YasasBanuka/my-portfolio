@@ -84,6 +84,12 @@ const nextConfig: NextConfig = {
         hostname: 's3.amazonaws.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'spring.io',
+        port: '',
+        pathname: '/**',
       }
     ],
     

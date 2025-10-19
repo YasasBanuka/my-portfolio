@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Suspense } from "react";
+import FloatingCube from './FloatingCube';
 
 const Footer = () => {
   const containerVariants = {
@@ -15,7 +17,7 @@ const Footer = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
@@ -23,15 +25,29 @@ const Footer = () => {
     },
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="relative min-h-screen flex items-center py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-t from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden">
-      {/* Interactive Background Elements */}
+    <footer className="relative min-h-screen flex items-center py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900 dark:from-slate-950 dark:via-purple-950 dark:to-slate-950 overflow-hidden">
+      {/* 3D Background with Floating Cubes */}
       <div className="absolute inset-0 z-0">
+        <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-slate-900/20 to-purple-900/20" />}>
+          <FloatingCube />
+        </Suspense>
+      </div>
+
+      {/* Enhanced Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40 z-10" />
+
+      {/* Interactive Background Elements */}
+      <div className="absolute inset-0 z-5">
         <motion.div 
-          className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.05, 0.1, 0.05],
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
           }}
           transition={{
             duration: 8,
@@ -40,10 +56,10 @@ const Footer = () => {
           }}
         />
         <motion.div 
-          className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
           animate={{
-            scale: [1.1, 1, 1.1],
-            opacity: [0.1, 0.05, 0.1],
+            scale: [1.2, 1, 1.2],
+            opacity: [0.6, 0.3, 0.6],
           }}
           transition={{
             duration: 10,
@@ -53,10 +69,10 @@ const Footer = () => {
           }}
         />
         <motion.div 
-          className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl"
+          className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.03, 0.08, 0.03],
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.5, 0.2],
           }}
           transition={{
             duration: 12,
@@ -68,7 +84,7 @@ const Footer = () => {
         
         {/* Floating footer elements */}
         <motion.div
-          className="absolute top-1/2 left-1/3 w-32 h-32 bg-green-500/5 rounded-full blur-2xl"
+          className="absolute top-1/2 left-1/3 w-32 h-32 bg-green-500/10 rounded-full blur-2xl"
           animate={{
             y: [0, -20, 0],
             x: [0, 10, 0],
@@ -82,37 +98,115 @@ const Footer = () => {
         />
       </div>
 
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 z-5 opacity-5">
+        <div className="w-full h-full" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
+
       <motion.div
-        className="relative z-10 max-w-6xl mx-auto text-center"
+        className="relative z-20 max-w-6xl mx-auto text-center"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
+
         {/* Personal Tagline */}
         <motion.div
-          className="mb-12"
+          className="mb-16"
           variants={itemVariants}
         >
-          <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4">
-            Leading Where Vision Meets Action
-          </h3>
-          <p className="text-lg text-slate-400 font-medium">
-            — Yasas Banuka
-          </p>
+          <div className="relative">
+            {/* Background glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl blur-xl scale-110"></div>
+            
+            {/* Main tagline container */}
+            <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-12">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4 leading-tight">
+                Leading Where Vision Meets Action
+              </h3>
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-8 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+                <p className="text-lg sm:text-xl text-gray-300 font-medium italic">
+                  Yasas Banuka
+                </p>
+                <div className="w-8 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
+        {/* Back to Top Button */}
+        <motion.div
+          className="mb-8"
+          variants={itemVariants}
+        >
+          <motion.button
+            onClick={scrollToTop}
+            className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white font-semibold rounded-full shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 border border-blue-500/30 hover:border-blue-400/50"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              boxShadow: '0 0 30px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+            }}
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+              Back to Top
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
+          </motion.button>
+        </motion.div>
 
         {/* Copyright */}
         <motion.div
-          className="pt-8 border-t border-slate-700/50"
+          className="pt-8 border-t border-white/10"
           variants={itemVariants}
         >
-          <p className="text-slate-500 text-sm">
+          <p className="text-gray-400 text-m">
             © {new Date().getFullYear()} Yasas Banuka. All rights reserved.
+          </p>
+          <p className="text-gray-500 text-sm mt-2">
+            Built with Next.js, React, and lots of ☕
           </p>
         </motion.div>
       </motion.div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-15">
+        {[...Array(15)].map((_, i) => {
+          // Use deterministic values based on index to prevent hydration mismatch
+          const left = ((i * 5.7) % 100);
+          const top = ((i * 9.2) % 100);
+          const duration = 3 + ((i * 0.4) % 2);
+          const delay = ((i * 0.6) % 2);
+          
+          return (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white/20 rounded-full"
+              style={{
+                left: `${left}%`,
+                top: `${top}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: duration,
+                repeat: Infinity,
+                delay: delay,
+              }}
+            />
+          );
+        })}
+      </div>
     </footer>
   );
 };

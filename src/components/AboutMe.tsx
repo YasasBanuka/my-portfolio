@@ -190,7 +190,7 @@ const AboutMe = () => {
           <motion.div className="space-y-6" variants={itemVariants}>
             {/* Headline */}
             <motion.h2
-              className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent"
+              className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent mb-2"
               variants={itemVariants}
             >
               Beyond the Code

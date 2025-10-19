@@ -2,6 +2,8 @@
 
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '@/config/emailjs';
 
 type ContactFormData = {
   name: string;
@@ -84,6 +86,11 @@ function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  // EmailJS configuration - Replace these with your actual values
+  const EMAILJS_SERVICE_ID = EMAILJS_CONFIG.SERVICE_ID;
+  const EMAILJS_TEMPLATE_ID = EMAILJS_CONFIG.TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = EMAILJS_CONFIG.PUBLIC_KEY;
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -97,29 +104,31 @@ function ContactForm() {
     setIsSubmitting(true);
     
     try {
-      // Create email content
-      const emailContent = `
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        from_phone: formData.phone,
+        message: formData.message,
+        to_email: EMAILJS_CONFIG.TO_EMAIL
+      };
 
-Message:
-${formData.message}
-      `.trim();
-
-      // Create mailto link
-      const mailtoLink = `mailto:ybanuka2003@gmail.com?subject=Portfolio Contact Form - ${formData.name}&body=${encodeURIComponent(emailContent)}`;
-      
-      // Open email client
-      window.open(mailtoLink, '_blank');
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
       
       setSubmitStatus('success');
       setFormData({ name: "", email: "", phone: "", message: "" });
-    } catch {
+    } catch (error) {
+      console.error('EmailJS Error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 3000);
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     }
   };
 
@@ -267,12 +276,12 @@ ${formData.message}
           ) : submitStatus === 'success' ? (
             <span className="flex items-center justify-center gap-2">
               <span>✓</span>
-              Email client opened! Please send the message.
+              Message sent successfully! I'll get back to you soon.
             </span>
           ) : submitStatus === 'error' ? (
             <span className="flex items-center justify-center gap-2">
               <span>✕</span>
-              Failed to send. Try again.
+              Failed to send. Please try again.
             </span>
           ) : (
             "Send message"
@@ -393,6 +402,12 @@ function ContactLinks() {
 
 export default function Contact() {
   const { ref, controls } = useRevealOnce<HTMLElement>();
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure particles only render on client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const sectionVariants = {
     hidden: { opacity: 0 },
@@ -475,6 +490,71 @@ export default function Contact() {
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_30%,rgba(99,102,241,0.03),transparent_50%)]"></div>
       
+      {/* Floating Particles - Client Side Only */}
+      {isClient && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(16)].map((_, i) => {
+            // Use deterministic values based on index to prevent hydration mismatch
+            const left = ((i * 6.25) % 100);
+            const top = ((i * 10.5) % 100);
+            const duration = 4 + ((i * 0.2) % 3);
+            const delay = ((i * 0.3) % 2);
+            
+            return (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-blue-500/60 dark:bg-blue-400/70 rounded-full shadow-lg"
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
+                }}
+                initial={{ opacity: 0, scale: 0.3 }}
+                animate={{
+                  y: [0, -75, 0],
+                  opacity: [0, 1, 0],
+                  scale: [0.3, 1.2, 0.3],
+                }}
+                transition={{
+                  duration: duration,
+                  repeat: Infinity,
+                  delay: delay,
+                  ease: "easeInOut",
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
+      
+      {/* Glowing Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/5 right-1/5 w-48 h-48 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/5 left-1/5 w-36 h-36 bg-purple-500/10 dark:bg-purple-400/10 rounded-full blur-2xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 11,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 7,
+          }}
+        />
+      </div>
+      
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <motion.div 
           className="relative z-10"
@@ -488,13 +568,13 @@ export default function Contact() {
             variants={childVariants}
           >
             <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-6">
-              Let&apos;s Connect
+              Let&apos;s Build Something Amazing
             </h2>
             <motion.p 
               className="text-xl text-slate-600 dark:text-slate-300 font-medium mb-4"
               variants={childVariants}
             >
-              <em>Ready to collaborate and create something amazing</em>
+              Ready to collaborate on your next project? Let&apos;s turn your vision into reality.
             </motion.p>
             <motion.p 
               className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto"

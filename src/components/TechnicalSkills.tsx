@@ -747,9 +747,15 @@ function CategoryNavigation({
 export default function TechnicalSkills() {
   // State management for active category navigation
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
+  const [isClient, setIsClient] = useState(false);
   
   // Custom hook for reveal-once animation behavior
   const { ref, controls } = useRevealOnce<HTMLElement>();
+
+  // Ensure particles only render on client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Animation variants for the main section
   const sectionVariants = {
@@ -786,82 +792,76 @@ export default function TechnicalSkills() {
       ref={ref}
       className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/20 dark:from-slate-900 dark:via-blue-900/10 dark:to-purple-900/10 overflow-hidden"
     >
-      {/* Interactive Background Elements - Creates depth and visual interest */}
+      {/* Simple, clean background */}
       <div className="absolute inset-0 z-0">
-        {/* Animated tech pattern overlay */}
-        <motion.div 
-          className="absolute inset-0 opacity-5 dark:opacity-10"
-          animate={{
-            opacity: [0.05, 0.1, 0.05],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs>
-              <pattern id="tech-grid" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse">
-                <rect width="25" height="25" fill="none" stroke="currentColor" strokeWidth="0.5" />
-                <circle cx="12.5" cy="12.5" r="1" fill="currentColor" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#tech-grid)" />
-          </svg>
-        </motion.div>
-        
-        {/* Floating tech elements */}
-        <motion.div 
-          className="absolute top-20 right-20 w-32 h-32 opacity-5 dark:opacity-10"
+        {/* Clean gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/30 dark:from-blue-900/20 dark:via-transparent dark:to-purple-900/20"></div>
+      </div>
+      
+      {/* Floating Particles - Client Side Only */}
+      {isClient && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(12)].map((_, i) => {
+            // Use deterministic values based on index to prevent hydration mismatch
+            const left = ((i * 8.3) % 100);
+            const top = ((i * 12.7) % 100);
+            const duration = 4 + ((i * 0.2) % 3);
+            const delay = ((i * 0.5) % 2);
+            
+            return (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-blue-500/60 dark:bg-blue-400/70 rounded-full shadow-lg"
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
+                }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{
+                  y: [0, -80, 0],
+                  opacity: [0, 1, 0],
+                  scale: [0.5, 1.2, 0.5],
+                }}
+                transition={{
+                  duration: duration,
+                  repeat: Infinity,
+                  delay: delay,
+                  ease: "easeInOut",
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
+      
+      {/* Glowing Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-xl"
           animate={{
             scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        >
-          <div className="w-full h-full bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg blur-2xl" />
-        </motion.div>
-        
-        <motion.div 
-          className="absolute bottom-20 left-20 w-24 h-24 opacity-5 dark:opacity-10"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear",
-            delay: 3,
-          }}
-        >
-          <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg blur-2xl" />
-        </motion.div>
-        
-        {/* Additional floating elements */}
-        <motion.div
-          className="absolute top-1/2 left-1/3 w-20 h-20 opacity-5 dark:opacity-10"
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 20, 0],
+            opacity: [0.3, 0.6, 0.3],
           }}
           transition={{
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-1/3 w-24 h-24 bg-purple-500/10 dark:bg-purple-400/10 rounded-full blur-xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
             delay: 2,
           }}
-        >
-          <div className="w-full h-full bg-gradient-to-br from-green-500 to-blue-500 rounded-full blur-xl" />
-        </motion.div>
+        />
       </div>
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_50%,rgba(99,102,241,0.03),transparent_50%)]"></div>
       
       {/* Main Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto w-full">
