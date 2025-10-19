@@ -67,7 +67,7 @@ const leadershipRoles: LeadershipRole[] = [
         year: "2025",
         month: "August",
         position: "Publicity Lead – JamboreeIEEE (Inter-University Event)",
-        description: "Led a publicity and design team spanning 6 universities across Sri Lanka to promote JamboreeIEEE, a multi-institutional collaboration fostering tech awareness and networking."
+        description: "Led a publicity team spanning 6 universities across Sri Lanka to promote JamboreeIEEE, a multi-institutional collaboration fostering tech awareness and networking."
       },
       {
         year: "2025",
@@ -532,6 +532,8 @@ function LeadershipModal({
 
 function PhotoCollage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isClient, setIsClient] = useState(false);
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -555,61 +557,122 @@ function PhotoCollage() {
     }
   };
 
-  return (
-    <div ref={containerRef} className="relative h-96 lg:h-[500px] w-full overflow-hidden">
-      
-      {/* Floating photos */}
-      {photos.map((photo, index) => {
-        const variants = {
-          hidden: { opacity: 0, scale: 0.8, rotate: photo.rotation - 10 },
-          visible: { 
-            opacity: 1, 
-            scale: 1, 
-            rotate: photo.rotation,
-            transition: { 
-              duration: 0.8, 
-              ease: [0.22, 1, 0.36, 1],
-              delay: index * 0.2 
-            } 
-          },
-        } as const;
+  // Ensure consistent rendering between server and client
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-        return (
-          <motion.div
-            key={photo.id}
-            initial="hidden"
-            animate="visible"
-            variants={variants}
-            style={{
-              position: "absolute",
-              left: `${photo.position.x}%`,
-              top: `${photo.position.y}%`,
-              zIndex: photo.zIndex,
-              y: parallaxValues[index]
-            }}
-            className={`group cursor-pointer ${getSizeClasses(photo.size)}`}
-            whileHover={{ scale: 1.05, zIndex: 10 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-slate-200 dark:bg-slate-700">
-              {/* Actual image - always visible */}
+  return (
+    <>
+      {/* Desktop Version - Original Floating Photos */}
+      <div ref={containerRef} className="hidden lg:block relative h-[500px] w-full overflow-hidden">
+        {isClient && photos.map((photo, index) => {
+          const variants = {
+            hidden: { opacity: 0, scale: 0.8, rotate: photo.rotation - 10 },
+            visible: { 
+              opacity: 1, 
+              scale: 1, 
+              rotate: photo.rotation,
+              transition: { 
+                duration: 0.8, 
+                ease: [0.22, 1, 0.36, 1],
+                delay: index * 0.2 
+              } 
+            },
+          } as const;
+
+          return (
+            <motion.div
+              key={photo.id}
+              initial="hidden"
+              animate="visible"
+              variants={variants}
+              style={{
+                position: "absolute",
+                left: `${photo.position.x}%`,
+                top: `${photo.position.y}%`,
+                zIndex: photo.zIndex,
+                y: parallaxValues[index]
+              }}
+              className={`group cursor-pointer ${getSizeClasses(photo.size)}`}
+              whileHover={{ scale: 1.05, zIndex: 10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-slate-200 dark:bg-slate-700">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
+                          <div class="text-center">
+                            <div class="text-2xl mb-2">📸</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400 px-2">
+                              ${photo.alt}
+                            </div>
+                          </div>
+                        </div>
+                      `;
+                    }
+                  }}
+                />
+                
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-end justify-center p-3">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white/90 dark:bg-slate-800/90 rounded-lg px-3 py-2 shadow-lg backdrop-blur-sm">
+                      <p className="text-xs font-medium text-slate-700 dark:text-slate-300 text-center max-w-full">
+                        {photo.alt}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Mobile Version - All 6 Photos Grid Layout */}
+      <div className="lg:hidden">
+        <motion.div
+          className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 p-4"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          {/* Mobile Grid Layout - 3x2 Grid */}
+          <div className="grid grid-cols-3 gap-2">
+            {/* Row 1 - 3 photos */}
+            <motion.div
+              className="relative h-24 rounded-lg overflow-hidden shadow-md"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
               <Image
-                src={photo.src}
-                alt={photo.alt}
+                src={photos[0].src}
+                alt={photos[0].alt}
                 fill
                 className="object-cover"
                 onError={(e) => {
-                  // Show placeholder on error
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
                   const parent = target.parentElement;
                   if (parent) {
                     parent.innerHTML = `
-                      <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
+                      <div class="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-900 flex items-center justify-center">
                         <div class="text-center">
-                          <div class="text-2xl mb-2">📸</div>
-                          <div class="text-xs text-slate-500 dark:text-slate-400 px-2">
-                            ${photo.alt}
+                          <div class="text-lg mb-1">📸</div>
+                          <div class="text-xs text-blue-600 dark:text-blue-300 px-1">
+                            ${photos[0].alt}
                           </div>
                         </div>
                       </div>
@@ -617,22 +680,190 @@ function PhotoCollage() {
                   }
                 }}
               />
-              
-              {/* Alt text overlay on hover */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-end justify-center p-3">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-white/90 dark:bg-slate-800/90 rounded-lg px-3 py-2 shadow-lg backdrop-blur-sm">
-                    <p className="text-xs font-medium text-slate-700 dark:text-slate-300 text-center max-w-full">
-                      {photo.alt}
-                    </p>
-                  </div>
-                </div>
-              </div>
+            </motion.div>
+            
+            <motion.div
+              className="relative h-24 rounded-lg overflow-hidden shadow-md"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src={photos[1].src}
+                alt={photos[1].alt}
+                fill
+                className="object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const parent = target.parentElement;
+                  if (parent) {
+                    parent.innerHTML = `
+                      <div class="absolute inset-0 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-800 dark:to-purple-900 flex items-center justify-center">
+                        <div class="text-center">
+                          <div class="text-lg mb-1">📸</div>
+                          <div class="text-xs text-purple-600 dark:text-purple-300 px-1">
+                            ${photos[1].alt}
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  }
+                }}
+              />
+            </motion.div>
+
+            <motion.div
+              className="relative h-24 rounded-lg overflow-hidden shadow-md"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src={photos[2].src}
+                alt={photos[2].alt}
+                fill
+                className="object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const parent = target.parentElement;
+                  if (parent) {
+                    parent.innerHTML = `
+                      <div class="absolute inset-0 bg-gradient-to-br from-green-100 to-green-200 dark:from-green-800 dark:to-green-900 flex items-center justify-center">
+                        <div class="text-center">
+                          <div class="text-lg mb-1">📸</div>
+                          <div class="text-xs text-green-600 dark:text-green-300 px-1">
+                            ${photos[2].alt}
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  }
+                }}
+              />
+            </motion.div>
+
+            {/* Row 2 - 3 photos */}
+            <motion.div
+              className="relative h-24 rounded-lg overflow-hidden shadow-md"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src={photos[3].src}
+                alt={photos[3].alt}
+                fill
+                className="object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const parent = target.parentElement;
+                  if (parent) {
+                    parent.innerHTML = `
+                      <div class="absolute inset-0 bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-800 dark:to-orange-900 flex items-center justify-center">
+                        <div class="text-center">
+                          <div class="text-lg mb-1">📸</div>
+                          <div class="text-xs text-orange-600 dark:text-orange-300 px-1">
+                            ${photos[3].alt}
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  }
+                }}
+              />
+            </motion.div>
+
+            <motion.div
+              className="relative h-24 rounded-lg overflow-hidden shadow-md"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src={photos[4].src}
+                alt={photos[4].alt}
+                fill
+                className="object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const parent = target.parentElement;
+                  if (parent) {
+                    parent.innerHTML = `
+                      <div class="absolute inset-0 bg-gradient-to-br from-red-100 to-red-200 dark:from-red-800 dark:to-red-900 flex items-center justify-center">
+                        <div class="text-center">
+                          <div class="text-lg mb-1">📸</div>
+                          <div class="text-xs text-red-600 dark:text-red-300 px-1">
+                            ${photos[4].alt}
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  }
+                }}
+              />
+            </motion.div>
+
+            <motion.div
+              className="relative h-24 rounded-lg overflow-hidden shadow-md"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src={photos[5].src}
+                alt={photos[5].alt}
+                fill
+                className="object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const parent = target.parentElement;
+                  if (parent) {
+                    parent.innerHTML = `
+                      <div class="absolute inset-0 bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-800 dark:to-indigo-900 flex items-center justify-center">
+                        <div class="text-center">
+                          <div class="text-lg mb-1">📸</div>
+                          <div class="text-xs text-indigo-600 dark:text-indigo-300 px-1">
+                            ${photos[5].alt}
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  }
+                }}
+              />
+            </motion.div>
+          </div>
+
+          {/* Mobile Title Overlay */}
+          <motion.div
+            className="mt-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg p-3 shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <div className="text-center">
+              <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">
+                Leadership Moments
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Community impact through volunteer work
+              </p>
             </div>
           </motion.div>
-        );
-      })}
-    </div>
+        </motion.div>
+      </div>
+    </>
   );
 }
 
@@ -827,28 +1058,6 @@ export default function LeadershipVolunteering() {
           </motion.div>
         </div>
 
-        {/* Mobile Photo Section */}
-        <div className="lg:hidden mt-12">
-          <motion.div
-            className="relative h-80 w-full overflow-hidden rounded-2xl"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-4xl mb-4">📸</div>
-                <div className="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-2">
-                  Leadership Moments
-                </div>
-                <div className="text-sm text-slate-500 dark:text-slate-400">
-                  Real photos of community impact and leadership
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
 
         {/* Bottom decorative element */}
         <motion.div 
