@@ -118,9 +118,6 @@ export default function Navigation() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">YB</span>
-            </div>
             <span className="font-bold text-slate-800 dark:text-slate-100 text-lg">
               Yasas Banuka
             </span>
