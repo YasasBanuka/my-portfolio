@@ -207,28 +207,28 @@ const projects: Project[] = [
   {
     id: "project-5",
     title: "Smart Gas Detector – IoT Safety System",
-    description: "IoT system for gas level monitoring with alerts via mobile app and backend processing.",
-    detailedDescription: "A system using an ESP32 + MQ-2 gas sensor to read gas levels and transmit data to a Java EE backend. A mobile app built with React Native / Expo allows real-time viewing of gas levels, and triggers alerts (LED, buzzer) if thresholds are exceeded. The backend handles data logging and app-device communication.",
-    techStack: ["ESP32", "MQ-2 sensor", "Java EE", "Gson", "React Native / Expo"],
+    description: "ESP32 + MQ-2 gas detector with Java EE backend and React Native app, real-time status, buzzer/LED alerts, and in-app alarm control.",
+    detailedDescription: "An end-to-end gas detection system built around an ESP32 reading an MQ-2 sensor. The ESP32 connects to Wi‑Fi and publishes gas readings to a Java EE backend via HTTP using compact JSON payloads. When the reading exceeds a configured threshold, the hardware triggers a buzzer and an LED. A React Native (Expo) mobile app polls the backend about every second to display the live gas level and status (Safe/Danger) and includes a \"Stop Alarm\" action that tells the backend to silence the buzzer/LED on the device. The backend, implemented with Java EE and Gson, exposes simple REST endpoints for device updates and app queries, handling JSON serialization/deserialization and relay of alarm control.",
+    techStack: ["ESP32", "MQ-2 sensor", "Arduino", "WiFi", "HTTPClient", "ArduinoJson", "Java EE", "Gson", "React Native / Expo"],
     features: [
-      "Real-time sensor data transmission",
-      "Alert triggers (LED, buzzer) on threshold breach",
-      "Mobile app view of gas levels and status",
-      "Ability to stop alarm via app",
-      "Persisting historical data",
-      "Multi-device support"
+      "ESP32 reads MQ-2 analog values and posts JSON to backend",
+      "Threshold-based alerts activating buzzer and LED on device",
+      "Mobile app shows live gas level and Safe/Danger status (≈1s updates)",
+      "In-app \"Stop Alarm\" sends command to silence buzzer/LED",
+      "Java EE REST API with Gson for JSON handling",
+      "Configurable Wi‑Fi and endpoint settings for deployments"
     ],
     challenges: [
-      "Maintaining reliable connectivity between ESP and backend",
-      "Minimizing latency for alert delivery",
-      "Handling intermittent network failures",
-      "Balancing sensor sampling rate vs power consumption"
+      "Reliable Wi‑Fi connectivity and request retries on ESP32",
+      "Low-latency status updates without draining device battery",
+      "Handling intermittent network failures between device and server",
+      "Coordinating alarm state between device hardware and mobile app"
     ],
     solutions: [
-      "Retried failed transmissions and queued data locally",
-      "Used efficient JSON payloads and WebSocket / HTTP polling",
-      "Implemented fallback logic and connection checking",
-      "Optimized sampling rate and used sleep mode strategies"
+      "Used lightweight HTTP polling (~1s) with compact JSON payloads",
+      "Implemented basic retry/backoff on failed ESP32 transmissions",
+      "Java EE endpoints with Gson for safe serialization and simple control routes",
+      "Clear state machine on backend for alarm/stop commands relayed to device"
     ],
 
     imageUrl: "/projects/smart-gas-detector.jpg",
