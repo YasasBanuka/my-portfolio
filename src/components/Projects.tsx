@@ -626,11 +626,18 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
             )}
           </div>
 
-          {/* Click indicator */}
-          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span>Click to view details</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          {/* Permanent Click Indicator (Discoverability Enhancement) */}
+          <div className="mt-6 flex items-center gap-2 group/btn">
+            <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+              Explore Project
+            </span>
+            <svg
+              className="w-4 h-4 text-blue-600 dark:text-blue-400 transform transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>
         </div>

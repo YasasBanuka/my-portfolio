@@ -236,15 +236,15 @@ function LeadershipCard({ role, index, onClick }: { role: LeadershipRole; index:
 
   const variants = {
     hidden: { opacity: 0, y: 50, x: -30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
+    visible: {
+      opacity: 1,
+      y: 0,
       x: 0,
-      transition: { 
-        duration: 0.6, 
+      transition: {
+        duration: 0.6,
         ease: [0.22, 1, 0.36, 1],
-        delay: index * 0.15 
-      } 
+        delay: index * 0.15
+      }
     },
   } as const;
 
@@ -260,7 +260,7 @@ function LeadershipCard({ role, index, onClick }: { role: LeadershipRole; index:
       <div className="relative rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover:scale-[1.02]">
         {/* Gradient overlay */}
         <div className={`absolute inset-0 bg-gradient-to-br ${role.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-        
+
         <div className="relative p-6 lg:p-8">
           {/* Header with logo */}
           <div className="flex items-start gap-4 mb-4">
@@ -303,11 +303,18 @@ function LeadershipCard({ role, index, onClick }: { role: LeadershipRole; index:
             {role.summary}
           </p>
 
-          {/* Click indicator */}
-          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span>Click to view journey</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          {/* Permanent Click Indicator (Discoverability Enhancement) */}
+          <div className="mt-4 flex items-center gap-2 group/btn">
+            <span className="text-sm font-semibold text-purple-600 dark:text-purple-400 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-300">
+              View Journey
+            </span>
+            <svg
+              className="w-4 h-4 text-purple-600 dark:text-purple-400 transform transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </div>
         </div>
@@ -320,14 +327,14 @@ function LeadershipCard({ role, index, onClick }: { role: LeadershipRole; index:
 }
 
 // Leadership Modal Component
-function LeadershipModal({ 
-  role, 
-  isOpen, 
+function LeadershipModal({
+  role,
+  isOpen,
   onClose,
   onPhotoClick
-}: { 
-  role: LeadershipRole | null; 
-  isOpen: boolean; 
+}: {
+  role: LeadershipRole | null;
+  isOpen: boolean;
   onClose: () => void;
   onPhotoClick: (photo: string) => void;
 }) {
@@ -345,7 +352,7 @@ function LeadershipModal({
         >
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-          
+
           {/* Modal */}
           <motion.div
             className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden"
@@ -410,21 +417,19 @@ function LeadershipModal({
                     {role.journey.map((step, index) => (
                       <motion.div
                         key={index}
-                        className={`relative flex gap-6 p-6 rounded-xl border-l-4 ${
-                          step.highlight 
-                            ? `border-l-4 bg-gradient-to-r ${role.gradient} bg-opacity-10 border-l-current` 
+                        className={`relative flex gap-6 p-6 rounded-xl border-l-4 ${step.highlight
+                            ? `border-l-4 bg-gradient-to-r ${role.gradient} bg-opacity-10 border-l-current`
                             : 'border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800'
-                        }`}
+                          }`}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
                         <div className="flex-shrink-0">
-                          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                            step.highlight 
-                              ? `bg-gradient-to-br ${role.gradient} text-white` 
+                          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${step.highlight
+                              ? `bg-gradient-to-br ${role.gradient} text-white`
                               : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
-                          }`}>
+                            }`}>
                             <span className="text-sm font-bold">{step.year.slice(-2)}</span>
                           </div>
                         </div>
@@ -439,11 +444,10 @@ function LeadershipModal({
                               </span>
                             )}
                           </div>
-                          <h4 className={`text-lg font-bold mb-2 ${
-                            step.highlight 
-                              ? 'text-slate-900 dark:text-slate-100' 
+                          <h4 className={`text-lg font-bold mb-2 ${step.highlight
+                              ? 'text-slate-900 dark:text-slate-100'
                               : 'text-slate-700 dark:text-slate-300'
-                          }`}>
+                            }`}>
                             {step.position}
                           </h4>
                           <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -533,7 +537,7 @@ function LeadershipModal({
 function PhotoCollage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -569,15 +573,15 @@ function PhotoCollage() {
         {isClient && photos.map((photo, index) => {
           const variants = {
             hidden: { opacity: 0, scale: 0.8, rotate: photo.rotation - 10 },
-            visible: { 
-              opacity: 1, 
-              scale: 1, 
+            visible: {
+              opacity: 1,
+              scale: 1,
               rotate: photo.rotation,
-              transition: { 
-                duration: 0.8, 
+              transition: {
+                duration: 0.8,
                 ease: [0.22, 1, 0.36, 1],
-                delay: index * 0.2 
-              } 
+                delay: index * 0.2
+              }
             },
           } as const;
 
@@ -622,7 +626,7 @@ function PhotoCollage() {
                     }
                   }}
                 />
-                
+
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-end justify-center p-3">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="bg-white/90 dark:bg-slate-800/90 rounded-lg px-3 py-2 shadow-lg backdrop-blur-sm">
@@ -681,7 +685,7 @@ function PhotoCollage() {
                 }}
               />
             </motion.div>
-            
+
             <motion.div
               className="relative h-24 rounded-lg overflow-hidden shadow-md"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -907,7 +911,7 @@ export default function LeadershipVolunteering() {
         >
           <div className="w-full h-full bg-gradient-to-br from-green-500 to-blue-500 rounded-full blur-3xl" />
         </motion.div>
-        
+
         <motion.div
           className="absolute bottom-20 right-20 w-32 h-32 opacity-5 dark:opacity-10"
           animate={{
@@ -923,7 +927,7 @@ export default function LeadershipVolunteering() {
         >
           <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-full blur-3xl" />
         </motion.div>
-        
+
         {/* Floating leadership elements */}
         <motion.div
           className="absolute top-1/3 right-1/4 w-24 h-24 opacity-5 dark:opacity-10"
@@ -940,10 +944,10 @@ export default function LeadershipVolunteering() {
         >
           <div className="w-full h-full bg-gradient-to-br from-orange-500 to-red-500 rounded-lg blur-2xl" />
         </motion.div>
-        
+
         {/* Background decoration */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_70%,rgba(99,102,241,0.03),transparent_50%)]"></div>
-        
+
         {/* Floating Particles - Client Side Only */}
         {isClient && (
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -953,7 +957,7 @@ export default function LeadershipVolunteering() {
               const top = ((i * 11.4) % 100);
               const duration = 5 + ((i * 0.3) % 3);
               const delay = ((i * 0.5) % 2);
-              
+
               return (
                 <motion.div
                   key={i}
@@ -979,7 +983,7 @@ export default function LeadershipVolunteering() {
             })}
           </div>
         )}
-        
+
         {/* Glowing Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -1011,7 +1015,7 @@ export default function LeadershipVolunteering() {
       </div>
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="mx-auto mb-16 max-w-3xl text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1037,10 +1041,10 @@ export default function LeadershipVolunteering() {
             viewport={{ once: true }}
           >
             {leadershipRoles.map((role, index) => (
-              <LeadershipCard 
-                key={role.id} 
-                role={role} 
-                index={index} 
+              <LeadershipCard
+                key={role.id}
+                role={role}
+                index={index}
                 onClick={() => handleCardClick(role)}
               />
             ))}
@@ -1060,7 +1064,7 @@ export default function LeadershipVolunteering() {
 
 
         {/* Bottom decorative element */}
-        <motion.div 
+        <motion.div
           className="mt-16 flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -1074,7 +1078,7 @@ export default function LeadershipVolunteering() {
           </div>
         </motion.div>
       </div>
-      
+
       {/* Modal */}
       <LeadershipModal
         role={selectedRole}
@@ -1082,7 +1086,7 @@ export default function LeadershipVolunteering() {
         onClose={handleCloseModal}
         onPhotoClick={setSelectedPhoto}
       />
-      
+
       {/* Photo Popup Modal */}
       <AnimatePresence>
         {selectedPhoto && (
@@ -1100,12 +1104,12 @@ export default function LeadershipVolunteering() {
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <Image 
-                src={selectedPhoto} 
-                alt="Full size photo" 
-                width={800} 
-                height={600} 
-                className="rounded-lg max-w-full max-h-full object-contain" 
+              <Image
+                src={selectedPhoto}
+                alt="Full size photo"
+                width={800}
+                height={600}
+                className="rounded-lg max-w-full max-h-full object-contain"
               />
               <button
                 onClick={() => setSelectedPhoto(null)}
