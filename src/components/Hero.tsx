@@ -1,9 +1,13 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, Easing } from 'framer-motion';
 import { Suspense, useRef } from 'react';
-import FloatingCube from './FloatingCube';
 
+import dynamic from 'next/dynamic';
+const FloatingCube = dynamic(() => import('./FloatingCube'), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-gradient-to-br from-slate-900/20 to-purple-900/20" />,
+});
 const Hero = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -19,19 +23,21 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.5,
+        staggerChildren: 0.2,
+        // Removed delayChildren to ensure LCP element paints immediately
+        delayChildren: 0,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 }, // Reduced initial y offset
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.5, // Sped up the animation for faster LCP
+        ease: "easeOut" as Easing
       },
     },
   };
@@ -59,7 +65,7 @@ const Hero = () => {
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      contactSection.scrollIntoView({ 
+      contactSection.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -67,9 +73,9 @@ const Hero = () => {
   };
 
   return (
-    <section 
+    <section
       ref={ref}
-      id="home" 
+      id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900 dark:from-slate-950 dark:via-purple-950 dark:to-slate-950"
     >
       {/* Animated Background Shapes */}
@@ -116,14 +122,12 @@ const Hero = () => {
 
       {/* 3D Background */}
       <div className="absolute inset-0 z-0">
-        <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-slate-900/20 to-purple-900/20" />}>
-          <FloatingCube />
-        </Suspense>
+        <FloatingCube />
       </div>
 
       {/* Enhanced Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40 z-10" />
-      
+
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 z-5 opacity-5">
         <div className="w-full h-full" style={{
@@ -167,7 +171,7 @@ const Hero = () => {
           className="text-lg sm:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
           variants={itemVariants}
         >
-          A passionate software & network engineering student who doesn&apos;t just code – I build communities, 
+          A passionate software & network engineering student who doesn&apos;t just code – I build communities,
           solve real problems, and inspire fellow students to make a difference through technology.
         </motion.p>
 
@@ -215,7 +219,7 @@ const Hero = () => {
           const top = ((i * 11.7) % 100);
           const duration = 3 + ((i * 0.3) % 2);
           const delay = ((i * 0.7) % 2);
-          
+
           return (
             <motion.div
               key={i}

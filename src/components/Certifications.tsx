@@ -262,15 +262,15 @@ function CertificationCard({ certification, index }: { certification: Certificat
 
   const variants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
+    visible: {
+      opacity: 1,
+      y: 0,
       scale: 1,
-      transition: { 
-        duration: 0.6, 
+      transition: {
+        duration: 0.6,
         ease: [0.22, 1, 0.36, 1],
-        delay: index * 0.1 
-      } 
+        delay: index * 0.1
+      }
     },
   } as const;
 
@@ -285,7 +285,7 @@ function CertificationCard({ certification, index }: { certification: Certificat
       <div className="relative h-full rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105 hover:-translate-y-2">
         {/* Gradient overlay on hover */}
         <div className={`absolute inset-0 bg-gradient-to-br ${certification.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-        
+
         {/* Glow effect on hover */}
         <div className={`absolute inset-0 bg-gradient-to-br ${certification.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10`}></div>
 
@@ -308,7 +308,7 @@ function CertificationCard({ certification, index }: { certification: Certificat
             onLoad={() => setIsImageLoading(false)}
             onError={() => setIsImageLoading(false)}
           />
-          
+
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
             <motion.div
@@ -379,14 +379,14 @@ function CertificationCard({ certification, index }: { certification: Certificat
 }
 
 // Modal Component
-function CertificationModal({ 
-  certification, 
-  isOpen, 
-  onClose 
-}: { 
-  certification: Certification | null; 
-  isOpen: boolean; 
-  onClose: () => void; 
+function CertificationModal({
+  certification,
+  isOpen,
+  onClose
+}: {
+  certification: Certification | null;
+  isOpen: boolean;
+  onClose: () => void;
 }) {
   if (!certification) return null;
 
@@ -402,7 +402,7 @@ function CertificationModal({
         >
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-          
+
           {/* Modal */}
           <motion.div
             className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
@@ -509,17 +509,19 @@ function CertificationModal({
 }
 
 // Carousel Navigation Component
-function CarouselNavigation({ 
-  currentIndex, 
-  totalItems, 
-  onPrevious, 
-  onNext, 
-  itemsPerView 
+function CarouselNavigation({
+  currentIndex,
+  totalItems,
+  onPrevious,
+  onNext,
+  onGoTo,
+  itemsPerView
 }: {
   currentIndex: number;
   totalItems: number;
   onPrevious: () => void;
   onNext: () => void;
+  onGoTo: (index: number) => void;
   itemsPerView: number;
 }) {
   const maxIndex = Math.max(0, totalItems - itemsPerView);
@@ -531,11 +533,11 @@ function CarouselNavigation({
       <motion.button
         onClick={onPrevious}
         disabled={!canGoPrevious}
-        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${
-          canGoPrevious 
-            ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700' 
-            : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
-        }`}
+        aria-label="Previous Certificate"
+        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${canGoPrevious
+          ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+          : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
+          }`}
         whileHover={canGoPrevious ? { scale: 1.1 } : {}}
         whileTap={canGoPrevious ? { scale: 0.9 } : {}}
       >
@@ -544,29 +546,37 @@ function CarouselNavigation({
         </svg>
       </motion.button>
 
-      {/* Dots indicator */}
-      <div className="flex gap-2">
-        {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {/* Handle dot click */}}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex 
-                ? 'bg-blue-600 w-8' 
+      {/* Dots indicator — shows dots for ≤8 pages, text counter for more */}
+      {maxIndex + 1 <= 8 ? (
+        <div className="flex gap-1">
+          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+            <button
+              key={index}
+              aria-label={`Go to page ${index + 1}`}
+              onClick={() => onGoTo(index)}
+              className="p-2 flex items-center justify-center"
+            >
+              <span className={`block rounded-full w-2 h-2 transition-colors duration-300 ${index === currentIndex
+                ? 'bg-blue-600'
                 : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
-            }`}
-          />
-        ))}
-      </div>
+                }`} />
+            </button>
+          ))}
+        </div>
+      ) : (
+        <span className="text-sm text-slate-500 dark:text-slate-400 px-4">
+          {currentIndex + 1} / {maxIndex + 1}
+        </span>
+      )}
 
       <motion.button
         onClick={onNext}
         disabled={!canGoNext}
-        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${
-          canGoNext 
-            ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700' 
-            : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
-        }`}
+        aria-label="Next Certificate"
+        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${canGoNext
+          ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+          : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
+          }`}
         whileHover={canGoNext ? { scale: 1.1 } : {}}
         whileTap={canGoNext ? { scale: 0.9 } : {}}
       >
@@ -630,7 +640,7 @@ export default function Certifications() {
     <section id="certifications" className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.03),transparent_50%)]"></div>
-      
+
       {/* Floating Particles - Client Side Only */}
       {isClient && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -640,7 +650,7 @@ export default function Certifications() {
             const top = ((i * 13.6) % 100);
             const duration = 6 + ((i * 0.4) % 2);
             const delay = ((i * 0.6) % 2);
-            
+
             return (
               <motion.div
                 key={i}
@@ -666,7 +676,7 @@ export default function Certifications() {
           })}
         </div>
       )}
-      
+
       {/* Glowing Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -695,10 +705,10 @@ export default function Certifications() {
           }}
         />
       </div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="mx-auto mb-16 max-w-3xl text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -738,6 +748,7 @@ export default function Certifications() {
           totalItems={certifications.length}
           onPrevious={handlePrevious}
           onNext={handleNext}
+          onGoTo={(index) => setCurrentIndex(index)}
           itemsPerView={itemsPerView}
         />
 
@@ -749,7 +760,7 @@ export default function Certifications() {
         />
 
         {/* Bottom decorative element */}
-        <motion.div 
+        <motion.div
           className="mt-16 flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}

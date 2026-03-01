@@ -67,7 +67,7 @@ const AboutMe = () => {
       {/* Interactive Background Elements */}
       <div className="absolute inset-0 z-0">
         {/* Animated volunteer photo overlays */}
-        <motion.div 
+        <motion.div
           className="absolute top-10 right-10 w-64 h-64 opacity-5 dark:opacity-10"
           animate={{
             scale: [1, 1.1, 1],
@@ -81,8 +81,8 @@ const AboutMe = () => {
         >
           <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl" />
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="absolute bottom-10 left-10 w-48 h-48 opacity-5 dark:opacity-10"
           animate={{
             scale: [1.1, 1, 1.1],
@@ -97,7 +97,7 @@ const AboutMe = () => {
         >
           <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-600 rounded-full blur-3xl" />
         </motion.div>
-        
+
         {/* Floating volunteer elements */}
         <motion.div
           className="absolute top-1/3 left-1/4 w-32 h-32 opacity-5 dark:opacity-10"
@@ -114,7 +114,7 @@ const AboutMe = () => {
         >
           <div className="w-full h-full bg-gradient-to-br from-green-500 to-blue-500 rounded-lg blur-2xl" />
         </motion.div>
-        
+
         {/* Circuit pattern overlay */}
         <div className="absolute inset-0 opacity-5 dark:opacity-10">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -142,16 +142,17 @@ const AboutMe = () => {
             <div className="relative group">
               {/* Professional Photo */}
               <div className="w-full max-w-md mx-auto lg:mx-0 aspect-square rounded-2xl shadow-2xl overflow-hidden">
-                <Image 
-                  src="/images/about/yasas-banuka-professional-headshot-portrait.jpg" 
-                  alt="Yasas Banuka - Software Engineer and Student Leader Professional Headshot" 
-                  width={400} 
-                  height={400}
+                <Image
+                  src="/images/about/yasas-banuka-professional-headshot-portrait.jpg"
+                  alt="Yasas Banuka - Software Engineer and Student Leader Professional Headshot"
+                  width={560}
+                  height={747}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="w-full h-full object-cover object-top"
                   priority
                 />
               </div>
-              
+
               {/* Floating icons around the photo */}
               <motion.div
                 className="absolute -top-4 -right-4 w-12 h-12 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center"
@@ -167,7 +168,7 @@ const AboutMe = () => {
               >
                 <span className="text-xl">💻</span>
               </motion.div>
-              
+
               <motion.div
                 className="absolute -bottom-4 -left-4 w-12 h-12 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center"
                 animate={{
@@ -201,9 +202,9 @@ const AboutMe = () => {
               className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
-              I&apos;m a software & network engineering student who believes technology 
-              should solve real problems while inspiring others to think bigger. 
-              My journey spans full-stack development, cloud computing, and 
+              I&apos;m a software & network engineering student who believes technology
+              should solve real problems while inspiring others to think bigger.
+              My journey spans full-stack development, cloud computing, and
               community leadership.
             </motion.p>
 
@@ -212,8 +213,8 @@ const AboutMe = () => {
               className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
-              What drives me is mentoring fellow students and organizing events that 
-              spark innovation. I combine strong technical skills with a collaborative 
+              What drives me is mentoring fellow students and organizing events that
+              spark innovation. I combine strong technical skills with a collaborative
               mindset, always focused on creating meaningful impact.
             </motion.p>
 
@@ -222,8 +223,8 @@ const AboutMe = () => {
               className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
-              As a student influencer, I&apos;m passionate about creating inclusive spaces 
-              where everyone can discover their potential in tech and contribute 
+              As a student influencer, I&apos;m passionate about creating inclusive spaces
+              where everyone can discover their potential in tech and contribute
               to something greater than themselves.
             </motion.p>
 

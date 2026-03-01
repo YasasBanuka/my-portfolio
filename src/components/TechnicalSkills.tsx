@@ -281,28 +281,12 @@ const skillCategories: SkillCategory[] = [
         gradient: "from-blue-500 to-indigo-500"
       },
       {
-        id: "mysql-cloud",
-        name: "MySQL",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
-        proficiency: "Advanced",
-        color: "blue",
-        gradient: "from-blue-500 to-cyan-500"
-      },
-      {
         id: "sqlite",
         name: "SQLite",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg",
         proficiency: "Intermediate",
         color: "gray",
         gradient: "from-gray-500 to-slate-500"
-      },
-      {
-        id: "h2-cloud",
-        name: "H2 Database",
-        logo: "https://www.h2database.com/html/images/h2-logo-2.png",
-        proficiency: "Intermediate",
-        color: "indigo",
-        gradient: "from-indigo-500 to-purple-500"
       }
     ]
   },
@@ -427,7 +411,7 @@ const skillCategories: SkillCategory[] = [
       {
         id: "cicd",
         name: "CI/CD",
-        logo: "https://s3.amazonaws.com/vipm-io-media-files-production/media/package-list-images/7d7747a7-68b1-4cd7-9527-19eb96be9d7c.png",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuredevops/azuredevops-original.svg",
         proficiency: "Beginner",
         color: "purple",
         gradient: "from-purple-500 to-pink-500"
@@ -451,18 +435,10 @@ const skillCategories: SkillCategory[] = [
       {
         id: "jwt",
         name: "JWT",
-        logo: "https://www.jwt.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fjwt-flower.f20616b0.png&w=1920&q=75",
+        logo: "https://jwt.io/img/pic_logo.svg",
         proficiency: "Beginner",
         color: "blue",
         gradient: "from-blue-500 to-cyan-500"
-      },
-      {
-        id: "spring-security-method",
-        name: "Spring Security",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
-        proficiency: "Intermediate",
-        color: "green",
-        gradient: "from-green-500 to-emerald-500"
       },
       {
         id: "sdlc",
@@ -496,9 +472,9 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
   // Animation variants for the skill card
   const cardVariants = {
     hidden: { opacity: 0, y: 20, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
+    visible: {
+      opacity: 1,
+      y: 0,
       scale: 1
     }
   };
@@ -527,7 +503,7 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
       {/* Main skill card with enhanced hover effects */}
       <motion.div
         className={`relative p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-blue-400/20 hover:border-blue-300 dark:hover:border-blue-600`}
-        whileHover={{ 
+        whileHover={{
           scale: 1.05,
           y: -4,
           rotateY: 2,
@@ -543,20 +519,20 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
       >
         {/* Glow effect overlay */}
         <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${skill.gradient} blur-sm -z-10`} />
-        
+
         {/* Skill Logo and Name */}
         <div className="flex flex-col items-center text-center space-y-3 relative z-10">
           {/* Logo container with enhanced styling */}
-          <motion.div 
+          <motion.div
             className="flex h-12 w-12 items-center justify-center rounded-lg bg-white dark:bg-slate-700 shadow-sm overflow-hidden border border-slate-200 dark:border-slate-600"
-            whileHover={{ 
+            whileHover={{
               scale: 1.1,
               rotate: 5,
               transition: { duration: 0.2 }
             }}
           >
-            <Image 
-              src={skill.logo} 
+            <Image
+              src={skill.logo}
               alt={`${skill.name} logo`}
               width={32}
               height={32}
@@ -572,7 +548,7 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
               }}
             />
           </motion.div>
-          
+
           {/* Skill name and proficiency */}
           <div className="space-y-1">
             <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
@@ -602,7 +578,7 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
             >
               {/* Tooltip arrow */}
               <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-800 dark:border-t-slate-700" />
-              
+
               {/* Tooltip content */}
               <div className="bg-slate-800 dark:bg-slate-700 text-white text-xs rounded-lg px-3 py-2 shadow-lg max-w-xs">
                 <div className="font-semibold mb-1">{skill.name}</div>
@@ -622,14 +598,14 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
 }
 
 // Enhanced TabButton component for category navigation with responsive design
-function TabButton({ 
-  category, 
-  isActive, 
-  onClick 
-}: { 
-  category: SkillCategory; 
-  isActive: boolean; 
-  onClick: () => void; 
+function TabButton({
+  category,
+  isActive,
+  onClick
+}: {
+  category: SkillCategory;
+  isActive: boolean;
+  onClick: () => void;
 }) {
   // Responsive names - full on desktop, short on mobile/tablet for better UX
   const getDisplayName = (categoryId: string) => {
@@ -647,11 +623,10 @@ function TabButton({
   return (
     <motion.button
       onClick={onClick}
-      className={`relative px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${
-        isActive
-          ? 'bg-blue-500 text-white shadow-lg'
-          : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-blue-500/20 hover:border-blue-500/50'
-      }`}
+      className={`relative px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${isActive
+        ? 'bg-blue-500 text-white shadow-lg'
+        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-blue-500/20 hover:border-blue-500/50'
+        }`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -662,7 +637,7 @@ function TabButton({
           <span className="lg:hidden">{getDisplayName(category.id)}</span>
         </span>
       </span>
-      
+
       {/* Active indicator */}
       {isActive && (
         <motion.div
@@ -676,16 +651,18 @@ function TabButton({
 }
 
 // CategoryNavigation component for pagination controls with visual indicators
-function CategoryNavigation({ 
-  currentIndex, 
-  totalItems, 
-  onPrevious, 
-  onNext 
+function CategoryNavigation({
+  currentIndex,
+  totalItems,
+  onPrevious,
+  onNext,
+  onGoTo
 }: {
   currentIndex: number;
   totalItems: number;
   onPrevious: () => void;
   onNext: () => void;
+  onGoTo: (index: number) => void;
 }) {
   // Determine if navigation buttons should be enabled
   const canGoPrevious = currentIndex > 0;
@@ -696,11 +673,11 @@ function CategoryNavigation({
       <motion.button
         onClick={onPrevious}
         disabled={!canGoPrevious}
-        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${
-          canGoPrevious 
-            ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700' 
-            : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
-        }`}
+        aria-label="Previous category"
+        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${canGoPrevious
+          ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+          : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
+          }`}
         whileHover={canGoPrevious ? { scale: 1.1 } : {}}
         whileTap={canGoPrevious ? { scale: 0.9 } : {}}
       >
@@ -714,24 +691,29 @@ function CategoryNavigation({
         {Array.from({ length: totalItems }).map((_, index) => (
           <button
             key={index}
-            onClick={() => {/* Handle dot click */}}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex 
-                ? 'bg-blue-600 w-8' 
-                : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
-            }`}
-          />
+            aria-label={`Go to ${index === 0 ? 'Frontend' : `category ${index + 1}`}`}
+            onClick={() => onGoTo(index)}
+            className={`rounded-full transition-all duration-300 flex items-center justify-center p-3 ${index === currentIndex
+              ? 'bg-blue-600/20'
+              : 'hover:bg-slate-200 dark:hover:bg-slate-700'
+              }`}
+          >
+            <span className={`block rounded-full transition-all duration-300 ${index === currentIndex
+              ? 'bg-blue-600 w-4 h-2'
+              : 'bg-slate-300 dark:bg-slate-600 w-2 h-2'
+              }`} />
+          </button>
         ))}
       </div>
 
       <motion.button
         onClick={onNext}
         disabled={!canGoNext}
-        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${
-          canGoNext 
-            ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700' 
-            : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
-        }`}
+        aria-label="Next category"
+        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${canGoNext
+          ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+          : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
+          }`}
         whileHover={canGoNext ? { scale: 1.1 } : {}}
         whileTap={canGoNext ? { scale: 0.9 } : {}}
       >
@@ -748,7 +730,7 @@ export default function TechnicalSkills() {
   // State management for active category navigation
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
   const [isClient, setIsClient] = useState(false);
-  
+
   // Custom hook for reveal-once animation behavior
   const { ref, controls } = useRevealOnce<HTMLElement>();
 
@@ -768,8 +750,8 @@ export default function TechnicalSkills() {
   // Animation variants for child elements (header, navigation, content)
   const childVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0
     }
   };
@@ -787,7 +769,7 @@ export default function TechnicalSkills() {
   const activeCategory = skillCategories[activeCategoryIndex];
 
   return (
-    <section 
+    <section
       id="skills"
       ref={ref}
       className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/20 dark:from-slate-900 dark:via-blue-900/10 dark:to-purple-900/10 overflow-hidden"
@@ -797,7 +779,7 @@ export default function TechnicalSkills() {
         {/* Clean gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/30 dark:from-blue-900/20 dark:via-transparent dark:to-purple-900/20"></div>
       </div>
-      
+
       {/* Floating Particles - Client Side Only */}
       {isClient && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -807,7 +789,7 @@ export default function TechnicalSkills() {
             const top = ((i * 12.7) % 100);
             const duration = 4 + ((i * 0.2) % 3);
             const delay = ((i * 0.5) % 2);
-            
+
             return (
               <motion.div
                 key={i}
@@ -833,7 +815,7 @@ export default function TechnicalSkills() {
           })}
         </div>
       )}
-      
+
       {/* Glowing Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -862,10 +844,10 @@ export default function TechnicalSkills() {
           }}
         />
       </div>
-      
+
       {/* Main Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto w-full">
-        <motion.div 
+        <motion.div
           className="relative z-10"
           initial="hidden"
           animate={controls}
@@ -873,7 +855,7 @@ export default function TechnicalSkills() {
           transition={{ duration: 0.6, staggerChildren: 0.1 }}
         >
           {/* Section Header with Title and Description */}
-          <motion.div 
+          <motion.div
             className="mx-auto mb-12 max-w-3xl text-center"
             variants={childVariants}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -887,7 +869,7 @@ export default function TechnicalSkills() {
           </motion.div>
 
           {/* Category Tab Navigation - Allows users to switch between skill categories */}
-          <motion.div 
+          <motion.div
             className="mb-8"
             variants={childVariants}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -905,7 +887,7 @@ export default function TechnicalSkills() {
           </motion.div>
 
           {/* Skills Display Area - Shows skills for the currently selected category */}
-          <motion.div 
+          <motion.div
             className="min-h-[400px]"
             variants={childVariants}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -934,10 +916,10 @@ export default function TechnicalSkills() {
                     {/* Responsive Skills Grid - 2 cols mobile, 3 tablet, 4 desktop */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                       {activeCategory.skills.map((skill, index) => (
-                        <SkillCard 
-                          key={skill.id} 
-                          skill={skill} 
-                          index={index} 
+                        <SkillCard
+                          key={skill.id}
+                          skill={skill}
+                          index={index}
                         />
                       ))}
                     </div>
@@ -945,18 +927,19 @@ export default function TechnicalSkills() {
                 )}
               </motion.div>
             </AnimatePresence>
-        </motion.div>
+          </motion.div>
 
           {/* Category Navigation Controls - Previous/Next buttons with pagination dots */}
           <CategoryNavigation
             currentIndex={activeCategoryIndex}
             totalItems={skillCategories.length}
-            onPrevious={handlePrevious}
-            onNext={handleNext}
+            onPrevious={() => setActiveCategoryIndex(prev => Math.max(0, prev - 1))}
+            onNext={() => setActiveCategoryIndex(prev => Math.min(skillCategories.length - 1, prev + 1))}
+            onGoTo={(index) => setActiveCategoryIndex(index)}
           />
 
           {/* Footer Decorative Element - Adds visual closure to the section */}
-          <motion.div 
+          <motion.div
             className="mt-16 flex justify-center"
             variants={childVariants}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -967,7 +950,7 @@ export default function TechnicalSkills() {
               <span className="h-px w-8 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-600"></span>
             </div>
           </motion.div>
-      </motion.div>
+        </motion.div>
       </div>
     </section>
   );

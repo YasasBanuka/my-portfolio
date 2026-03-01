@@ -40,19 +40,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   // Metadata base for resolving relative URLs
   metadataBase: new URL("https://iamyasasbanuka.me"),
-  
+
   // Primary meta tags
   title: {
     default: "Yasas Banuka - Software Engineer & Student Leader",
     template: "%s | Yasas Banuka Portfolio"
   },
   description: "Software & Network Engineering student specializing in full-stack development, cloud computing, and community leadership. IEEE volunteer, student influencer, and passionate problem-solver building scalable solutions.",
-  
+
   // SEO keywords
   keywords: [
     "Yasas Banuka",
     "Software Engineer",
-    "Full Stack Developer", 
+    "Full Stack Developer",
     "Cloud Computing",
     "Network Engineering",
     "IEEE Volunteer",
@@ -66,14 +66,14 @@ export const metadata: Metadata = {
     "Portfolio",
     "Sri Lanka Developer"
   ],
-  
+
   // Author and creator information
-  authors: [{ 
+  authors: [{
     name: "Yasas Banuka",
     url: "https://iamyasasbanuka.me"
   }],
   creator: "Yasas Banuka",
-  
+
   // Open Graph metadata for social media
   openGraph: {
     type: "website",
@@ -84,23 +84,23 @@ export const metadata: Metadata = {
     description: "Software & Network Engineering student specializing in full-stack development, cloud computing, and community leadership. IEEE volunteer, student influencer, and passionate problem-solver.",
     images: [
       {
-        url: "/images/about/yasas-banuka-professional-headshot-square.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Yasas Banuka - Software Engineer and Student Leader Professional Headshot"
+        alt: "Yasas Banuka - Software Engineer and Student Leader Portfolio Preview"
       }
     ]
   },
-  
+
   // Twitter Card metadata
   twitter: {
     card: "summary_large_image",
     title: "Yasas Banuka - Software Engineer & Student Leader",
     description: "Software & Network Engineering student specializing in full-stack development, cloud computing, and community leadership.",
-    images: ["/images/about/yasas-banuka-professional-headshot-square.jpg"],
+    images: ["/opengraph-image.png"],
     creator: "@yasasbanuka"
   },
-  
+
   // Additional SEO metadata
   robots: {
     index: true,
@@ -113,25 +113,25 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  
+
   // Verification tags
   verification: {
     google: "7_d4q4alzR7Xi3SDZw8G_2GMORoHhVw9ClLR9iyR0H0", // actual verification code
   },
-  
+
   // Additional metadata
   category: "Technology",
   classification: "Portfolio Website",
-  
+
   // Canonical URL
   alternates: {
     canonical: "https://iamyasasbanuka.me",
   },
-  
+
   // App metadata
   applicationName: "Yasas Banuka Portfolio",
   generator: "Next.js",
-  
+
   // Icons
   icons: {
     icon: [
@@ -142,7 +142,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
   },
-  
+
   // Manifest
   manifest: "/manifest.json",
 };
@@ -156,7 +156,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0f172a" }
@@ -176,7 +175,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
+        <main id="main-content">
+          {children}
+        </main>
       </body>
     </html>
   );

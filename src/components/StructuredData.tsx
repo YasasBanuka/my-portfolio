@@ -55,7 +55,7 @@ export default function StructuredData() {
         "name": "IEEE Student Branch of University of Vocational Technology"
       },
       {
-        "@type": "Organization", 
+        "@type": "Organization",
         "name": "Leo Club of Colombo Grand Circle"
       }
     ],
@@ -79,7 +79,7 @@ export default function StructuredData() {
       "name": "Yasas Banuka"
     },
     "inLanguage": "en-US",
-    "copyrightYear": "2025",
+    "copyrightYear": new Date().getFullYear().toString(),
     "genre": "Portfolio Website"
   };
 

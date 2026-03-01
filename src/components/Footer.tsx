@@ -2,7 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Suspense } from "react";
-import FloatingCube from './FloatingCube';
+
+import dynamic from 'next/dynamic';
+
+const FloatingCube = dynamic(() => import('./FloatingCube'), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-gradient-to-br from-slate-900/20 to-purple-900/20" />,
+});
+
 
 const Footer = () => {
   const containerVariants = {
@@ -33,9 +40,7 @@ const Footer = () => {
     <footer className="relative min-h-screen flex items-center py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900 dark:from-slate-950 dark:via-purple-950 dark:to-slate-950 overflow-hidden">
       {/* 3D Background with Floating Cubes */}
       <div className="absolute inset-0 z-0">
-        <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-slate-900/20 to-purple-900/20" />}>
-          <FloatingCube />
-        </Suspense>
+        <FloatingCube />
       </div>
 
       {/* Enhanced Gradient Overlay */}
@@ -43,7 +48,7 @@ const Footer = () => {
 
       {/* Interactive Background Elements */}
       <div className="absolute inset-0 z-5">
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
@@ -55,7 +60,7 @@ const Footer = () => {
             ease: "easeInOut",
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
@@ -68,7 +73,7 @@ const Footer = () => {
             delay: 2,
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.3, 1],
@@ -81,7 +86,7 @@ const Footer = () => {
             delay: 4,
           }}
         />
-        
+
         {/* Floating footer elements */}
         <motion.div
           className="absolute top-1/2 left-1/3 w-32 h-32 bg-green-500/10 rounded-full blur-2xl"
@@ -122,7 +127,7 @@ const Footer = () => {
           <div className="relative">
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl blur-xl scale-110"></div>
-            
+
             {/* Main tagline container */}
             <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 lg:p-12">
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4 leading-tight">
@@ -159,7 +164,7 @@ const Footer = () => {
           className="pt-8 border-t border-white/10"
           variants={itemVariants}
         >
-          <p className="text-gray-400 text-m">
+          <p className="text-gray-400 text-m" suppressHydrationWarning>
             © {new Date().getFullYear()} Yasas Banuka. All rights reserved.
           </p>
           <p className="text-gray-500 text-sm mt-2">
@@ -176,7 +181,7 @@ const Footer = () => {
           const top = ((i * 9.2) % 100);
           const duration = 3 + ((i * 0.4) % 2);
           const delay = ((i * 0.6) % 2);
-          
+
           return (
             <motion.div
               key={i}

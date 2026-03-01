@@ -22,9 +22,9 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9, rotateX: 15 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
+    visible: {
+      opacity: 1,
+      y: 0,
       scale: 1,
       rotateX: 0
     }
@@ -46,7 +46,7 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
       <Link href={`/blog/${post.id}`}>
         <motion.div
           className="relative p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden h-full"
-          whileHover={{ 
+          whileHover={{
             scale: 1.05,
             y: -8,
             rotateY: 2,
@@ -55,20 +55,20 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
               ease: "easeOut"
             }
           }}
-          whileTap={{ 
+          whileTap={{
             scale: 0.98,
             transition: { duration: 0.1 }
           }}
         >
           {/* Animated background gradient */}
-          <motion.div 
+          <motion.div
             className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0"
-            whileHover={{ 
+            whileHover={{
               opacity: 1,
               transition: { duration: 0.3 }
             }}
           />
-          
+
           {/* Floating particles effect */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {[...Array(3)].map((_, i) => (
@@ -93,9 +93,9 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
           </div>
 
           {/* Category badge with animation */}
-          <motion.div 
+          <motion.div
             className="absolute top-4 right-4 z-10"
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
               transition: { duration: 0.2 }
             }}
@@ -107,7 +107,7 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
 
           {/* Blog image with enhanced effects */}
           {post.image && (
-            <motion.div 
+            <motion.div
               className="relative h-48 w-full rounded-xl overflow-hidden mb-6"
             >
               <motion.img
@@ -140,7 +140,7 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
           {/* Content with staggered animations */}
           <div className="relative z-10">
             {/* Meta info with animation */}
-            <motion.div 
+            <motion.div
               className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400 mb-4"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -152,7 +152,7 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
             </motion.div>
 
             {/* Title with enhanced styling */}
-            <motion.h3 
+            <motion.h3
               className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -162,7 +162,7 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
             </motion.h3>
 
             {/* Excerpt with fade-in */}
-            <motion.p 
+            <motion.p
               className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -188,16 +188,16 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
           </div>
 
           {/* Interactive read indicator */}
-          <motion.div 
+          <motion.div
             className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300"
             whileHover={{ scale: 1.1 }}
           >
             <div className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 font-semibold">
               <span>Read</span>
-              <motion.svg 
-                className="w-4 h-4" 
-                fill="none" 
-                stroke="currentColor" 
+              <motion.svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
                 viewBox="0 0 24 24"
                 animate={{ x: [0, 4, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -257,21 +257,21 @@ export default function Blog() {
 
   const childVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0
     }
   };
 
   return (
-    <section 
+    <section
       id="blog"
       ref={ref}
       className="relative min-h-screen flex items-center py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.03),transparent_50%)]"></div>
-      
+
       {/* Floating Particles - Client Side Only */}
       {isClient && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -281,7 +281,7 @@ export default function Blog() {
             const top = ((i * 12.3) % 100);
             const duration = 5 + ((i * 0.3) % 3);
             const delay = ((i * 0.4) % 2);
-            
+
             return (
               <motion.div
                 key={i}
@@ -307,7 +307,7 @@ export default function Blog() {
           })}
         </div>
       )}
-      
+
       {/* Glowing Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -336,132 +336,132 @@ export default function Blog() {
           }}
         />
       </div>
-      
-      <div className="relative z-10 max-w-7xl mx-auto w-full">
-        <motion.div 
-          className="relative z-10"
-        initial="hidden"
-        animate={controls}
-        variants={sectionVariants}
-      >
-        {/* Header */}
-        <motion.div 
-          className="mx-auto mb-16 max-w-3xl text-center"
-          variants={childVariants}
-        >
-          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-6">
-            Blog & Articles
-          </h2>
-          <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-            Insights, tutorials, and thoughts on software development and technology trends.
-          </p>
-        </motion.div>
 
-        {/* Blog Posts Carousel */}
-        <motion.div 
-          className="relative overflow-hidden"
-          variants={childVariants}
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <motion.div
+          className="relative z-10"
+          initial="hidden"
+          animate={controls}
+          variants={sectionVariants}
         >
+          {/* Header */}
           <motion.div
-            className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
+            className="mx-auto mb-16 max-w-3xl text-center"
+            variants={childVariants}
           >
-            {blogPosts.map((post, index) => (
-              <div
-                key={post.id}
-                className="w-full flex-shrink-0 px-4"
-                style={{ width: `${100 / itemsPerView}%` }}
+            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-6">
+              Blog & Articles
+            </h2>
+            <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
+              Insights, tutorials, and thoughts on software development and technology trends.
+            </p>
+          </motion.div>
+
+          {/* Blog Posts Carousel */}
+          <motion.div
+            className="relative overflow-hidden"
+            variants={childVariants}
+          >
+            <motion.div
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
+            >
+              {blogPosts.map((post, index) => (
+                <div
+                  key={post.id}
+                  className="w-full flex-shrink-0 px-4"
+                  style={{ width: `${100 / itemsPerView}%` }}
+                >
+                  <BlogCard
+                    post={post}
+                    index={index}
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Carousel Navigation */}
+          <motion.div
+            className="flex items-center justify-center gap-4 mt-8"
+            variants={childVariants}
+          >
+            <motion.button
+              onClick={handlePrevious}
+              disabled={currentIndex === 0}
+              className={`p-3 rounded-full shadow-lg transition-all duration-300 ${currentIndex === 0
+                ? 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
+                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                }`}
+              whileHover={currentIndex > 0 ? { scale: 1.1 } : {}}
+              whileTap={currentIndex > 0 ? { scale: 0.9 } : {}}
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+
+            {/* Dots indicator */}
+            <div className="flex gap-1">
+              {Array.from({ length: Math.max(1, blogPosts.length - itemsPerView + 1) }).map((_, index) => (
+                <button
+                  key={index}
+                  aria-label={`Go to page ${index + 1}`}
+                  onClick={() => setCurrentIndex(index)}
+                  className="p-2 flex items-center justify-center"
+                >
+                  <span className={`block rounded-full w-2 h-2 transition-colors duration-300 ${index === currentIndex
+                      ? 'bg-blue-600'
+                      : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
+                    }`} />
+                </button>
+              ))}
+            </div>
+
+            <motion.button
+              onClick={handleNext}
+              disabled={currentIndex >= blogPosts.length - itemsPerView}
+              className={`p-3 rounded-full shadow-lg transition-all duration-300 ${currentIndex >= blogPosts.length - itemsPerView
+                ? 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
+                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                }`}
+              whileHover={currentIndex < blogPosts.length - itemsPerView ? { scale: 1.1 } : {}}
+              whileTap={currentIndex < blogPosts.length - itemsPerView ? { scale: 0.9 } : {}}
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
+          </motion.div>
+
+          {/* Load More Button */}
+          <motion.div
+            className="mt-12 flex justify-center"
+            variants={childVariants}
+          >
+            <Link href="/blog">
+              <motion.button
+                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <BlogCard 
-                  post={post} 
-                  index={index} 
-                />
-              </div>
-            ))}
+                View All Articles
+              </motion.button>
+            </Link>
+          </motion.div>
+
+          {/* Bottom decorative element */}
+          <motion.div
+            className="mt-16 flex justify-center"
+            variants={childVariants}
+          >
+            <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+              <span className="h-px w-8 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-600"></span>
+              <span>Sharing Knowledge & Insights</span>
+              <span className="h-px w-8 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-600"></span>
+            </div>
           </motion.div>
         </motion.div>
-
-        {/* Carousel Navigation */}
-        <motion.div 
-          className="flex items-center justify-center gap-4 mt-8"
-          variants={childVariants}
-        >
-          <motion.button
-            onClick={handlePrevious}
-            disabled={currentIndex === 0}
-            className={`p-3 rounded-full shadow-lg transition-all duration-300 ${
-              currentIndex === 0 
-                ? 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed' 
-                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
-            }`}
-            whileHover={currentIndex > 0 ? { scale: 1.1 } : {}}
-            whileTap={currentIndex > 0 ? { scale: 0.9 } : {}}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </motion.button>
-
-          {/* Dots indicator */}
-          <div className="flex gap-2">
-            {Array.from({ length: Math.max(1, blogPosts.length - itemsPerView + 1) }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-blue-600 w-8' 
-                    : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
-                }`}
-              />
-            ))}
-          </div>
-
-          <motion.button
-            onClick={handleNext}
-            disabled={currentIndex >= blogPosts.length - itemsPerView}
-            className={`p-3 rounded-full shadow-lg transition-all duration-300 ${
-              currentIndex >= blogPosts.length - itemsPerView 
-                ? 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed' 
-                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
-            }`}
-            whileHover={currentIndex < blogPosts.length - itemsPerView ? { scale: 1.1 } : {}}
-            whileTap={currentIndex < blogPosts.length - itemsPerView ? { scale: 0.9 } : {}}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </motion.button>
-        </motion.div>
-
-        {/* Load More Button */}
-        <motion.div 
-          className="mt-12 flex justify-center"
-          variants={childVariants}
-        >
-          <Link href="/blog">
-            <motion.button
-              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View All Articles
-            </motion.button>
-          </Link>
-        </motion.div>
-
-        {/* Bottom decorative element */}
-        <motion.div 
-          className="mt-16 flex justify-center"
-          variants={childVariants}
-        >
-          <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-            <span className="h-px w-8 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-600"></span>
-            <span>Sharing Knowledge & Insights</span>
-            <span className="h-px w-8 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-600"></span>
-          </div>
-        </motion.div>
-      </motion.div>
       </div>
     </section>
   );

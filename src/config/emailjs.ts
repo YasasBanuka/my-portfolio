@@ -1,18 +1,10 @@
 // EmailJS Configuration
-// Replace these values with your actual EmailJS credentials
-
+// Values are loaded from environment variables (.env.local)
 export const EMAILJS_CONFIG = {
-  // Your EmailJS Service ID (from Email Services page)
-  SERVICE_ID: 'service_q4swjf7',
-  
-  // Your EmailJS Template ID (from Email Templates page)
-  TEMPLATE_ID: 'template_k6e23sk',
-  
-  // Your EmailJS Public Key (from Account > General page)
-  PUBLIC_KEY: '3RzlreaYbbLjWyiGR',
-  
-  // Your email address where contact form messages will be sent
-  TO_EMAIL: 'ybanuka2003@gmail.com'
+  SERVICE_ID: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+  TEMPLATE_ID: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+  PUBLIC_KEY: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+  TO_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL!,
 };
 
 // Template parameters that will be sent to EmailJS

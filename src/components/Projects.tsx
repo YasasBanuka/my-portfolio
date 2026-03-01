@@ -66,8 +66,8 @@ const projects: Project[] = [
     id: "project-1",
     title: "Personal Portfolio Website",
     description: "Modern, responsive portfolio showcasing my journey as a software engineer, built with Next.js and enhanced by AI-assisted development.",
-    detailedDescription: "A sophisticated portfolio website built with Next.js 14, TypeScript, and Tailwind CSS, featuring smooth animations with Framer Motion. The project demonstrates modern web development practices while leveraging AI tools like Cursor to accelerate development without compromising code quality. It showcases my technical skills, projects, and professional journey through an interactive, visually appealing interface.",
-    techStack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "Cursor AI", "Vercel"],
+    detailedDescription: "A sophisticated portfolio website built with Next.js 15, TypeScript, and Tailwind CSS, featuring smooth animations with Framer Motion. The project demonstrates modern web development practices while leveraging AI tools like Cursor to accelerate development without compromising code quality. It showcases my technical skills, projects, and professional journey through an interactive, visually appealing interface.",
+    techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Cursor AI", "Vercel"],
     features: [
       "Responsive design with mobile-first approach",
       "Smooth scroll animations and micro-interactions",
@@ -307,147 +307,7 @@ const projects: Project[] = [
     duration: "1 month",
     teamSize: "Solo Project",
     screenshots: ["/projects/gas-dashboard.jpg", "/projects/gas-alerts.jpg", "/projects/gas-analytics.jpg"]
-  },
-  // {
-  //   id: "project-8",
-  //   title: "Student Management System",
-  //   description: "Comprehensive web-based system for managing student records, grades, and academic progress with role-based access control.",
-  //   detailedDescription: "A full-featured student management system designed for educational institutions to streamline administrative tasks, track student progress, and facilitate communication between students, teachers, and administrators.",
-  //   techStack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
-  //   features: [
-  //     "Student enrollment and profile management",
-  //     "Grade tracking and report generation",
-  //     "Course scheduling and management",
-  //     "Attendance monitoring system",
-  //     "Parent-teacher communication portal",
-  //     "Academic calendar and event management",
-  //     "Financial tracking for fees and payments"
-  //   ],
-  //   challenges: [
-  //     "Managing complex user roles and permissions",
-  //     "Handling large amounts of student data efficiently",
-  //     "Creating intuitive interface for different user types",
-  //     "Ensuring data security and privacy compliance"
-  //   ],
-  //   solutions: [
-  //     "Implemented comprehensive role-based access control",
-  //     "Used MongoDB aggregation for efficient data queries",
-  //     "Created responsive design with role-specific dashboards",
-  //     "Applied encryption and secure authentication practices"
-  //   ],
-  //   imageUrl: "/projects/student-management.jpg",
-  //   githubUrl: "https://github.com/YasasBanuka/Student-Management-System",
-  //   gradient: "from-orange-500 to-red-600",
-  //   category: "Web Application",
-  //   duration: "4 months",
-  //   teamSize: "Team of 4",
-  //   screenshots: ["/projects/sms-dashboard.jpg", "/projects/sms-grades.jpg", "/projects/sms-reports.jpg"]
-  // },
-  // {
-  //   id: "project-8",
-  //   title: "Weather Analytics Dashboard",
-  //   description: "Real-time weather data visualization dashboard with historical analysis and predictive forecasting capabilities.",
-  //   detailedDescription: "An advanced weather analytics platform that aggregates data from multiple sources to provide comprehensive weather insights, historical analysis, and predictive forecasting for various applications.",
-  //   techStack: ["React", "D3.js", "Python", "Flask", "PostgreSQL", "Redis"],
-  //   features: [
-  //     "Real-time weather data visualization",
-  //     "Historical weather trend analysis",
-  //     "Interactive maps and charts",
-  //     "Weather alerts and notifications",
-  //     "API integration with multiple weather services",
-  //     "Data export and reporting features",
-  //     "Customizable dashboard layouts"
-  //   ],
-  //   challenges: [
-  //     "Processing large volumes of real-time weather data",
-  //     "Creating smooth animations and transitions for data visualization",
-  //     "Optimizing performance for complex charts and graphs",
-  //     "Ensuring data accuracy from multiple sources"
-  //   ],
-  //   solutions: [
-  //     "Used Redis for caching and real-time data processing",
-  //     "Implemented D3.js for custom data visualizations",
-  //     "Applied lazy loading and virtualization for large datasets",
-  //     "Created data validation and cleaning pipelines"
-  //   ],
-  //   imageUrl: "/projects/weather-dashboard.jpg",
-  //   githubUrl: "https://github.com/YasasBanuka/Weather-Analytics-Dashboard",
-  //   gradient: "from-teal-500 to-green-600",
-  //   category: "Data Visualization",
-  //   duration: "3 months",
-  //   teamSize: "Solo Project",
-  //   screenshots: ["/projects/weather-charts.jpg", "/projects/weather-maps.jpg", "/projects/weather-forecast.jpg"]
-  // },
-  // {
-  //   id: "project-9",
-  //   title: "Blockchain Voting System",
-  //   description: "Secure, transparent voting system built on blockchain technology ensuring immutability and verifiability of votes.",
-  //   detailedDescription: "A revolutionary voting system that leverages blockchain technology to provide secure, transparent, and verifiable voting mechanisms. The system ensures vote integrity while maintaining voter privacy through advanced cryptographic techniques.",
-  //   techStack: ["Solidity", "Web3.js", "React", "Node.js", "Ethereum"],
-  //   features: [
-  //     "Immutable vote recording on blockchain",
-  //     "Voter identity verification system",
-  //     "Real-time voting statistics and results",
-  //     "Transparent audit trail for all votes",
-  //     "Multi-election support with different voting mechanisms",
-  //     "Secure key management for voters",
-  //     "Results verification and validation tools"
-  //   ],
-  //   challenges: [
-  //     "Ensuring voter privacy while maintaining transparency",
-  //     "Handling blockchain transaction costs and scalability",
-  //     "Creating user-friendly interface for non-technical users",
-  //     "Implementing secure key management and recovery"
-  //   ],
-  //   solutions: [
-  //     "Used zero-knowledge proofs for privacy-preserving verification",
-  //     "Implemented layer 2 solutions for cost optimization",
-  //     "Created intuitive wizard-based voting interface",
-  //     "Developed secure key generation and backup mechanisms"
-  //   ],
-  //   imageUrl: "/projects/blockchain-voting.jpg",
-  //   githubUrl: "https://github.com/YasasBanuka/Blockchain-Voting-System",
-  //   gradient: "from-indigo-500 to-purple-600",
-  //   category: "Blockchain Application",
-  //   duration: "6 months",
-  //   teamSize: "Team of 3",
-  //   screenshots: ["/projects/voting-interface.jpg", "/projects/voting-results.jpg", "/projects/voting-verification.jpg"]
-  // },
-  // {
-  //   id: "project-10",
-  //   title: "AI-Powered Code Review Assistant",
-  //   description: "Intelligent code review tool that uses machine learning to analyze code quality, suggest improvements, and detect potential bugs.",
-  //   detailedDescription: "An advanced AI-powered tool that automates code review processes using machine learning algorithms. The system analyzes code patterns, identifies potential issues, and provides intelligent suggestions for improvement, significantly reducing manual review time.",
-  //   techStack: ["Python", "TensorFlow", "FastAPI", "React", "PostgreSQL", "Docker"],
-  //   features: [
-  //     "Automated code quality analysis",
-  //     "Bug detection and vulnerability scanning",
-  //     "Code style and best practices recommendations",
-  //     "Performance optimization suggestions",
-  //     "Integration with popular version control systems",
-  //     "Customizable review rules and standards",
-  //     "Team collaboration and discussion features"
-  //   ],
-  //   challenges: [
-  //     "Training accurate ML models for code analysis",
-  //     "Handling multiple programming languages and frameworks",
-  //     "Providing actionable and contextually relevant suggestions",
-  //     "Integrating with various development workflows"
-  //   ],
-  //   solutions: [
-  //     "Used transformer-based models trained on large code datasets",
-  //     "Implemented language-specific parsers and analyzers",
-  //     "Created contextual suggestion engine with user feedback loop",
-  //     "Developed flexible API for easy integration with existing tools"
-  //   ],
-  //   imageUrl: "/projects/ai-code-review.jpg",
-  //   githubUrl: "https://github.com/YasasBanuka/AI-Code-Review-Assistant",
-  //   gradient: "from-cyan-500 to-blue-600",
-  //   category: "AI/ML Application",
-  //   duration: "8 months",
-  //   teamSize: "Team of 4",
-  //   screenshots: ["/projects/code-analysis.jpg", "/projects/code-suggestions.jpg", "/projects/code-dashboard.jpg"]
-  // }
+  }
 ];
 
 /**
@@ -477,7 +337,7 @@ const getTechColor = (tech: string): string => {
     "React Native": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200",
     "React Native / Expo": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200",
     "D3.js": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
-    
+
     // Languages
     "TypeScript": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
     "JavaScript": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
@@ -485,14 +345,14 @@ const getTechColor = (tech: string): string => {
     "Java SE": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     "Java EE": "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200",
     "Python": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
-    
+
     // Styling & UI
     "Tailwind CSS": "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200",
     "CSS": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
     "HTML": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     "XML": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
     "Framer Motion": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-    
+
     // Backend Frameworks
     "Spring Boot": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
     "Spring Security": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
@@ -500,7 +360,7 @@ const getTechColor = (tech: string): string => {
     "Express": "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200",
     "Flask": "bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-200",
     "FastAPI": "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200",
-    
+
     // Database & ORM
     "H2": "bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-200",
     "MySQL": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
@@ -509,48 +369,52 @@ const getTechColor = (tech: string): string => {
     "Redis": "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
     "SQLite": "bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-200",
     "Hibernate": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-    
+
     // HTTP & API
     "Axios": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
     "PayHere API": "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200",
     "Google Maps API": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-    
+
     // Cloud & Services
     "AWS S3": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
     "Firebase": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     "Firebase (Auth & Realtime DB)": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     "Vercel": "bg-black text-white dark:bg-white dark:text-black",
-    
+
     // Mobile Development
     "Android SDK": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-    
+
     // IoT & Hardware
     "ESP32": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
     "MQ-2 sensor": "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200",
-    
+    "Arduino": "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200",
+    "WiFi": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    "HTTPClient": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
+    "ArduinoJson": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+
     // Blockchain
     "Solidity": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
     "Web3.js": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     "Ethereum": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-    
+
     // AI/ML
     "TensorFlow": "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
-    
+
     // Authentication & Security
     "JWT": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
-    
+
     // Data Processing
     "Gson": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-    
+
     // AI Tools
     "Cursor AI": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-    
+
     // Development Tools
     "Git": "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
     "JUnit": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
     "Docker": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
   };
-  
+
   return colorMap[tech] || "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
 };
 
@@ -603,15 +467,15 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
 
   const variants = {
     hidden: { opacity: 0, y: 50, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
+    visible: {
+      opacity: 1,
+      y: 0,
       scale: 1,
-      transition: { 
-        duration: 0.6, 
+      transition: {
+        duration: 0.6,
         ease: [0.22, 1, 0.36, 1],
-        delay: index * 0.1 
-      } 
+        delay: index * 0.1
+      }
     },
   } as const;
 
@@ -627,7 +491,7 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
       <div className="relative h-full rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-[1.02] hover:-translate-y-2">
         {/* Gradient overlay on hover */}
         <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-        
+
         {/* Glow effect on hover */}
         <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10`}></div>
 
@@ -650,7 +514,7 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
               (e.target as HTMLImageElement).style.display = 'none';
             }}
           />
-          
+
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
             <motion.div
@@ -721,7 +585,7 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
                 whileTap={{ scale: 0.95 }}
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
                 <span className="text-sm">GitHub</span>
               </motion.a>
@@ -738,7 +602,7 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
                 whileTap={{ scale: 0.95 }}
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
                 <span className="text-sm">Backend</span>
               </motion.a>
@@ -798,14 +662,14 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
  * @param isOpen - Boolean indicating whether modal should be visible
  * @param onClose - Callback function to close the modal
  */
-function ProjectModal({ 
-  project, 
-  isOpen, 
-  onClose 
-}: { 
-  project: Project | null; 
-  isOpen: boolean; 
-  onClose: () => void; 
+function ProjectModal({
+  project,
+  isOpen,
+  onClose
+}: {
+  project: Project | null;
+  isOpen: boolean;
+  onClose: () => void;
 }) {
   if (!project) return null;
 
@@ -821,7 +685,7 @@ function ProjectModal({
         >
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-          
+
           {/* Modal */}
           <motion.div
             className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden"
@@ -1011,7 +875,7 @@ function ProjectModal({
                       whileTap={{ scale: 0.95 }}
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                       </svg>
                       <span>View Code</span>
                     </motion.a>
@@ -1027,7 +891,7 @@ function ProjectModal({
                       whileTap={{ scale: 0.95 }}
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                       </svg>
                       <span>Backend Code</span>
                     </motion.a>
@@ -1078,17 +942,19 @@ function ProjectModal({
  * @param onNext - Callback function for next button click
  * @param itemsPerView - Number of items visible at once
  */
-function CarouselNavigation({ 
-  currentIndex, 
-  totalItems, 
-  onPrevious, 
-  onNext, 
-  itemsPerView 
+function CarouselNavigation({
+  currentIndex,
+  totalItems,
+  onPrevious,
+  onNext,
+  onGoTo,
+  itemsPerView
 }: {
   currentIndex: number;
   totalItems: number;
   onPrevious: () => void;
   onNext: () => void;
+  onGoTo: (index: number) => void;
   itemsPerView: number;
 }) {
   const maxIndex = Math.max(0, totalItems - itemsPerView);
@@ -1100,11 +966,10 @@ function CarouselNavigation({
       <motion.button
         onClick={onPrevious}
         disabled={!canGoPrevious}
-        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${
-          canGoPrevious 
-            ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700' 
-            : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
-        }`}
+        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${canGoPrevious
+          ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+          : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
+          }`}
         whileHover={canGoPrevious ? { scale: 1.1 } : {}}
         whileTap={canGoPrevious ? { scale: 0.9 } : {}}
       >
@@ -1113,29 +978,36 @@ function CarouselNavigation({
         </svg>
       </motion.button>
 
-      {/* Dots indicator */}
-      <div className="flex gap-2">
-        {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {/* Handle dot click */}}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex 
-                ? 'bg-blue-600 w-8' 
+      {/* Dots indicator — shows dots for ≤8 pages, text counter for more */}
+      {maxIndex + 1 <= 8 ? (
+        <div className="flex gap-1">
+          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+            <button
+              key={index}
+              aria-label={`Go to page ${index + 1}`}
+              onClick={() => onGoTo(index)}
+              className="p-2 flex items-center justify-center"
+            >
+              <span className={`block rounded-full w-2 h-2 transition-colors duration-300 ${index === currentIndex
+                ? 'bg-blue-600'
                 : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
-            }`}
-          />
-        ))}
-      </div>
+                }`} />
+            </button>
+          ))}
+        </div>
+      ) : (
+        <span className="text-sm text-slate-500 dark:text-slate-400 px-4">
+          {currentIndex + 1} / {maxIndex + 1}
+        </span>
+      )}
 
       <motion.button
         onClick={onNext}
         disabled={!canGoNext}
-        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${
-          canGoNext 
-            ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700' 
-            : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
-        }`}
+        className={`p-3 rounded-full shadow-lg transition-all duration-300 ${canGoNext
+          ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+          : 'bg-slate-200 dark:bg-slate-700 text-slate-400 cursor-not-allowed'
+          }`}
         whileHover={canGoNext ? { scale: 1.1 } : {}}
         whileTap={canGoNext ? { scale: 0.9 } : {}}
       >
@@ -1260,7 +1132,7 @@ export default function Projects() {
         >
           <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg blur-3xl" />
         </motion.div>
-        
+
         <motion.div
           className="absolute bottom-20 right-1/4 w-28 h-28 opacity-5 dark:opacity-10"
           animate={{
@@ -1276,7 +1148,7 @@ export default function Projects() {
         >
           <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg blur-3xl" />
         </motion.div>
-        
+
         {/* Floating code elements */}
         <motion.div
           className="absolute top-1/2 right-1/3 w-20 h-20 opacity-5 dark:opacity-10"
@@ -1293,10 +1165,10 @@ export default function Projects() {
         >
           <div className="w-full h-full bg-gradient-to-br from-green-500 to-blue-500 rounded-full blur-2xl" />
         </motion.div>
-        
+
         {/* Background decoration */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(99,102,241,0.05),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_20%,rgba(99,102,241,0.03),transparent_50%)]"></div>
-        
+
         {/* Floating Particles - Client Side Only */}
         {isClient && (
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -1306,7 +1178,7 @@ export default function Projects() {
               const top = ((i * 9.3) % 100);
               const duration = 5 + ((i * 0.3) % 2);
               const delay = ((i * 0.4) % 2);
-              
+
               return (
                 <motion.div
                   key={i}
@@ -1332,7 +1204,7 @@ export default function Projects() {
             })}
           </div>
         )}
-        
+
         {/* Glowing Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -1364,7 +1236,7 @@ export default function Projects() {
       </div>
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="mx-auto mb-16 max-w-3xl text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1391,9 +1263,9 @@ export default function Projects() {
                 className="w-full flex-shrink-0 px-4"
                 style={{ width: `${100 / itemsPerView}%` }}
               >
-                <ProjectCard 
-                  project={project} 
-                  index={index} 
+                <ProjectCard
+                  project={project}
+                  index={index}
                   onClick={() => handleCardClick(project)}
                 />
               </div>
@@ -1407,6 +1279,7 @@ export default function Projects() {
           totalItems={projects.length}
           onPrevious={handlePrevious}
           onNext={handleNext}
+          onGoTo={(index) => setCurrentIndex(index)}
           itemsPerView={itemsPerView}
         />
 
@@ -1418,7 +1291,7 @@ export default function Projects() {
         />
 
         {/* Bottom decorative element */}
-        <motion.div 
+        <motion.div
           className="mt-16 flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}

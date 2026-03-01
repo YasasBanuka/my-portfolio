@@ -3,14 +3,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  
+
   /* Brand Colors */
   --brand-purple: #7C3AED;
   --brand-blue: #3B82F6;
   --brand-cyan: #06B6D4;
   --brand-orange: #F97316;
   --brand-green: #10B981;
-  
+
   /* Brand Gradients */
   --gradient-hero: linear-gradient(135deg, #0F172A 0%, #7C3AED 50%, #3B82F6 100%);
   --gradient-text: linear-gradient(90deg, #60A5FA 0%, #A78BFA 50%, #06B6D4 100%);
@@ -34,7 +34,6 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -60,6 +59,22 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Accessibility: Skip to main content link */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--brand-purple);
+  color: white;
+  padding: 8px 16px;
+  z-index: 1000;
+  transition: top 0.2s ease-in-out;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
 /* Custom glow effects */
 .text-glow {
   text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
@@ -70,9 +85,11 @@ html {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -109,9 +126,12 @@ html {
 
 /* Floating animation */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -123,9 +143,12 @@ html {
 
 /* Pulse glow effect */
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
   }
+
   50% {
     box-shadow: 0 0 40px rgba(99, 102, 241, 0.8), 0 0 60px rgba(99, 102, 241, 0.4);
   }
@@ -133,4 +156,23 @@ html {
 
 .pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Respect user's OS-level "Reduce Motion" preference */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Stop infinite background animations */
+  .animate-gradient,
+  .pulse-glow,
+  .float {
+    animation: none !important;
+  }
 }

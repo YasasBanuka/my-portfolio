@@ -92,12 +92,12 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       }
     ],
-    
+
     // Image optimization settings
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    
+
     // Performance optimizations
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
     dangerouslyAllowSVG: true,
@@ -108,13 +108,13 @@ const nextConfig: NextConfig = {
   experimental: {
     // Enable modern bundling
     optimizeCss: true,
-    
+
     // Enable modern JavaScript features
     esmExternals: true,
-    
+
     // Core Web Vitals optimizations
     optimizeServerReact: true,
-    
+
     // Additional performance optimizations
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB'],
     optimizePackageImports: ['framer-motion', 'lucide-react', 'three', '@react-three/fiber', '@react-three/drei'],
@@ -123,14 +123,14 @@ const nextConfig: NextConfig = {
   // Server external packages (moved from experimental)
   serverExternalPackages: [],
 
+  // Optimize heavy dependencies like Three.js
+  transpilePackages: ['three'],
+
   // Compiler optimizations
   compiler: {
     // Remove console logs in production
     removeConsole: process.env.NODE_ENV === 'production',
   },
-
-  // Output configuration
-  output: 'standalone',
 
   // Headers for security and performance
   async headers() {
@@ -138,7 +138,6 @@ const nextConfig: NextConfig = {
       {
         source: '/(.*)',
         headers: [
-          // Security headers
           {
             key: 'X-Frame-Options',
             value: 'DENY',
@@ -155,32 +154,15 @@ const nextConfig: NextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
           },
-          
-          // Performance headers
           {
             key: 'X-DNS-Prefetch-Control',
             value: 'on',
           },
-          {
-            key: 'Vary',
-            value: 'Accept-Encoding',
-          },
         ],
       },
       {
-        source: '/images/(.*)',
+        source: '/images/:path*',
         headers: [
-          // Cache images for 1 year
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/_next/static/(.*)',
-        headers: [
-          // Cache static assets for 1 year
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
